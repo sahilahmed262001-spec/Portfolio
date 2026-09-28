@@ -1,6 +1,6 @@
 ---
 // src/pages/index.astro
-// Grounded survivor journal portfolio in Astro + Tailwind CSS
+// High-contrast grounded survivor journal portfolio in Astro + Tailwind CSS
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import ProjectDossier from '../components/ProjectDossier.astro';
@@ -25,8 +25,7 @@ const caseReports = [
       "Optimized high-detail historical 3D models with LOD pipelines and draw call batching for 90 FPS.",
       "Architected intuitive VR teleportation, grab physics, and archival showcase exhibits."
     ],
-    handwrittenTags: ["Unity", "VR Hardware", "High-Poly LOD", "Spatial Audio", "Defense Tech"],
-    imageSrc: "./assets/vr_museum.jpg"
+    handwrittenTags: ["Unity", "VR Hardware", "High-Poly LOD", "Spatial Audio", "Defense Tech"]
   },
   {
     caseId: "XR-02",
@@ -43,8 +42,7 @@ const caseReports = [
       "Developed synchronized multi-user presentation stages with real-time video streaming screens.",
       "Created modular world streaming zones to allow expansive world roaming without memory crashes."
     ],
-    handwrittenTags: ["Unity", "VR Systems", "Metaverse", "Mini-Games", "Spatial UI"],
-    imageSrc: "./assets/metaverse.jpg"
+    handwrittenTags: ["Unity", "VR Systems", "Metaverse", "Mini-Games", "Spatial UI"]
   },
   {
     caseId: "NET-03",
@@ -61,8 +59,7 @@ const caseReports = [
       "Engineered real-time vehicle raycast suspension physics, friction modeling, and nitro boost dynamics.",
       "Programmed spell-casting projectile collision mechanics and networked player buff/debuff systems."
     ],
-    handwrittenTags: ["Unity", "C#", "NGO Netcode", "Vehicle Physics", "Spell Casting", "Google Play"],
-    imageSrc: "./assets/mystic_motors.jpg",
+    handwrittenTags: ["Unity", "C#", "NGO Netcode", "Vehicle Physics", "Spell Combat", "Google Play"],
     playStoreUrl: "https://play.google.com/store/apps"
   },
   {
@@ -73,7 +70,7 @@ const caseReports = [
     engine: "Unity // 2D/3D Physics",
     perf: "60 FPS",
     stamp: "GOOGLE PLAY LIVE",
-    stampType: "red" as const,
+    stampType: "yellow" as const,
     summary: "Physics-based number puzzle game featuring dynamic ball dropping, cascading collision merge reactions, power-up items, and combo multiplication algorithms.",
     features: [
       "Implemented physics solver tuning for tight, deterministic ball bounce and merge contact listeners.",
@@ -81,7 +78,6 @@ const caseReports = [
       "Built object pooling systems for zero runtime memory allocations during massive multi-ball cascades."
     ],
     handwrittenTags: ["Unity", "2D/3D Physics", "Casual Mechanics", "Object Pooling", "Haptics"],
-    imageSrc: "./assets/casual_puzzle.jpg",
     playStoreUrl: "https://play.google.com/store/apps"
   },
   {
@@ -92,7 +88,7 @@ const caseReports = [
     engine: "Unity // Board State Logic",
     perf: "60 FPS",
     stamp: "GOOGLE PLAY LIVE",
-    stampType: "red" as const,
+    stampType: "yellow" as const,
     summary: "Vibrant block-clearing mobile puzzle title featuring procedural level layouts, score multipliers, and optimized matrix board state logic for silky smooth performance across low-end mobile devices.",
     features: [
       "Architected 2D grid matrix algorithms for recursive match-finding and cascading gravity tile drops.",
@@ -100,7 +96,6 @@ const caseReports = [
       "Implemented save/load state serialization and offline local caching for persistent player progress."
     ],
     handwrittenTags: ["Unity", "Grid Logic", "Mobile UI", "Optimization", "Casual Puzzle"],
-    imageSrc: "./assets/casual_puzzle.jpg",
     playStoreUrl: "https://play.google.com/store/apps"
   }
 ];
@@ -114,24 +109,24 @@ const caseReports = [
   <Hero />
 
   <!-- 2. Project Gallery ("Field Reports") -->
-  <section id="reports" class="py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3 border-b border-[#2d3033] pb-4">
+  <section id="reports" class="py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3 border-b border-[#2d3033] pb-4">
       <div>
         <div class="flex items-center gap-2">
-          <span class="stamp-red text-xs">CASE FILES</span>
-          <span class="font-handwriting text-lg text-[#d6a842]">field reports // game projects</span>
+          <span class="stamp-red">CASE FILES</span>
+          <span class="font-handwriting text-lg text-[#f0c05a]">field reports // game projects</span>
         </div>
-        <h2 class="font-typewriter text-3xl sm:text-4xl font-bold text-[#e6dfd3] mt-1">
+        <h2 class="font-typewriter text-3xl sm:text-4xl font-bold text-[#ffffff] mt-1">
           PROJECT FIELD REPORTS
         </h2>
       </div>
-      <div class="font-typewriter text-xs text-[#9c9384] max-w-sm">
-        *Detailed case files with polaroid records, system architecture breakdowns, and tech tags.
+      <div class="font-typewriter text-xs text-[#b5ac9d] max-w-sm">
+        *Detailed technical case files with system architecture breakdowns and tech tags.
       </div>
     </div>
 
-    <!-- Grid of Case Files -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Grid of Case Files (No Images, Ultra Crisp Text) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {caseReports.map((report) => (
         <ProjectDossier {...report} />
       ))}
@@ -150,30 +145,30 @@ const caseReports = [
   <!-- 6. Emergency Radio & Dispatch -->
   <RadioFrequencies />
 
-  <!-- Interactive Simulation Modal (Field Test Sandbox) -->
-  <div id="sim-modal" class="fixed inset-0 z-50 hidden bg-[#0d0e0f]/90 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="paper-sheet max-w-2xl w-full p-6 sm:p-8 rounded-xs border-2 border-[#1c1b18] relative shadow-2xl">
-      <button id="modal-close" class="absolute top-4 right-4 text-[#736a5c] hover:text-[#1c1b18] font-typewriter text-lg font-bold">
+  <!-- Interactive Simulation Modal -->
+  <div id="sim-modal" class="fixed inset-0 z-50 hidden bg-[#090a0b]/90 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="survivor-card max-w-2xl w-full p-6 sm:p-8 rounded-xs border-2 border-[#d6a842] bg-[#18191c] relative shadow-2xl">
+      <button id="modal-close" class="absolute top-4 right-4 text-[#b5ac9d] hover:text-[#ffffff] font-typewriter text-lg font-bold">
         ✕
       </button>
       
-      <div class="font-typewriter text-xs text-[#9e3a2b] font-bold mb-1">
+      <div class="font-typewriter text-xs text-[#f0c05a] font-bold mb-1">
         // INTERACTIVE FIELD SIMULATION
       </div>
-      <h3 id="modal-title" class="font-typewriter text-2xl font-black text-[#1c1b18] mb-4">
+      <h3 id="modal-title" class="font-typewriter text-2xl font-black text-[#ffffff] mb-4">
         GAMEPLAY SIMULATION
       </h3>
 
-      <div class="bg-[#121314] border border-[#303337] rounded-xs aspect-video relative overflow-hidden flex items-center justify-center">
+      <div class="bg-[#0e0f10] border border-[#2d3033] rounded-xs aspect-video relative overflow-hidden flex items-center justify-center">
         <canvas id="sim-canvas" class="w-full h-full"></canvas>
-        <div class="absolute top-2 left-2 font-typewriter text-[10px] text-[#8ca672] bg-[#1c1d1f]/90 px-2 py-0.5 border border-[#2d3033]">
+        <div class="absolute top-2 left-2 font-typewriter text-[10px] text-[#93c572] bg-[#1a1c1d]/90 px-2 py-0.5 border border-[#2d3033]">
           PHYSICS SOLVER: RUNNING
         </div>
       </div>
 
-      <div class="mt-4 flex items-center justify-between font-typewriter text-xs text-[#595244]">
+      <div class="mt-4 flex items-center justify-between font-typewriter text-xs text-[#ded7cc]">
         <span>Click inside canvas to drop physics collision entities</span>
-        <button id="sim-reset" class="px-3 py-1 bg-[#2e3a23] hover:bg-[#3f4f30] text-[#f3eee6] font-bold">
+        <button id="sim-reset" class="px-3 py-1 bg-[#2e3a23] hover:bg-[#3f4f30] text-[#ffffff] border border-[#455734] font-bold">
           RESET SIM
         </button>
       </div>
@@ -204,7 +199,7 @@ const caseReports = [
           this.vx = (Math.random() - 0.5) * 5;
           this.vy = (Math.random() - 0.5) * 5;
           this.radius = Math.random() * 12 + 8;
-          this.color = Math.random() > 0.5 ? '#d6a842' : '#8ca672';
+          this.color = Math.random() > 0.5 ? '#f0c05a' : '#93c572';
           this.label = Math.pow(2, Math.floor(Math.random() * 5) + 1);
         }
         update() {
@@ -228,7 +223,7 @@ const caseReports = [
           simCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
           simCtx.fillStyle = this.color;
           simCtx.fill();
-          simCtx.fillStyle = '#121314';
+          simCtx.fillStyle = '#0e0f10';
           simCtx.font = 'bold 9px monospace';
           simCtx.textAlign = 'center';
           simCtx.textBaseline = 'middle';
@@ -244,7 +239,7 @@ const caseReports = [
 
       function animSim() {
         if (!modal.classList.contains('hidden')) {
-          simCtx.fillStyle = 'rgba(18, 19, 20, 0.3)';
+          simCtx.fillStyle = 'rgba(14, 15, 16, 0.3)';
           simCtx.fillRect(0, 0, simCanvas.width, simCanvas.height);
           simBalls.forEach(b => {
             b.update();

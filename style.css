@@ -1,20 +1,24 @@
 /* ==========================================================================
    DECAY & RECLAMATION — GROUNDED SURVIVOR JOURNAL THEME
-   Inspired by The Last of Us (Aged Paper, Torn Notebooks, Masking Tape, Chalk)
+   High-Contrast, Earthy, Post-Apocalyptic (Inspired by The Last of Us)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Permanent+Marker&family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Permanent+Marker&family=Special+Elite&display=swap');
 
 :root {
-  --bg-charcoal: #121314;
-  --bg-charcoal-dark: #0d0e0f;
-  --parchment-beige: #e6dfd3;
-  --parchment-light: #f3eee6;
-  --parchment-ink: #1c1b18;
+  --bg-charcoal: #0e0f10;
+  --card-bg: #18191b;
+  --card-inner: #121315;
+  --text-main: #f0eae1;
+  --text-muted: #b5ac9d;
+  --text-dim: #827a6e;
   --moss-green: #2e3a23;
-  --moss-light: #8ca672;
-  --rust-orange: #9e3a2b;
+  --moss-bright: #93c572;
+  --rust-red: #c2412d;
+  --rust-bright: #ef5a42;
   --tape-yellow: #d6a842;
+  --tape-bright: #f0c05a;
+  --border-color: #2f3236;
 }
 
 * {
@@ -26,43 +30,52 @@
 html {
   scroll-behavior: smooth;
   background-color: var(--bg-charcoal);
-  color: var(--parchment-beige);
+  color: var(--text-main);
 }
 
 body {
   font-family: 'Courier Prime', Courier, monospace;
   background-color: var(--bg-charcoal);
+  color: var(--text-main);
   background-image: 
-    radial-gradient(circle at 50% 50%, rgba(46, 58, 35, 0.15) 0%, transparent 80%),
-    radial-gradient(rgba(230, 223, 211, 0.03) 1px, transparent 1px);
+    radial-gradient(circle at 50% 30%, rgba(46, 58, 35, 0.22) 0%, transparent 70%),
+    radial-gradient(rgba(240, 234, 225, 0.04) 1px, transparent 1px);
   background-size: 100% 100%, 24px 24px;
   background-attachment: fixed;
   overflow-x: hidden;
   line-height: 1.6;
 }
 
-/* Aged Paper Sheets / Physical Survivor Dossiers */
-.paper-sheet {
-  background-color: var(--parchment-light);
-  color: var(--parchment-ink);
-  box-shadow: 
-    0 1px 1px rgba(0,0,0,0.2), 
-    0 8px 0 -3px #ded7cb, 
-    0 9px 1px -3px rgba(0,0,0,0.3), 
-    0 16px 0 -6px #d1c8b8, 
-    0 17px 2px -6px rgba(0,0,0,0.3),
-    2px 10px 30px rgba(0, 0, 0, 0.7);
+/* Rugged Survivor Cards */
+.survivor-card {
+  background: #18191c;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.survivor-card:hover {
+  border-color: var(--tape-yellow);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 15px rgba(214, 168, 66, 0.15);
+}
+
+/* Light Paper Sheet Accent (for hero note / dispatch) */
+.paper-sheet-light {
+  background: #f4eee3;
+  color: #1a1917;
+  border: 1px solid #d4c8b6;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
 }
 
 /* Masking Tape Strip Effects */
 .masking-tape {
   background-color: var(--tape-yellow);
-  background-image: linear-gradient(135deg, rgba(255,255,255,0.2) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(135deg, rgba(255,255,255,0.25) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0.25) 75%, transparent 75%, transparent);
   background-size: 8px 8px;
-  opacity: 0.88;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.35);
+  opacity: 0.92;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
   position: absolute;
   z-index: 10;
   clip-path: polygon(3% 0%, 97% 2%, 100% 98%, 0% 95%);
@@ -72,29 +85,21 @@ body {
   top: -12px;
   left: 50%;
   transform: translateX(-50%) rotate(-1.5deg);
-  width: 110px;
+  width: 120px;
   height: 24px;
 }
 
 .tape-corner {
   top: -10px;
   right: -10px;
-  width: 65px;
+  width: 70px;
   height: 22px;
   transform: rotate(35deg);
 }
 
-/* Polaroid-Style Image Framing */
-.polaroid-frame {
-  background: #fdfaf5;
-  padding: 10px 10px 24px 10px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.7);
-  border: 1px solid #e0d8cc;
-}
-
-/* Typography Classes */
+/* Typography Helpers */
 .font-typewriter {
-  font-family: 'Special Elite', monospace;
+  font-family: 'Special Elite', Courier, monospace;
 }
 
 .font-handwriting {
@@ -105,33 +110,51 @@ body {
   font-family: 'Permanent Marker', cursive;
 }
 
-/* Stencil & Chalk Stamps */
+/* High Contrast Stencil & Ink Stamps */
 .stamp-red {
-  border: 2px solid var(--rust-orange);
-  color: var(--rust-orange);
+  border: 1.5px solid var(--rust-bright);
+  background: rgba(194, 65, 45, 0.15);
+  color: #ff7b63;
   font-family: 'Special Elite', monospace;
   text-transform: uppercase;
-  transform: rotate(-2deg);
+  transform: rotate(-1.5deg);
   display: inline-block;
   padding: 2px 8px;
-  letter-spacing: 0.1em;
-  opacity: 0.9;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
 }
 
 .stamp-moss {
-  border: 2px solid var(--moss-light);
-  color: var(--moss-light);
+  border: 1.5px solid var(--moss-bright);
+  background: rgba(46, 58, 35, 0.35);
+  color: var(--moss-bright);
   font-family: 'Special Elite', monospace;
   text-transform: uppercase;
   transform: rotate(1.5deg);
   display: inline-block;
   padding: 2px 8px;
-  letter-spacing: 0.1em;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
 }
 
-/* Shadows */
+.stamp-yellow {
+  border: 1.5px solid var(--tape-bright);
+  background: rgba(214, 168, 66, 0.15);
+  color: var(--tape-bright);
+  font-family: 'Special Elite', monospace;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+/* Shadow Utility */
 .shadow-tape {
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
 
 /* Custom Scrollbar */
@@ -139,11 +162,11 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0d0e0f;
+  background: #090a0b;
 }
 ::-webkit-scrollbar-thumb {
   background: #2e3a23;
-  border: 1px solid #3f4f30;
+  border: 1px solid #455734;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #d6a842;

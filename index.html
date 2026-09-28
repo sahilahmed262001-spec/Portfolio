@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth bg-[#121314] text-[#e6dfd3]">
+<html lang="en" class="scroll-smooth bg-[#0e0f10] text-[#f0eae1]">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,7 +12,7 @@
   <!-- Google Fonts: Special Elite (Typewriter), Courier Prime, Caveat (Handwriting), Permanent Marker -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Permanent+Marker&family=Special+Elite&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Permanent+Marker&family=Special+Elite&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -22,28 +22,24 @@
         extend: {
           colors: {
             charcoal: {
-              950: '#0d0e0f',
-              900: '#121314',
-              800: '#1a1b1d',
-              700: '#242628'
-            },
-            parchment: {
-              100: '#f3eee6',
-              200: '#e6dfd3',
-              ink: '#1c1b18'
+              950: '#090a0b',
+              900: '#0e0f10',
+              800: '#18191c',
+              700: '#242629'
             },
             moss: {
               800: '#2e3a23',
               600: '#526640',
-              400: '#8ca672'
+              400: '#93c572'
             },
             rust: {
               800: '#73271c',
-              700: '#9e3a2b'
+              700: '#c2412d',
+              500: '#ff7b63'
             },
             tape: {
               DEFAULT: '#d6a842',
-              light: '#e8be5d'
+              bright: '#f0c05a'
             }
           },
           fontFamily: {
@@ -68,35 +64,35 @@
   <canvas id="spores-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-30"></canvas>
 
   <!-- Navigation Header: Worn Wooden/Paper Tape -->
-  <header class="sticky top-0 z-40 bg-[#121314]/95 border-b border-[#2a2d28] backdrop-blur-sm py-3 px-4 sm:px-8">
+  <header class="sticky top-0 z-40 bg-[#0e0f10]/95 border-b border-[#2b2e31] backdrop-blur-sm py-3 px-4 sm:px-8">
     <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
       
       <!-- Survivor Log Sigil -->
       <a href="#hero" class="flex items-center gap-2.5 group">
-        <div class="w-8 h-8 rounded-sm bg-[#2e3a23] border border-[#4a5e38] flex items-center justify-center text-[#e6dfd3] shadow-sm">
-          <i class="fa-solid fa-seedling text-sm text-[#8ca672]"></i>
+        <div class="w-8 h-8 rounded-sm bg-[#2e3a23] border border-[#455734] flex items-center justify-center text-[#ffffff] shadow-sm">
+          <i class="fa-solid fa-seedling text-sm text-[#93c572]"></i>
         </div>
         <div>
-          <span class="font-typewriter text-sm font-bold text-[#e6dfd3] tracking-wide block">SAHIL AHMED</span>
-          <span class="font-handwriting text-xs text-[#8ca672] -mt-1 block">survivor log // unity engineer</span>
+          <span class="font-typewriter text-sm font-bold text-[#ffffff] tracking-wide block">SAHIL AHMED</span>
+          <span class="font-handwriting text-xs text-[#93c572] -mt-1 block">survivor log // unity engineer</span>
         </div>
       </a>
 
       <!-- Journal Tabs -->
       <nav class="flex items-center gap-2 sm:gap-4 text-xs font-typewriter">
-        <a href="#reports" class="px-2.5 py-1 text-[#e6dfd3]/80 hover:text-[#d6a842] border-b border-transparent hover:border-[#d6a842] transition-colors">
+        <a href="#reports" class="px-2.5 py-1 text-[#ded7cc] hover:text-[#f0c05a] border-b border-transparent hover:border-[#f0c05a] transition-colors">
           [1] FIELD REPORTS
         </a>
-        <a href="#inventory" class="px-2.5 py-1 text-[#e6dfd3]/80 hover:text-[#8ca672] border-b border-transparent hover:border-[#8ca672] transition-colors">
+        <a href="#inventory" class="px-2.5 py-1 text-[#ded7cc] hover:text-[#93c572] border-b border-transparent hover:border-[#93c572] transition-colors">
           [2] GEAR INVENTORY
         </a>
-        <a href="#journal" class="px-2.5 py-1 text-[#e6dfd3]/80 hover:text-[#9e3a2b] border-b border-transparent hover:border-[#9e3a2b] transition-colors">
+        <a href="#journal" class="px-2.5 py-1 text-[#ded7cc] hover:text-[#ff7b63] border-b border-transparent hover:border-[#ff7b63] transition-colors">
           [3] WORK LOGS
         </a>
-        <a href="#archives" class="px-2.5 py-1 text-[#e6dfd3]/80 hover:text-[#e6dfd3] border-b border-transparent hover:border-[#e6dfd3] transition-colors">
+        <a href="#archives" class="px-2.5 py-1 text-[#ded7cc] hover:text-[#ffffff] border-b border-transparent hover:border-[#ffffff] transition-colors">
           [4] ARCHIVES
         </a>
-        <a href="#radio" class="ml-1 sm:ml-2 px-3 py-1 bg-[#d6a842] text-[#1c1b18] font-bold shadow-tape hover:bg-[#e8be5d] transition-all transform rotate-[-1deg]">
+        <a href="#radio" class="ml-1 sm:ml-2 px-3 py-1 bg-[#d6a842] text-[#0e0f10] font-bold shadow-tape hover:bg-[#f0c05a] transition-all transform rotate-[-1deg]">
           📻 RADIO COMMS
         </a>
       </nav>
@@ -104,25 +100,25 @@
     </div>
   </header>
 
-  <!-- 1. HERO SECTION: Stamped Survival Log on Old Paper Sheet -->
-  <section id="hero" class="pt-8 pb-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+  <!-- 1. HERO SECTION: Stamped Survival Log Header -->
+  <section id="hero" class="pt-8 pb-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
     
-    <div class="paper-sheet rounded-xs p-6 sm:p-10 border border-[#d8d0c2] relative transform rotate-[-0.3deg] transition-transform hover:rotate-0">
+    <div class="survivor-card rounded-xs p-6 sm:p-10 border border-[#383b40] bg-[#18191c] relative">
       
       <!-- Masking Tape & Paperclip -->
       <div class="masking-tape tape-top"></div>
-      <div class="absolute -top-3 left-8 text-2xl text-[#6b675d] drop-shadow-sm select-none">
+      <div class="absolute -top-3 left-8 text-2xl text-[#827a6e] drop-shadow-sm select-none">
         📎
       </div>
 
       <!-- Header Stamps & Meta -->
-      <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-dashed border-[#b8ab9a] pb-4 mb-6">
-        <div class="flex items-center gap-3">
-          <span class="stamp-red text-xs">ENTRY #1461</span>
-          <span class="stamp-moss text-xs">SECTOR: ASIA-NORTH</span>
-          <span class="font-typewriter text-xs text-[#59554d]">SURVIVOR TIME: 4+ YEARS</span>
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#2b2e31] pb-4 mb-6">
+        <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+          <span class="stamp-red">ENTRY #1461</span>
+          <span class="stamp-moss">SECTOR: ASIA-NORTH</span>
+          <span class="font-typewriter text-xs text-[#b5ac9d] font-bold">EXPEDITION: 4+ YEARS</span>
         </div>
-        <div class="font-handwriting text-lg text-[#9e3a2b] font-bold">
+        <div class="font-handwriting text-lg text-[#f0c05a] font-bold">
           *Verified field-ready
         </div>
       </div>
@@ -130,43 +126,43 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
         <!-- Left Column: Name & Logbook -->
-        <div class="lg:col-span-8 space-y-4">
+        <div class="lg:col-span-8 space-y-5">
           <div>
-            <h1 class="font-typewriter text-3xl sm:text-5xl font-black text-[#1c1b18] tracking-tight">
+            <h1 class="font-typewriter text-3xl sm:text-5xl font-black text-[#ffffff] tracking-tight">
               SAHIL AHMED
             </h1>
-            <div class="flex items-center gap-2 mt-1">
-              <span class="font-typewriter text-sm sm:text-base font-bold text-[#2e3a23] bg-[#d5cbbe]/50 px-2 py-0.5 rounded-xs">
+            <div class="flex flex-wrap items-center gap-2 mt-2">
+              <span class="font-typewriter text-sm sm:text-base font-bold text-[#f0c05a] bg-[#292212] px-2.5 py-0.5 rounded-xs border border-[#52411e]">
                 &gt; Unity Systems &amp; Gameplay Engineer
               </span>
-              <span class="font-handwriting text-base text-[#9e3a2b] font-bold sm:inline hidden">
+              <span class="font-handwriting text-lg text-[#93c572] font-bold">
                 (Multiplayer &amp; XR Specialist)
               </span>
             </div>
           </div>
 
-          <!-- Summary Note -->
-          <div class="bg-[#f0eae0] p-4 sm:p-5 rounded-xs border-l-4 border-l-[#2e3a23] border border-[#ded5c5] font-serif text-sm leading-relaxed text-[#2a2926]">
-            <p class="font-bold text-[#1c1b18] mb-1 font-typewriter text-xs text-[#698252]">
+          <!-- Summary Note Box -->
+          <div class="bg-[#111214] p-5 rounded-xs border-l-4 border-l-[#93c572] border border-[#242629] font-serif text-sm leading-relaxed text-[#ded7cc]">
+            <p class="font-bold font-typewriter text-xs text-[#93c572] mb-2 uppercase tracking-wide">
               // LOGBOOK SUMMARY:
             </p>
             <p>
-              Innovative Unity Game Developer with <strong>4 years of hands-on experience</strong> specializing in multiplayer game architecture, casual mobile titles, and immersive AR/VR experiences. Highly proficient in C#, Unity Netcode for GameObjects (NGO), Photon (PUN &amp; Fusion), and ProBuilder.
+              Innovative Unity Game Developer with <strong class="text-[#ffffff]">4 years of hands-on experience</strong> specializing in multiplayer game architecture, casual mobile titles, and immersive AR/VR experiences. Highly proficient in C#, Unity Netcode for GameObjects (NGO), Photon (PUN &amp; Fusion), and ProBuilder.
             </p>
-            <p class="mt-2 text-[#47443e]">
-              Proven track record of architecting, optimizing, and deploying high-profile interactive VR applications for national defense (officially inaugurated by the Chief of Defence Staff, General Anil Chauhan) as well as commercially published mobile titles across Google Play.
+            <p class="mt-2.5 text-[#b5ac9d]">
+              Proven track record of architecting, optimizing, and deploying high-profile interactive VR applications for national defense (<strong class="text-[#f0c05a]">officially inaugurated by the Chief of Defence Staff, General Anil Chauhan</strong>) as well as commercially published mobile titles across Google Play.
             </p>
           </div>
 
-          <!-- Action Buttons Styled as Distressed Patches / Tape -->
+          <!-- Action Buttons -->
           <div class="pt-2 flex flex-wrap items-center gap-3">
-            <a href="#reports" class="px-4 py-2 bg-[#2e3a23] hover:bg-[#3f4f30] text-[#f3eee6] font-typewriter text-xs font-bold shadow-md transition-all flex items-center gap-2">
+            <a href="#reports" class="px-4 py-2.5 bg-[#2e3a23] hover:bg-[#3f4f30] text-[#ffffff] font-typewriter text-xs font-bold border border-[#455734] shadow-md transition-all flex items-center gap-2">
               <span>📁 READ FIELD REPORTS</span>
             </a>
-            <a href="#inventory" class="px-4 py-2 bg-[#d6a842] hover:bg-[#e8be5d] text-[#1c1b18] font-typewriter text-xs font-bold shadow-tape transition-all flex items-center gap-2">
+            <a href="#inventory" class="px-4 py-2.5 bg-[#d6a842] hover:bg-[#e8be5d] text-[#0e0f10] font-typewriter text-xs font-bold shadow-tape transition-all flex items-center gap-2">
               <span>🎒 GEAR INVENTORY</span>
             </a>
-            <a href="#radio" class="px-4 py-2 bg-[#9e3a2b] hover:bg-[#bd4b3a] text-[#f3eee6] font-typewriter text-xs font-bold shadow-md transition-all flex items-center gap-2">
+            <a href="#radio" class="px-4 py-2.5 bg-[#9e3a2b] hover:bg-[#bd4b3a] text-[#ffffff] font-typewriter text-xs font-bold border border-[#bd4b3a] shadow-md transition-all flex items-center gap-2">
               <span>📻 EMERGENCY RADIO</span>
             </a>
           </div>
@@ -174,43 +170,43 @@
 
         <!-- Right Column: Radio Telemetry Post-It Note -->
         <div class="lg:col-span-4">
-          <div class="bg-[#fdf3cc] p-5 rounded-xs border border-[#e2d499] shadow-md relative transform rotate-[1.5deg]">
+          <div class="bg-[#211f19] p-5 rounded-xs border border-[#4a3e21] shadow-lg relative transform rotate-[1deg]">
             <div class="masking-tape" style="top: -8px; left: 30%; width: 70px; height: 18px; transform: rotate(-3deg);"></div>
             
-            <div class="font-typewriter text-xs font-bold text-[#4d3d19] border-b border-[#ebd78f] pb-2 mb-3 flex items-center justify-between">
+            <div class="font-typewriter text-xs font-bold text-[#f0c05a] border-b border-[#3b331d] pb-2 mb-3 flex items-center justify-between">
               <span>📻 RADIO FREQUENCIES</span>
               <span class="stamp-red text-[9px]">LIVE</span>
             </div>
 
-            <div class="space-y-2.5 font-typewriter text-xs text-[#2b271d]">
+            <div class="space-y-3 font-typewriter text-xs text-[#e6dfd3]">
               <div>
-                <span class="text-[10px] text-[#73633e] block font-bold">DIRECT COMMS / WA:</span>
-                <a href="tel:+918171638120" class="font-bold text-[#1c1b18] hover:text-[#9e3a2b] underline">
+                <span class="text-[10px] text-[#9e9176] block font-bold uppercase">DIRECT PHONE / WHATSAPP:</span>
+                <a href="tel:+918171638120" class="font-bold text-[#ffffff] hover:text-[#f0c05a] underline text-sm mt-0.5 block">
                   +91 8171638120
                 </a>
               </div>
 
               <div>
-                <span class="text-[10px] text-[#73633e] block font-bold">WRITTEN DISPATCH (EMAIL):</span>
-                <a href="mailto:sahilahmed262001@gmail.com" class="font-bold text-[#1c1b18] hover:text-[#9e3a2b] underline text-[11px] break-all">
+                <span class="text-[10px] text-[#9e9176] block font-bold uppercase">WRITTEN DISPATCH (EMAIL):</span>
+                <a href="mailto:sahilahmed262001@gmail.com" class="font-bold text-[#f0c05a] hover:underline text-xs break-all mt-0.5 block">
                   sahilahmed262001@gmail.com
                 </a>
               </div>
 
               <div>
-                <span class="text-[10px] text-[#73633e] block font-bold">SURVIVOR NETWORK (LINKEDIN):</span>
-                <a href="https://linkedin.com/in/sahil-ahmed-81018a228" target="_blank" rel="noopener noreferrer" class="font-bold text-[#2e3a23] hover:text-[#9e3a2b] underline text-[11px]">
+                <span class="text-[10px] text-[#9e9176] block font-bold uppercase">SURVIVOR NETWORK:</span>
+                <a href="https://linkedin.com/in/sahil-ahmed-81018a228" target="_blank" rel="noopener noreferrer" class="font-bold text-[#93c572] hover:underline text-xs mt-0.5 block">
                   linkedin.com/in/sahil-ahmed
                 </a>
               </div>
 
               <div>
-                <span class="text-[10px] text-[#73633e] block font-bold">OUTPOST BASE:</span>
-                <span class="text-[#2b271d] font-bold text-[11px]">Muradnagar, Uttar Pradesh, India</span>
+                <span class="text-[10px] text-[#9e9176] block font-bold uppercase">OUTPOST BASE:</span>
+                <span class="text-[#ded7cc] font-bold text-xs mt-0.5 block">Muradnagar, Uttar Pradesh, India</span>
               </div>
             </div>
 
-            <div class="mt-4 pt-2 border-t border-[#ebd78f] font-handwriting text-sm text-[#9e3a2b] font-bold">
+            <div class="mt-4 pt-2 border-t border-[#3b331d] font-handwriting text-base text-[#f0c05a] font-bold">
               ~ "Available for full-time &amp; contract missions"
             </div>
           </div>
@@ -222,339 +218,313 @@
 
   </section>
 
-  <!-- 2. PROJECT GALLERY ("FIELD REPORTS") -->
-  <section id="reports" class="py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3 border-b border-[#2d3033] pb-4">
+  <!-- 2. PROJECT GALLERY ("FIELD REPORTS") — NO IMAGES, ULTRA CRISP TEXT -->
+  <section id="reports" class="py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3 border-b border-[#2d3033] pb-4">
       <div>
         <div class="flex items-center gap-2">
-          <span class="stamp-red text-xs">CASE FILES</span>
-          <span class="font-handwriting text-lg text-[#d6a842]">field reports // game projects</span>
+          <span class="stamp-red">CASE FILES</span>
+          <span class="font-handwriting text-lg text-[#f0c05a]">field reports // game projects</span>
         </div>
-        <h2 class="font-typewriter text-3xl sm:text-4xl font-bold text-[#e6dfd3] mt-1">
+        <h2 class="font-typewriter text-3xl sm:text-4xl font-bold text-[#ffffff] mt-1">
           PROJECT FIELD REPORTS
         </h2>
       </div>
-      <div class="font-typewriter text-xs text-[#9c9384] max-w-sm">
-        *Detailed case files with polaroid records, system architecture breakdowns, and tech tags.
+      <div class="font-typewriter text-xs text-[#b5ac9d] max-w-sm">
+        *Detailed technical case files with system architecture breakdowns and tech tags.
       </div>
     </div>
 
     <!-- Grid of Case Files -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       
       <!-- CASE 1: VR Centenary Museum -->
-      <div class="paper-sheet rounded-xs p-6 sm:p-7 border border-[#d6cdbd] relative transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+      <div class="survivor-card rounded-xs p-6 sm:p-7 border border-[#2f3236] bg-[#18191c] relative flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
         <div class="masking-tape tape-corner"></div>
         
-        <div class="flex items-center justify-between border-b border-[#cfc4b2] pb-3 mb-4">
-          <div>
-            <span class="font-typewriter text-[11px] text-[#736a5c] block uppercase">
-              CASE FILE: DEF-01 &bull; IMNS &amp; DEFENSE
+        <div>
+          <div class="flex items-start justify-between border-b border-[#2b2e31] pb-3 mb-4 pr-12">
+            <div>
+              <span class="font-typewriter text-xs text-[#8ca672] font-bold block uppercase tracking-wider">
+                CASE FILE: DEF-01 &bull; IMNS &amp; DEFENSE
+              </span>
+              <h3 class="font-typewriter text-2xl font-bold text-[#ffffff] tracking-tight mt-1">
+                VR Centenary Museum
+              </h3>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <span class="stamp-moss">MINISTRY INAUGURATED</span>
+          </div>
+
+          <div class="bg-[#111214] p-3 rounded-xs font-typewriter text-xs text-[#f0eae1] mb-4 border border-[#26282b] flex flex-wrap items-center justify-between gap-2">
+            <div><span class="text-[#8c8577] uppercase font-bold">ROLE:</span> <strong class="text-[#93c572]">Lead VR Developer</strong></div>
+            <div><span class="text-[#8c8577] uppercase font-bold">ENGINE:</span> <strong class="text-[#f0c05a]">Unity // OpenXR</strong> (90 FPS)</div>
+          </div>
+
+          <p class="font-serif text-sm text-[#ded7cc] leading-relaxed mb-4 bg-[#141517] p-3.5 border-l-2 border-l-[#c2412d] rounded-xs">
+            High-fidelity immersive VR museum experience commemorating the 100 Glorious Years of IMNS. Built and deployed for national defense showcases, officially inaugurated by the Chief of Defence Staff, General Anil Chauhan.
+          </p>
+
+          <div class="mb-5 space-y-1.5">
+            <div class="font-typewriter text-xs font-bold text-[#b5ac9d] uppercase">// ENGINEERED SYSTEMS:</div>
+            <ul class="space-y-1.5 font-typewriter text-xs text-[#e6dfd3]">
+              <li class="flex items-start gap-2"><span class="text-[#f0c05a] font-bold mt-0.5">✔</span> <span class="leading-relaxed">Engineered high-immersion VR interaction systems &amp; spatial audio</span></li>
+              <li class="flex items-start gap-2"><span class="text-[#f0c05a] font-bold mt-0.5">✔</span> <span class="leading-relaxed">Optimized high-detail historical 3D models with LOD pipelines for 90 FPS</span></li>
+              <li class="flex items-start gap-2"><span class="text-[#f0c05a] font-bold mt-0.5">✔</span> <span class="leading-relaxed">Archival showcase exhibits on standalone defense headsets</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <div class="border-t border-dashed border-[#2b2e31] pt-3 mb-4 flex flex-wrap items-center gap-2">
+            <span class="font-typewriter text-[11px] text-[#8c8577] uppercase font-bold mr-1">TAGS:</span>
+            <span class="font-handwriting text-base font-bold text-[#93c572] bg-[#222421] px-2 py-0.5 rounded-xs border border-[#353f2c]">#Unity</span>
+            <span class="font-handwriting text-base font-bold text-[#93c572] bg-[#222421] px-2 py-0.5 rounded-xs border border-[#353f2c]">#VRHardware</span>
+            <span class="font-handwriting text-base font-bold text-[#93c572] bg-[#222421] px-2 py-0.5 rounded-xs border border-[#353f2c]">#DefenseTech</span>
+          </div>
+
+          <div class="pt-3 border-t border-[#2b2e31] flex items-center justify-between gap-2">
+            <span class="font-typewriter text-xs text-[#93c572] font-bold flex items-center gap-1">
+              <i class="fa-solid fa-shield-halved"></i> VERIFIED DEPLOYMENT
             </span>
-            <h3 class="font-typewriter text-xl sm:text-2xl font-black text-[#1c1b18] tracking-tight">
-              VR Centenary Museum
-            </h3>
+            <button class="preview-trigger-btn font-typewriter text-xs font-bold px-3 py-1.5 bg-[#2e3a23] hover:bg-[#3f4f30] text-[#f0eae1] border border-[#455734] transition-colors" data-title="VR Centenary Museum">
+              SIMULATOR &gt;
+            </button>
           </div>
-          <div>
-            <span class="stamp-moss text-xs">MINISTRY INAUGURATED</span>
-          </div>
-        </div>
-
-        <div class="bg-[#ece4d6] p-2.5 rounded-xs font-typewriter text-xs text-[#33302a] mb-4 border border-[#ddd3c1] flex flex-wrap items-center justify-between gap-2">
-          <div><span class="text-[#7a7162]">ROLE:</span> <strong>Lead VR Developer</strong></div>
-          <div><span class="text-[#7a7162]">ENGINE:</span> <strong>Unity // OpenXR</strong> (90 FPS)</div>
-        </div>
-
-        <div class="polaroid-frame mb-4 relative group">
-          <div class="masking-tape" style="top: -6px; left: -6px; width: 45px; height: 16px; transform: rotate(-25deg);"></div>
-          <div class="overflow-hidden bg-[#121314] aspect-video relative">
-            <img src="./assets/vr_museum.jpg" alt="VR Centenary Museum" class="w-full h-full object-cover filter contrast-[105%] group-hover:scale-105 transition-transform duration-500" />
-          </div>
-          <div class="pt-2 font-handwriting text-base font-bold text-[#473f32] text-center">
-            photo archive // VR Museum
-          </div>
-          <button class="preview-trigger-btn absolute inset-0 flex items-center justify-center bg-[#121314]/70 opacity-0 group-hover:opacity-100 transition-opacity font-typewriter text-xs font-bold text-[#e6dfd3] gap-2" data-title="VR Centenary Museum">
-            <span class="px-3 py-1.5 bg-[#d6a842] text-[#1c1b18] shadow-tape">▶ INSPECT SIMULATION</span>
-          </button>
-        </div>
-
-        <p class="font-serif text-xs sm:text-sm text-[#38342c] leading-relaxed mb-4 bg-[#fbf8f2] p-3 border-l-2 border-l-[#9e3a2b]">
-          High-fidelity immersive VR museum experience commemorating the 100 Glorious Years of IMNS. Built and deployed for national defense showcases, officially inaugurated by the Chief of Defence Staff, General Anil Chauhan.
-        </p>
-
-        <div class="mb-4">
-          <div class="font-typewriter text-[11px] font-bold text-[#5c5344] uppercase mb-1.5">// ENGINEERED SYSTEMS:</div>
-          <ul class="space-y-1 font-typewriter text-xs text-[#2b271f]">
-            <li class="flex items-start gap-1.5"><span class="text-[#9e3a2b] font-bold">✔</span> <span>High-immersion VR interaction systems &amp; spatial audio</span></li>
-            <li class="flex items-start gap-1.5"><span class="text-[#9e3a2b] font-bold">✔</span> <span>LOD pipelines &amp; draw call batching for 90 FPS</span></li>
-            <li class="flex items-start gap-1.5"><span class="text-[#9e3a2b] font-bold">✔</span> <span>Archival showcase exhibits on standalone headsets</span></li>
-          </ul>
-        </div>
-
-        <div class="border-t border-dashed border-[#cfc4b2] pt-3 mb-4 flex flex-wrap items-center gap-2">
-          <span class="font-typewriter text-[10px] text-[#7a7162] uppercase mr-1">TAGS:</span>
-          <span class="font-handwriting text-base font-bold text-[#2e3a23] bg-[#e6dfd3] px-2 py-0.5 rounded-xs border border-[#cfc4b2]">#Unity</span>
-          <span class="font-handwriting text-base font-bold text-[#2e3a23] bg-[#e6dfd3] px-2 py-0.5 rounded-xs border border-[#cfc4b2]">#VRHardware</span>
-          <span class="font-handwriting text-base font-bold text-[#2e3a23] bg-[#e6dfd3] px-2 py-0.5 rounded-xs border border-[#cfc4b2]">#DefenseTech</span>
-        </div>
-
-        <div class="pt-2 border-t border-[#cfc4b2] flex items-center justify-between">
-          <span class="font-typewriter text-[11px] text-[#698252] font-bold">🌿 DEFENSE VR DEPLOYMENT</span>
-          <button class="preview-trigger-btn font-typewriter text-xs font-bold px-2.5 py-1 bg-[#2e3a23] text-[#f3eee6] hover:bg-[#3f4f30]" data-title="VR Centenary Museum">SIMULATOR &gt;</button>
         </div>
       </div>
 
       <!-- CASE 2: Educational VR Metaverse -->
-      <div class="paper-sheet rounded-xs p-6 sm:p-7 border border-[#d6cdbd] relative transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+      <div class="survivor-card rounded-xs p-6 sm:p-7 border border-[#2f3236] bg-[#18191c] relative flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
         <div class="masking-tape tape-corner"></div>
         
-        <div class="flex items-center justify-between border-b border-[#cfc4b2] pb-3 mb-4">
-          <div>
-            <span class="font-typewriter text-[11px] text-[#736a5c] block uppercase">
-              CASE FILE: XR-02 &bull; EDTECH WORLDS
+        <div>
+          <div class="flex items-start justify-between border-b border-[#2b2e31] pb-3 mb-4 pr-12">
+            <div>
+              <span class="font-typewriter text-xs text-[#8ca672] font-bold block uppercase tracking-wider">
+                CASE FILE: XR-02 &bull; EDTECH WORLDS
+              </span>
+              <h3 class="font-typewriter text-2xl font-bold text-[#ffffff] tracking-tight mt-1">
+                Educational VR Metaverse
+              </h3>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <span class="stamp-moss">MULTI-USER ACTIVE</span>
+          </div>
+
+          <div class="bg-[#111214] p-3 rounded-xs font-typewriter text-xs text-[#f0eae1] mb-4 border border-[#26282b] flex flex-wrap items-center justify-between gap-2">
+            <div><span class="text-[#8c8577] uppercase font-bold">ROLE:</span> <strong class="text-[#93c572]">VR Systems Architect</strong></div>
+            <div><span class="text-[#8c8577] uppercase font-bold">ENGINE:</span> <strong class="text-[#f0c05a]">Unity // XR Toolkit</strong> (72 FPS)</div>
+          </div>
+
+          <p class="font-serif text-sm text-[#ded7cc] leading-relaxed mb-4 bg-[#141517] p-3.5 border-l-2 border-l-[#c2412d] rounded-xs">
+            Semi-open world educational metaverse featuring dynamic virtual libraries, TED Talk auditoriums, and interactive exploration side-worlds with multiplayer mini-games.
+          </p>
+
+          <div class="mb-5 space-y-1.5">
+            <div class="font-typewriter text-xs font-bold text-[#b5ac9d] uppercase">// ENGINEERED SYSTEMS:</div>
+            <ul class="space-y-1.5 font-typewriter text-xs text-[#e6dfd3]">
+              <li class="flex items-start gap-2"><span class="text-[#f0c05a] font-bold mt-0.5">✔</span> <span class="leading-relaxed">Interactive mini-game physics (boat steering, target shooting, skating)</span></li>
+              <li class="flex items-start gap-2"><span class="text-[#f0c05a] font-bold mt-0.5">✔</span> <span class="leading-relaxed">Synchronized multi-user presentation stages with real-time screen feeds</span></li>
+              <li class="flex items-start gap-2"><span class="text-[#f0c05a] font-bold mt-0.5">✔</span> <span class="leading-relaxed">Dynamic world streaming zones for lightweight client execution</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <div class="border-t border-dashed border-[#2b2e31] pt-3 mb-4 flex flex-wrap items-center gap-2">
+            <span class="font-typewriter text-[11px] text-[#8c8577] uppercase font-bold mr-1">TAGS:</span>
+            <span class="font-handwriting text-base font-bold text-[#93c572] bg-[#222421] px-2 py-0.5 rounded-xs border border-[#353f2c]">#VRSystems</span>
+            <span class="font-handwriting text-base font-bold text-[#93c572] bg-[#222421] px-2 py-0.5 rounded-xs border border-[#353f2c]">#Metaverse</span>
+            <span class="font-handwriting text-base font-bold text-[#93c572] bg-[#222421] px-2 py-0.5 rounded-xs border border-[#353f2c]">#SpatialUI</span>
+          </div>
+
+          <div class="pt-3 border-t border-[#2b2e31] flex items-center justify-between gap-2">
+            <span class="font-typewriter text-xs text-[#93c572] font-bold flex items-center gap-1">
+              <i class="fa-solid fa-users"></i> MULTI-USER LIVE
             </span>
-            <h3 class="font-typewriter text-xl sm:text-2xl font-black text-[#1c1b18] tracking-tight">
-              Educational VR Metaverse
-            </h3>
+            <button class="preview-trigger-btn font-typewriter text-xs font-bold px-3 py-1.5 bg-[#2e3a23] hover:bg-[#3f4f30] text-[#f0eae1] border border-[#455734] transition-colors" data-title="Educational VR Metaverse">
+              SIMULATOR &gt;
+            </button>
           </div>
-          <div>
-            <span class="stamp-moss text-xs">MULTI-USER ACTIVE</span>
-          </div>
-        </div>
-
-        <div class="bg-[#ece4d6] p-2.5 rounded-xs font-typewriter text-xs text-[#33302a] mb-4 border border-[#ddd3c1] flex flex-wrap items-center justify-between gap-2">
-          <div><span class="text-[#7a7162]">ROLE:</span> <strong>VR Systems Architect</strong></div>
-          <div><span class="text-[#7a7162]">ENGINE:</span> <strong>Unity // XR Toolkit</strong> (72 FPS)</div>
-        </div>
-
-        <div class="polaroid-frame mb-4 relative group">
-          <div class="masking-tape" style="top: -6px; left: -6px; width: 45px; height: 16px; transform: rotate(-25deg);"></div>
-          <div class="overflow-hidden bg-[#121314] aspect-video relative">
-            <img src="./assets/metaverse.jpg" alt="Educational VR Metaverse" class="w-full h-full object-cover filter contrast-[105%] group-hover:scale-105 transition-transform duration-500" />
-          </div>
-          <div class="pt-2 font-handwriting text-base font-bold text-[#473f32] text-center">
-            photo archive // VR Metaverse
-          </div>
-          <button class="preview-trigger-btn absolute inset-0 flex items-center justify-center bg-[#121314]/70 opacity-0 group-hover:opacity-100 transition-opacity font-typewriter text-xs font-bold text-[#e6dfd3] gap-2" data-title="Educational VR Metaverse">
-            <span class="px-3 py-1.5 bg-[#d6a842] text-[#1c1b18] shadow-tape">▶ INSPECT SIMULATION</span>
-          </button>
-        </div>
-
-        <p class="font-serif text-xs sm:text-sm text-[#38342c] leading-relaxed mb-4 bg-[#fbf8f2] p-3 border-l-2 border-l-[#9e3a2b]">
-          Semi-open world educational metaverse featuring virtual libraries, TED Talk auditoriums, and interactive exploration side-worlds with multiplayer mini-games.
-        </p>
-
-        <div class="mb-4">
-          <div class="font-typewriter text-[11px] font-bold text-[#5c5344] uppercase mb-1.5">// ENGINEERED SYSTEMS:</div>
-          <ul class="space-y-1 font-typewriter text-xs text-[#2b271f]">
-            <li class="flex items-start gap-1.5"><span class="text-[#9e3a2b] font-bold">✔</span> <span>Interactive mini-game physics (boat steering, skating)</span></li>
-            <li class="flex items-start gap-1.5"><span class="text-[#9e3a2b] font-bold">✔</span> <span>Synchronized multi-user presentation stages &amp; TED halls</span></li>
-            <li class="flex items-start gap-1.5"><span class="text-[#9e3a2b] font-bold">✔</span> <span>Dynamic world streaming zones for low-memory load</span></li>
-          </ul>
-        </div>
-
-        <div class="border-t border-dashed border-[#cfc4b2] pt-3 mb-4 flex flex-wrap items-center gap-2">
-          <span class="font-typewriter text-[10px] text-[#7a7162] uppercase mr-1">TAGS:</span>
-          <span class="font-handwriting text-base font-bold text-[#2e3a23] bg-[#e6dfd3] px-2 py-0.5 rounded-xs border border-[#cfc4b2]">#Metaverse</span>
-          <span class="font-handwriting text-base font-bold text-[#2e3a23] bg-[#e6dfd3] px-2 py-0.5 rounded-xs border border-[#cfc4b2]">#MiniGames</span>
-          <span class="font-handwriting text-base font-bold text-[#2e3a23] bg-[#e6dfd3] px-2 py-0.5 rounded-xs border border-[#cfc4b2]">#XR</span>
-        </div>
-
-        <div class="pt-2 border-t border-[#cfc4b2] flex items-center justify-between">
-          <span class="font-typewriter text-[11px] text-[#698252] font-bold">🌿 INTERACTIVE METAVERSE</span>
-          <button class="preview-trigger-btn font-typewriter text-xs font-bold px-2.5 py-1 bg-[#2e3a23] text-[#f3eee6] hover:bg-[#3f4f30]" data-title="Educational VR Metaverse">SIMULATOR &gt;</button>
         </div>
       </div>
 
       <!-- CASE 3: Mystic Motors -->
-      <div class="paper-sheet rounded-xs p-6 sm:p-7 border border-[#d6cdbd] relative transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+      <div class="survivor-card rounded-xs p-6 sm:p-7 border border-[#2f3236] bg-[#18191c] relative flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
         <div class="masking-tape tape-corner"></div>
         
-        <div class="flex items-center justify-between border-b border-[#cfc4b2] pb-3 mb-4">
-          <div>
-            <span class="font-typewriter text-[11px] text-[#736a5c] block uppercase">
-              CASE FILE: NET-03 &bull; TEC VENTURES
-            </span>
-            <h3 class="font-typewriter text-xl sm:text-2xl font-black text-[#1c1b18] tracking-tight">
-              Mystic Motors
-            </h3>
+        <div>
+          <div class="flex items-start justify-between border-b border-[#2b2e31] pb-3 mb-4 pr-12">
+            <div>
+              <span class="font-typewriter text-xs text-[#8ca672] font-bold block uppercase tracking-wider">
+                CASE FILE: NET-03 &bull; TEC VENTURES
+              </span>
+              <h3 class="font-typewriter text-2xl font-bold text-[#ffffff] tracking-tight mt-1">
+                Mystic Motors
+              </h3>
+            </div>
           </div>
-          <div>
-            <span class="stamp-red text-xs">GOOGLE PLAY RELEASE</span>
+
+          <div class="mb-4">
+            <span class="stamp-red">GOOGLE PLAY RELEASE</span>
+          </div>
+
+          <div class="bg-[#111214] p-3 rounded-xs font-typewriter text-xs text-[#f0eae1] mb-4 border border-[#26282b] flex flex-wrap items-center justify-between gap-2">
+            <div><span class="text-[#8c8577] uppercase font-bold">ROLE:</span> <strong class="text-[#93c572]">Lead Developer</strong></div>
+            <div><span class="text-[#8c8577] uppercase font-bold">ENGINE:</span> <strong class="text-[#f0c05a]">Unity // NGO Netcode</strong> (60 FPS)</div>
+          </div>
+
+          <p class="font-serif text-sm text-[#ded7cc] leading-relaxed mb-4 bg-[#141517] p-3.5 border-l-2 border-l-[#c2412d] rounded-xs">
+            Competitive multiplayer vehicular racing game combining high-speed drifting physics, customizable vehicles, dynamic modular tracks, and real-time spell-casting combat mechanisms.
+          </p>
+
+          <div class="mb-5 space-y-1.5">
+            <div class="font-typewriter text-xs font-bold text-[#b5ac9d] uppercase">// ENGINEERED SYSTEMS:</div>
+            <ul class="space-y-1.5 font-typewriter text-xs text-[#e6dfd3]">
+              <li class="flex items-start gap-2"><span class="text-[#f0c05a] font-bold mt-0.5">✔</span> <span class="leading-relaxed">Architected Unity Netcode for GameObjects (NGO) low-latency sync</span></li>
+              <li class="flex items-start gap-2"><span class="text-[#f0c05a] font-bold mt-0.5">✔</span> <span class="leading-relaxed">Real-time raycast suspension &amp; drifting vehicle physics modeling</span></li>
+              <li class="flex items-start gap-2"><span class="text-[#f0c05a] font-bold mt-0.5">✔</span> <span class="leading-relaxed">Networked spell-casting &amp; combat projectile hitboxes</span></li>
+            </ul>
           </div>
         </div>
 
-        <div class="bg-[#ece4d6] p-2.5 rounded-xs font-typewriter text-xs text-[#33302a] mb-4 border border-[#ddd3c1] flex flex-wrap items-center justify-between gap-2">
-          <div><span class="text-[#7a7162]">ROLE:</span> <strong>Lead Developer</strong></div>
-          <div><span class="text-[#7a7162]">ENGINE:</span> <strong>Unity // NGO Netcode</strong> (60 FPS)</div>
-        </div>
-
-        <div class="polaroid-frame mb-4 relative group">
-          <div class="masking-tape" style="top: -6px; left: -6px; width: 45px; height: 16px; transform: rotate(-25deg);"></div>
-          <div class="overflow-hidden bg-[#121314] aspect-video relative">
-            <img src="./assets/mystic_motors.jpg" alt="Mystic Motors" class="w-full h-full object-cover filter contrast-[105%] group-hover:scale-105 transition-transform duration-500" />
+        <div>
+          <div class="border-t border-dashed border-[#2b2e31] pt-3 mb-4 flex flex-wrap items-center gap-2">
+            <span class="font-typewriter text-[11px] text-[#8c8577] uppercase font-bold mr-1">TAGS:</span>
+            <span class="font-handwriting text-base font-bold text-[#93c572] bg-[#222421] px-2 py-0.5 rounded-xs border border-[#353f2c]">#NetcodeNGO</span>
+            <span class="font-handwriting text-base font-bold text-[#93c572] bg-[#222421] px-2 py-0.5 rounded-xs border border-[#353f2c]">#VehiclePhysics</span>
+            <span class="font-handwriting text-base font-bold text-[#93c572] bg-[#222421] px-2 py-0.5 rounded-xs border border-[#353f2c]">#GooglePlay</span>
           </div>
-          <div class="pt-2 font-handwriting text-base font-bold text-[#473f32] text-center">
-            photo archive // Mystic Motors
+
+          <div class="pt-3 border-t border-[#2b2e31] flex items-center justify-between gap-2">
+            <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer" class="font-typewriter text-xs font-bold text-[#f0c05a] hover:underline flex items-center gap-1.5">
+              <i class="fa-brands fa-google-play"></i> GOOGLE PLAY &gt;
+            </a>
+            <button class="preview-trigger-btn font-typewriter text-xs font-bold px-3 py-1.5 bg-[#2e3a23] hover:bg-[#3f4f30] text-[#f0eae1] border border-[#455734] transition-colors" data-title="Mystic Motors">
+              SIMULATOR &gt;
+            </button>
           </div>
-          <button class="preview-trigger-btn absolute inset-0 flex items-center justify-center bg-[#121314]/70 opacity-0 group-hover:opacity-100 transition-opacity font-typewriter text-xs font-bold text-[#e6dfd3] gap-2" data-title="Mystic Motors">
-            <span class="px-3 py-1.5 bg-[#d6a842] text-[#1c1b18] shadow-tape">▶ INSPECT SIMULATION</span>
-          </button>
-        </div>
-
-        <p class="font-serif text-xs sm:text-sm text-[#38342c] leading-relaxed mb-4 bg-[#fbf8f2] p-3 border-l-2 border-l-[#9e3a2b]">
-          Competitive multiplayer vehicular racing game combining high-speed drifting physics, customizable vehicles, dynamic modular tracks, and real-time spell-casting combat mechanisms.
-        </p>
-
-        <div class="mb-4">
-          <div class="font-typewriter text-[11px] font-bold text-[#5c5344] uppercase mb-1.5">// ENGINEERED SYSTEMS:</div>
-          <ul class="space-y-1 font-typewriter text-xs text-[#2b271f]">
-            <li class="flex items-start gap-1.5"><span class="text-[#9e3a2b] font-bold">✔</span> <span>Unity Netcode for GameObjects (NGO) low-latency sync</span></li>
-            <li class="flex items-start gap-1.5"><span class="text-[#9e3a2b] font-bold">✔</span> <span>Real-time raycast suspension &amp; drifting vehicle physics</span></li>
-            <li class="flex items-start gap-1.5"><span class="text-[#9e3a2b] font-bold">✔</span> <span>Networked spell-casting &amp; combat projectile hitboxes</span></li>
-          </ul>
-        </div>
-
-        <div class="border-t border-dashed border-[#cfc4b2] pt-3 mb-4 flex flex-wrap items-center gap-2">
-          <span class="font-typewriter text-[10px] text-[#7a7162] uppercase mr-1">TAGS:</span>
-          <span class="font-handwriting text-base font-bold text-[#2e3a23] bg-[#e6dfd3] px-2 py-0.5 rounded-xs border border-[#cfc4b2]">#NetcodeNGO</span>
-          <span class="font-handwriting text-base font-bold text-[#2e3a23] bg-[#e6dfd3] px-2 py-0.5 rounded-xs border border-[#cfc4b2]">#VehiclePhysics</span>
-          <span class="font-handwriting text-base font-bold text-[#2e3a23] bg-[#e6dfd3] px-2 py-0.5 rounded-xs border border-[#cfc4b2]">#GooglePlay</span>
-        </div>
-
-        <div class="pt-2 border-t border-[#cfc4b2] flex items-center justify-between">
-          <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer" class="font-typewriter text-xs font-bold text-[#9e3a2b] hover:underline flex items-center gap-1">
-            <i class="fa-brands fa-google-play"></i> GOOGLE PLAY ARCHIVE &gt;
-          </a>
-          <button class="preview-trigger-btn font-typewriter text-xs font-bold px-2.5 py-1 bg-[#2e3a23] text-[#f3eee6] hover:bg-[#3f4f30]" data-title="Mystic Motors">SIMULATOR &gt;</button>
         </div>
       </div>
 
       <!-- CASE 4: Merge Balls -->
-      <div class="paper-sheet rounded-xs p-6 sm:p-7 border border-[#d6cdbd] relative transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+      <div class="survivor-card rounded-xs p-6 sm:p-7 border border-[#2f3236] bg-[#18191c] relative flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
         <div class="masking-tape tape-corner"></div>
         
-        <div class="flex items-center justify-between border-b border-[#cfc4b2] pb-3 mb-4">
-          <div>
-            <span class="font-typewriter text-[11px] text-[#736a5c] block uppercase">
-              CASE FILE: PUZ-04 &bull; DEVKRAKEN
-            </span>
-            <h3 class="font-typewriter text-xl sm:text-2xl font-black text-[#1c1b18] tracking-tight">
-              Merge Balls
-            </h3>
+        <div>
+          <div class="flex items-start justify-between border-b border-[#2b2e31] pb-3 mb-4 pr-12">
+            <div>
+              <span class="font-typewriter text-xs text-[#8ca672] font-bold block uppercase tracking-wider">
+                CASE FILE: PUZ-04 &bull; DEVKRAKEN
+              </span>
+              <h3 class="font-typewriter text-2xl font-bold text-[#ffffff] tracking-tight mt-1">
+                Merge Balls
+              </h3>
+            </div>
           </div>
-          <div>
-            <span class="stamp-red text-xs">GOOGLE PLAY LIVE</span>
+
+          <div class="mb-4">
+            <span class="stamp-yellow">GOOGLE PLAY LIVE</span>
+          </div>
+
+          <div class="bg-[#111214] p-3 rounded-xs font-typewriter text-xs text-[#f0eae1] mb-4 border border-[#26282b] flex flex-wrap items-center justify-between gap-2">
+            <div><span class="text-[#8c8577] uppercase font-bold">ROLE:</span> <strong class="text-[#93c572]">Unity Developer</strong></div>
+            <div><span class="text-[#8c8577] uppercase font-bold">ENGINE:</span> <strong class="text-[#f0c05a]">Unity // 2D/3D Physics</strong> (60 FPS)</div>
+          </div>
+
+          <p class="font-serif text-sm text-[#ded7cc] leading-relaxed mb-4 bg-[#141517] p-3.5 border-l-2 border-l-[#c2412d] rounded-xs">
+            A physics-based number puzzle game featuring dynamic ball dropping, cascading merge reactions, power-up items, and combo multiplication algorithms.
+          </p>
+
+          <div class="mb-5 space-y-1.5">
+            <div class="font-typewriter text-xs font-bold text-[#b5ac9d] uppercase">// ENGINEERED SYSTEMS:</div>
+            <ul class="space-y-1.5 font-typewriter text-xs text-[#e6dfd3]">
+              <li class="flex items-start gap-2"><span class="text-[#f0c05a] font-bold mt-0.5">✔</span> <span class="leading-relaxed">Deterministic bounce &amp; contact merge collision listeners</span></li>
+              <li class="flex items-start gap-2"><span class="text-[#f0c05a] font-bold mt-0.5">✔</span> <span class="leading-relaxed">Screen shake juice effects &amp; haptic vibration feedback on merge</span></li>
+              <li class="flex items-start gap-2"><span class="text-[#f0c05a] font-bold mt-0.5">✔</span> <span class="leading-relaxed">Zero-runtime-alloc object pooling system for zero garbage collection</span></li>
+            </ul>
           </div>
         </div>
 
-        <div class="bg-[#ece4d6] p-2.5 rounded-xs font-typewriter text-xs text-[#33302a] mb-4 border border-[#ddd3c1] flex flex-wrap items-center justify-between gap-2">
-          <div><span class="text-[#7a7162]">ROLE:</span> <strong>Unity Developer</strong></div>
-          <div><span class="text-[#7a7162]">ENGINE:</span> <strong>Unity // 2D/3D Physics</strong> (60 FPS)</div>
-        </div>
-
-        <div class="polaroid-frame mb-4 relative group">
-          <div class="masking-tape" style="top: -6px; left: -6px; width: 45px; height: 16px; transform: rotate(-25deg);"></div>
-          <div class="overflow-hidden bg-[#121314] aspect-video relative">
-            <img src="./assets/casual_puzzle.jpg" alt="Merge Balls" class="w-full h-full object-cover filter contrast-[105%] group-hover:scale-105 transition-transform duration-500" />
+        <div>
+          <div class="border-t border-dashed border-[#2b2e31] pt-3 mb-4 flex flex-wrap items-center gap-2">
+            <span class="font-typewriter text-[11px] text-[#8c8577] uppercase font-bold mr-1">TAGS:</span>
+            <span class="font-handwriting text-base font-bold text-[#93c572] bg-[#222421] px-2 py-0.5 rounded-xs border border-[#353f2c]">#Physics</span>
+            <span class="font-handwriting text-base font-bold text-[#93c572] bg-[#222421] px-2 py-0.5 rounded-xs border border-[#353f2c]">#ObjectPooling</span>
+            <span class="font-handwriting text-base font-bold text-[#93c572] bg-[#222421] px-2 py-0.5 rounded-xs border border-[#353f2c]">#JuiceFX</span>
           </div>
-          <div class="pt-2 font-handwriting text-base font-bold text-[#473f32] text-center">
-            photo archive // Merge Balls
+
+          <div class="pt-3 border-t border-[#2b2e31] flex items-center justify-between gap-2">
+            <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer" class="font-typewriter text-xs font-bold text-[#f0c05a] hover:underline flex items-center gap-1.5">
+              <i class="fa-brands fa-google-play"></i> GOOGLE PLAY &gt;
+            </a>
+            <button class="preview-trigger-btn font-typewriter text-xs font-bold px-3 py-1.5 bg-[#2e3a23] hover:bg-[#3f4f30] text-[#f0eae1] border border-[#455734] transition-colors" data-title="Merge Balls">
+              SIMULATOR &gt;
+            </button>
           </div>
-          <button class="preview-trigger-btn absolute inset-0 flex items-center justify-center bg-[#121314]/70 opacity-0 group-hover:opacity-100 transition-opacity font-typewriter text-xs font-bold text-[#e6dfd3] gap-2" data-title="Merge Balls">
-            <span class="px-3 py-1.5 bg-[#d6a842] text-[#1c1b18] shadow-tape">▶ INSPECT SIMULATION</span>
-          </button>
-        </div>
-
-        <p class="font-serif text-xs sm:text-sm text-[#38342c] leading-relaxed mb-4 bg-[#fbf8f2] p-3 border-l-2 border-l-[#9e3a2b]">
-          A physics-based number puzzle game featuring dynamic ball dropping, cascading merge reactions, power-up items, and combo multiplication algorithms.
-        </p>
-
-        <div class="mb-4">
-          <div class="font-typewriter text-[11px] font-bold text-[#5c5344] uppercase mb-1.5">// ENGINEERED SYSTEMS:</div>
-          <ul class="space-y-1 font-typewriter text-xs text-[#2b271f]">
-            <li class="flex items-start gap-1.5"><span class="text-[#9e3a2b] font-bold">✔</span> <span>Deterministic bounce &amp; contact merge collision listeners</span></li>
-            <li class="flex items-start gap-1.5"><span class="text-[#9e3a2b] font-bold">✔</span> <span>Screen shake juice effects &amp; haptic vibration feedback</span></li>
-            <li class="flex items-start gap-1.5"><span class="text-[#9e3a2b] font-bold">✔</span> <span>Zero-runtime-alloc object pooling system</span></li>
-          </ul>
-        </div>
-
-        <div class="border-t border-dashed border-[#cfc4b2] pt-3 mb-4 flex flex-wrap items-center gap-2">
-          <span class="font-typewriter text-[10px] text-[#7a7162] uppercase mr-1">TAGS:</span>
-          <span class="font-handwriting text-base font-bold text-[#2e3a23] bg-[#e6dfd3] px-2 py-0.5 rounded-xs border border-[#cfc4b2]">#Physics</span>
-          <span class="font-handwriting text-base font-bold text-[#2e3a23] bg-[#e6dfd3] px-2 py-0.5 rounded-xs border border-[#cfc4b2]">#ObjectPooling</span>
-          <span class="font-handwriting text-base font-bold text-[#2e3a23] bg-[#e6dfd3] px-2 py-0.5 rounded-xs border border-[#cfc4b2]">#JuiceFX</span>
-        </div>
-
-        <div class="pt-2 border-t border-[#cfc4b2] flex items-center justify-between">
-          <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer" class="font-typewriter text-xs font-bold text-[#9e3a2b] hover:underline flex items-center gap-1">
-            <i class="fa-brands fa-google-play"></i> GOOGLE PLAY ARCHIVE &gt;
-          </a>
-          <button class="preview-trigger-btn font-typewriter text-xs font-bold px-2.5 py-1 bg-[#2e3a23] text-[#f3eee6] hover:bg-[#3f4f30]" data-title="Merge Balls">SIMULATOR &gt;</button>
         </div>
       </div>
 
       <!-- CASE 5: Tile Pop -->
-      <div class="paper-sheet rounded-xs p-6 sm:p-7 border border-[#d6cdbd] relative transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+      <div class="survivor-card rounded-xs p-6 sm:p-7 border border-[#2f3236] bg-[#18191c] relative flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
         <div class="masking-tape tape-corner"></div>
         
-        <div class="flex items-center justify-between border-b border-[#cfc4b2] pb-3 mb-4">
-          <div>
-            <span class="font-typewriter text-[11px] text-[#736a5c] block uppercase">
-              CASE FILE: GRD-05 &bull; DEVKRAKEN
-            </span>
-            <h3 class="font-typewriter text-xl sm:text-2xl font-black text-[#1c1b18] tracking-tight">
-              Tile Pop
-            </h3>
+        <div>
+          <div class="flex items-start justify-between border-b border-[#2b2e31] pb-3 mb-4 pr-12">
+            <div>
+              <span class="font-typewriter text-xs text-[#8ca672] font-bold block uppercase tracking-wider">
+                CASE FILE: GRD-05 &bull; DEVKRAKEN
+              </span>
+              <h3 class="font-typewriter text-2xl font-bold text-[#ffffff] tracking-tight mt-1">
+                Tile Pop
+              </h3>
+            </div>
           </div>
-          <div>
-            <span class="stamp-red text-xs">GOOGLE PLAY LIVE</span>
+
+          <div class="mb-4">
+            <span class="stamp-yellow">GOOGLE PLAY LIVE</span>
+          </div>
+
+          <div class="bg-[#111214] p-3 rounded-xs font-typewriter text-xs text-[#f0eae1] mb-4 border border-[#26282b] flex flex-wrap items-center justify-between gap-2">
+            <div><span class="text-[#8c8577] uppercase font-bold">ROLE:</span> <strong class="text-[#93c572]">Unity Developer</strong></div>
+            <div><span class="text-[#8c8577] uppercase font-bold">ENGINE:</span> <strong class="text-[#f0c05a]">Unity // Board Logic</strong> (60 FPS)</div>
+          </div>
+
+          <p class="font-serif text-sm text-[#ded7cc] leading-relaxed mb-4 bg-[#141517] p-3.5 border-l-2 border-l-[#c2412d] rounded-xs">
+            A vibrant block-clearing puzzle game featuring multiple game modes, score multipliers, and optimized board state logic for seamless mobile execution.
+          </p>
+
+          <div class="mb-5 space-y-1.5">
+            <div class="font-typewriter text-xs font-bold text-[#b5ac9d] uppercase">// ENGINEERED SYSTEMS:</div>
+            <ul class="space-y-1.5 font-typewriter text-xs text-[#e6dfd3]">
+              <li class="flex items-start gap-2"><span class="text-[#f0c05a] font-bold mt-0.5">✔</span> <span class="leading-relaxed">Recursive match-finding matrix algorithms &amp; gravity drops</span></li>
+              <li class="flex items-start gap-2"><span class="text-[#f0c05a] font-bold mt-0.5">✔</span> <span class="leading-relaxed">Responsive Figma UI scaling across diverse Android screen ratios</span></li>
+              <li class="flex items-start gap-2"><span class="text-[#f0c05a] font-bold mt-0.5">✔</span> <span class="leading-relaxed">Local persistent save state serialization and offline caching</span></li>
+            </ul>
           </div>
         </div>
 
-        <div class="bg-[#ece4d6] p-2.5 rounded-xs font-typewriter text-xs text-[#33302a] mb-4 border border-[#ddd3c1] flex flex-wrap items-center justify-between gap-2">
-          <div><span class="text-[#7a7162]">ROLE:</span> <strong>Unity Developer</strong></div>
-          <div><span class="text-[#7a7162]">ENGINE:</span> <strong>Unity // Board Logic</strong> (60 FPS)</div>
-        </div>
-
-        <div class="polaroid-frame mb-4 relative group">
-          <div class="masking-tape" style="top: -6px; left: -6px; width: 45px; height: 16px; transform: rotate(-25deg);"></div>
-          <div class="overflow-hidden bg-[#121314] aspect-video relative">
-            <img src="./assets/casual_puzzle.jpg" alt="Tile Pop" class="w-full h-full object-cover filter contrast-[105%] group-hover:scale-105 transition-transform duration-500" />
+        <div>
+          <div class="border-t border-dashed border-[#2b2e31] pt-3 mb-4 flex flex-wrap items-center gap-2">
+            <span class="font-typewriter text-[11px] text-[#8c8577] uppercase font-bold mr-1">TAGS:</span>
+            <span class="font-handwriting text-base font-bold text-[#93c572] bg-[#222421] px-2 py-0.5 rounded-xs border border-[#353f2c]">#GridLogic</span>
+            <span class="font-handwriting text-base font-bold text-[#93c572] bg-[#222421] px-2 py-0.5 rounded-xs border border-[#353f2c]">#MobileUI</span>
+            <span class="font-handwriting text-base font-bold text-[#93c572] bg-[#222421] px-2 py-0.5 rounded-xs border border-[#353f2c]">#Optimization</span>
           </div>
-          <div class="pt-2 font-handwriting text-base font-bold text-[#473f32] text-center">
-            photo archive // Tile Pop
+
+          <div class="pt-3 border-t border-[#2b2e31] flex items-center justify-between gap-2">
+            <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer" class="font-typewriter text-xs font-bold text-[#f0c05a] hover:underline flex items-center gap-1.5">
+              <i class="fa-brands fa-google-play"></i> GOOGLE PLAY &gt;
+            </a>
+            <button class="preview-trigger-btn font-typewriter text-xs font-bold px-3 py-1.5 bg-[#2e3a23] hover:bg-[#3f4f30] text-[#f0eae1] border border-[#455734] transition-colors" data-title="Tile Pop">
+              SIMULATOR &gt;
+            </button>
           </div>
-          <button class="preview-trigger-btn absolute inset-0 flex items-center justify-center bg-[#121314]/70 opacity-0 group-hover:opacity-100 transition-opacity font-typewriter text-xs font-bold text-[#e6dfd3] gap-2" data-title="Tile Pop">
-            <span class="px-3 py-1.5 bg-[#d6a842] text-[#1c1b18] shadow-tape">▶ INSPECT SIMULATION</span>
-          </button>
-        </div>
-
-        <p class="font-serif text-xs sm:text-sm text-[#38342c] leading-relaxed mb-4 bg-[#fbf8f2] p-3 border-l-2 border-l-[#9e3a2b]">
-          A vibrant block-clearing puzzle game featuring multiple game modes, score multipliers, and optimized board state logic for seamless mobile execution.
-        </p>
-
-        <div class="mb-4">
-          <div class="font-typewriter text-[11px] font-bold text-[#5c5344] uppercase mb-1.5">// ENGINEERED SYSTEMS:</div>
-          <ul class="space-y-1 font-typewriter text-xs text-[#2b271f]">
-            <li class="flex items-start gap-1.5"><span class="text-[#9e3a2b] font-bold">✔</span> <span>Recursive match-finding matrix grid algorithms</span></li>
-            <li class="flex items-start gap-1.5"><span class="text-[#9e3a2b] font-bold">✔</span> <span>Responsive Figma UI scaling across Android screen ratios</span></li>
-            <li class="flex items-start gap-1.5"><span class="text-[#9e3a2b] font-bold">✔</span> <span>Local persistent save state serialization</span></li>
-          </ul>
-        </div>
-
-        <div class="border-t border-dashed border-[#cfc4b2] pt-3 mb-4 flex flex-wrap items-center gap-2">
-          <span class="font-typewriter text-[10px] text-[#7a7162] uppercase mr-1">TAGS:</span>
-          <span class="font-handwriting text-base font-bold text-[#2e3a23] bg-[#e6dfd3] px-2 py-0.5 rounded-xs border border-[#cfc4b2]">#GridLogic</span>
-          <span class="font-handwriting text-base font-bold text-[#2e3a23] bg-[#e6dfd3] px-2 py-0.5 rounded-xs border border-[#cfc4b2]">#MobileUI</span>
-          <span class="font-handwriting text-base font-bold text-[#2e3a23] bg-[#e6dfd3] px-2 py-0.5 rounded-xs border border-[#cfc4b2]">#Optimization</span>
-        </div>
-
-        <div class="pt-2 border-t border-[#cfc4b2] flex items-center justify-between">
-          <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer" class="font-typewriter text-xs font-bold text-[#9e3a2b] hover:underline flex items-center gap-1">
-            <i class="fa-brands fa-google-play"></i> GOOGLE PLAY ARCHIVE &gt;
-          </a>
-          <button class="preview-trigger-btn font-typewriter text-xs font-bold px-2.5 py-1 bg-[#2e3a23] text-[#f3eee6] hover:bg-[#3f4f30]" data-title="Tile Pop">SIMULATOR &gt;</button>
         </div>
       </div>
 
@@ -562,85 +532,85 @@
   </section>
 
   <!-- 3. TECH STACK ("GEAR & INVENTORY") -->
-  <section id="inventory" class="py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3 border-b border-[#2d3033] pb-4">
+  <section id="inventory" class="py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3 border-b border-[#2d3033] pb-4">
       <div>
         <div class="flex items-center gap-2">
-          <span class="stamp-moss text-xs">SURVIVAL KIT</span>
-          <span class="font-handwriting text-lg text-[#d6a842]">equipped tools // workbench</span>
+          <span class="stamp-moss">SURVIVAL KIT</span>
+          <span class="font-handwriting text-lg text-[#f0c05a]">equipped tools // workbench</span>
         </div>
-        <h2 class="font-typewriter text-3xl sm:text-4xl font-bold text-[#e6dfd3] mt-1">
+        <h2 class="font-typewriter text-3xl sm:text-4xl font-bold text-[#ffffff] mt-1">
           GEAR &amp; INVENTORY
         </h2>
       </div>
-      <div class="font-typewriter text-xs text-[#9c9384] max-w-sm">
+      <div class="font-typewriter text-xs text-[#b5ac9d] max-w-sm">
         *All technical tools are sharpened and maintained through 4+ years of live game development.
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       
       <!-- Primary Weaponry & Engine -->
-      <div class="bg-[#18191c] border border-[#2b2d30] rounded-xs p-5 sm:p-6 shadow-md">
-        <div class="flex items-center justify-between border-b border-[#2b2d30] pb-3 mb-4">
-          <div class="font-typewriter text-sm font-bold text-[#e6dfd3] flex items-center gap-2">
-            <i class="fa-solid fa-hammer text-[#8ca672]"></i>
+      <div class="survivor-card rounded-xs p-5 sm:p-6 border border-[#2f3236] bg-[#18191c]">
+        <div class="flex items-center justify-between border-b border-[#2b2e31] pb-3 mb-4">
+          <div class="font-typewriter text-sm font-bold text-[#ffffff] flex items-center gap-2">
+            <i class="fa-solid fa-hammer text-[#93c572]"></i>
             <span>PRIMARY WEAPONRY &amp; ENGINE TOOLS</span>
           </div>
-          <span class="font-handwriting text-sm text-[#d6a842] font-bold">ready</span>
+          <span class="font-handwriting text-sm text-[#f0c05a] font-bold">ready</span>
         </div>
 
         <div class="space-y-4">
           <!-- C# -->
-          <div class="bg-[#121315] p-3.5 border border-[#242629] rounded-xs group hover:border-[#4a5e38] transition-colors">
+          <div class="bg-[#111214] p-3.5 border border-[#26282b] rounded-xs group hover:border-[#455734] transition-colors">
             <div class="flex items-center justify-between gap-2 mb-1">
-              <span class="font-typewriter text-xs sm:text-sm font-bold text-[#e6dfd3] group-hover:text-[#8ca672]">C# (.NET Core &amp; Unity CLR)</span>
+              <span class="font-typewriter text-xs sm:text-sm font-bold text-[#ffffff] group-hover:text-[#93c572]">C# (.NET Core &amp; Unity CLR)</span>
               <span class="stamp-moss text-[9px]">Mastered</span>
             </div>
-            <p class="font-serif text-xs text-[#948d80] mb-2 leading-relaxed">Memory management, data structures, event buses, gameplay math.</p>
+            <p class="font-serif text-xs text-[#b5ac9d] mb-2 leading-relaxed">Memory management, data structures, event buses, gameplay math.</p>
             <div class="space-y-1">
-              <div class="flex justify-between font-typewriter text-[10px] text-[#706a5f]">
+              <div class="flex justify-between font-typewriter text-[10px] text-[#8c8577]">
                 <span>EFFICIENCY RATING</span>
-                <span class="font-handwriting text-xs text-[#d6a842] font-bold">98%</span>
+                <span class="font-handwriting text-xs text-[#f0c05a] font-bold">98%</span>
               </div>
-              <div class="h-2 w-full bg-[#242629] rounded-xs overflow-hidden p-0.5 border border-[#303337]">
-                <div class="h-full bg-gradient-to-r from-[#3f4f30] to-[#8ca672] rounded-xs" style="width: 98%;"></div>
+              <div class="h-2 w-full bg-[#1e2023] rounded-xs overflow-hidden p-0.5 border border-[#2f3236]">
+                <div class="h-full bg-gradient-to-r from-[#3f4f30] to-[#93c572] rounded-xs" style="width: 98%;"></div>
               </div>
             </div>
           </div>
 
           <!-- Unity -->
-          <div class="bg-[#121315] p-3.5 border border-[#242629] rounded-xs group hover:border-[#4a5e38] transition-colors">
+          <div class="bg-[#111214] p-3.5 border border-[#26282b] rounded-xs group hover:border-[#455734] transition-colors">
             <div class="flex items-center justify-between gap-2 mb-1">
-              <span class="font-typewriter text-xs sm:text-sm font-bold text-[#e6dfd3] group-hover:text-[#8ca672]">Unity Engine (6 / 2022.3 LTS)</span>
+              <span class="font-typewriter text-xs sm:text-sm font-bold text-[#ffffff] group-hover:text-[#93c572]">Unity Engine (6 / 2022.3 LTS)</span>
               <span class="stamp-moss text-[9px]">Mastered</span>
             </div>
-            <p class="font-serif text-xs text-[#948d80] mb-2 leading-relaxed">URP pipelines, job systems, asset lifecycles, memory profiling.</p>
+            <p class="font-serif text-xs text-[#b5ac9d] mb-2 leading-relaxed">URP pipelines, job systems, asset lifecycles, memory profiling.</p>
             <div class="space-y-1">
-              <div class="flex justify-between font-typewriter text-[10px] text-[#706a5f]">
+              <div class="flex justify-between font-typewriter text-[10px] text-[#8c8577]">
                 <span>EFFICIENCY RATING</span>
-                <span class="font-handwriting text-xs text-[#d6a842] font-bold">96%</span>
+                <span class="font-handwriting text-xs text-[#f0c05a] font-bold">96%</span>
               </div>
-              <div class="h-2 w-full bg-[#242629] rounded-xs overflow-hidden p-0.5 border border-[#303337]">
-                <div class="h-full bg-gradient-to-r from-[#3f4f30] to-[#8ca672] rounded-xs" style="width: 96%;"></div>
+              <div class="h-2 w-full bg-[#1e2023] rounded-xs overflow-hidden p-0.5 border border-[#2f3236]">
+                <div class="h-full bg-gradient-to-r from-[#3f4f30] to-[#93c572] rounded-xs" style="width: 96%;"></div>
               </div>
             </div>
           </div>
 
           <!-- Gameplay Mechanics -->
-          <div class="bg-[#121315] p-3.5 border border-[#242629] rounded-xs group hover:border-[#4a5e38] transition-colors">
+          <div class="bg-[#111214] p-3.5 border border-[#26282b] rounded-xs group hover:border-[#455734] transition-colors">
             <div class="flex items-center justify-between gap-2 mb-1">
-              <span class="font-typewriter text-xs sm:text-sm font-bold text-[#e6dfd3] group-hover:text-[#8ca672]">Gameplay Mechanics &amp; Physics</span>
+              <span class="font-typewriter text-xs sm:text-sm font-bold text-[#ffffff] group-hover:text-[#93c572]">Gameplay Mechanics &amp; Physics</span>
               <span class="stamp-moss text-[9px]">Field-tested</span>
             </div>
-            <p class="font-serif text-xs text-[#948d80] mb-2 leading-relaxed">Raycast vehicle physics, spell projectile combat, contact collision solvers.</p>
+            <p class="font-serif text-xs text-[#b5ac9d] mb-2 leading-relaxed">Raycast vehicle physics, spell projectile combat, contact collision solvers.</p>
             <div class="space-y-1">
-              <div class="flex justify-between font-typewriter text-[10px] text-[#706a5f]">
+              <div class="flex justify-between font-typewriter text-[10px] text-[#8c8577]">
                 <span>EFFICIENCY RATING</span>
-                <span class="font-handwriting text-xs text-[#d6a842] font-bold">94%</span>
+                <span class="font-handwriting text-xs text-[#f0c05a] font-bold">94%</span>
               </div>
-              <div class="h-2 w-full bg-[#242629] rounded-xs overflow-hidden p-0.5 border border-[#303337]">
-                <div class="h-full bg-gradient-to-r from-[#3f4f30] to-[#8ca672] rounded-xs" style="width: 94%;"></div>
+              <div class="h-2 w-full bg-[#1e2023] rounded-xs overflow-hidden p-0.5 border border-[#2f3236]">
+                <div class="h-full bg-gradient-to-r from-[#3f4f30] to-[#93c572] rounded-xs" style="width: 94%;"></div>
               </div>
             </div>
           </div>
@@ -648,66 +618,66 @@
       </div>
 
       <!-- Comms Rig & Multiplayer Netcode -->
-      <div class="bg-[#18191c] border border-[#2b2d30] rounded-xs p-5 sm:p-6 shadow-md">
-        <div class="flex items-center justify-between border-b border-[#2b2d30] pb-3 mb-4">
-          <div class="font-typewriter text-sm font-bold text-[#e6dfd3] flex items-center gap-2">
-            <i class="fa-solid fa-radio text-[#8ca672]"></i>
+      <div class="survivor-card rounded-xs p-5 sm:p-6 border border-[#2f3236] bg-[#18191c]">
+        <div class="flex items-center justify-between border-b border-[#2b2e31] pb-3 mb-4">
+          <div class="font-typewriter text-sm font-bold text-[#ffffff] flex items-center gap-2">
+            <i class="fa-solid fa-radio text-[#93c572]"></i>
             <span>COMMS RIG &amp; MULTIPLAYER NETCODE</span>
           </div>
-          <span class="font-handwriting text-sm text-[#d6a842] font-bold">active</span>
+          <span class="font-handwriting text-sm text-[#f0c05a] font-bold">active</span>
         </div>
 
         <div class="space-y-4">
           <!-- NGO -->
-          <div class="bg-[#121315] p-3.5 border border-[#242629] rounded-xs group hover:border-[#4a5e38] transition-colors">
+          <div class="bg-[#111214] p-3.5 border border-[#26282b] rounded-xs group hover:border-[#455734] transition-colors">
             <div class="flex items-center justify-between gap-2 mb-1">
-              <span class="font-typewriter text-xs sm:text-sm font-bold text-[#e6dfd3] group-hover:text-[#8ca672]">Unity Netcode for GameObjects (NGO)</span>
+              <span class="font-typewriter text-xs sm:text-sm font-bold text-[#ffffff] group-hover:text-[#93c572]">Unity Netcode for GameObjects (NGO)</span>
               <span class="stamp-moss text-[9px]">Mission-proven</span>
             </div>
-            <p class="font-serif text-xs text-[#948d80] mb-2 leading-relaxed">Client-side prediction, server reconciliation, NetworkVariables.</p>
+            <p class="font-serif text-xs text-[#b5ac9d] mb-2 leading-relaxed">Client-side prediction, server reconciliation, NetworkVariables.</p>
             <div class="space-y-1">
-              <div class="flex justify-between font-typewriter text-[10px] text-[#706a5f]">
+              <div class="flex justify-between font-typewriter text-[10px] text-[#8c8577]">
                 <span>EFFICIENCY RATING</span>
-                <span class="font-handwriting text-xs text-[#d6a842] font-bold">94%</span>
+                <span class="font-handwriting text-xs text-[#f0c05a] font-bold">94%</span>
               </div>
-              <div class="h-2 w-full bg-[#242629] rounded-xs overflow-hidden p-0.5 border border-[#303337]">
-                <div class="h-full bg-gradient-to-r from-[#3f4f30] to-[#8ca672] rounded-xs" style="width: 94%;"></div>
+              <div class="h-2 w-full bg-[#1e2023] rounded-xs overflow-hidden p-0.5 border border-[#2f3236]">
+                <div class="h-full bg-gradient-to-r from-[#3f4f30] to-[#93c572] rounded-xs" style="width: 94%;"></div>
               </div>
             </div>
           </div>
 
           <!-- Photon -->
-          <div class="bg-[#121315] p-3.5 border border-[#242629] rounded-xs group hover:border-[#4a5e38] transition-colors">
+          <div class="bg-[#111214] p-3.5 border border-[#26282b] rounded-xs group hover:border-[#455734] transition-colors">
             <div class="flex items-center justify-between gap-2 mb-1">
-              <span class="font-typewriter text-xs sm:text-sm font-bold text-[#e6dfd3] group-hover:text-[#8ca672]">Photon PUN &amp; Photon Fusion</span>
+              <span class="font-typewriter text-xs sm:text-sm font-bold text-[#ffffff] group-hover:text-[#93c572]">Photon PUN &amp; Photon Fusion</span>
               <span class="stamp-moss text-[9px]">Active</span>
             </div>
-            <p class="font-serif text-xs text-[#948d80] mb-2 leading-relaxed">Cloud matchmaking rooms, distributed authority, lag compensation.</p>
+            <p class="font-serif text-xs text-[#b5ac9d] mb-2 leading-relaxed">Cloud matchmaking rooms, distributed authority, lag compensation.</p>
             <div class="space-y-1">
-              <div class="flex justify-between font-typewriter text-[10px] text-[#706a5f]">
+              <div class="flex justify-between font-typewriter text-[10px] text-[#8c8577]">
                 <span>EFFICIENCY RATING</span>
-                <span class="font-handwriting text-xs text-[#d6a842] font-bold">90%</span>
+                <span class="font-handwriting text-xs text-[#f0c05a] font-bold">90%</span>
               </div>
-              <div class="h-2 w-full bg-[#242629] rounded-xs overflow-hidden p-0.5 border border-[#303337]">
-                <div class="h-full bg-gradient-to-r from-[#3f4f30] to-[#8ca672] rounded-xs" style="width: 90%;"></div>
+              <div class="h-2 w-full bg-[#1e2023] rounded-xs overflow-hidden p-0.5 border border-[#2f3236]">
+                <div class="h-full bg-gradient-to-r from-[#3f4f30] to-[#93c572] rounded-xs" style="width: 90%;"></div>
               </div>
             </div>
           </div>
 
           <!-- Prototyping & Tools -->
-          <div class="bg-[#121315] p-3.5 border border-[#242629] rounded-xs group hover:border-[#4a5e38] transition-colors">
+          <div class="bg-[#111214] p-3.5 border border-[#26282b] rounded-xs group hover:border-[#455734] transition-colors">
             <div class="flex items-center justify-between gap-2 mb-1">
-              <span class="font-typewriter text-xs sm:text-sm font-bold text-[#e6dfd3] group-hover:text-[#8ca672]">ProBuilder, Blender &amp; Figma</span>
+              <span class="font-typewriter text-xs sm:text-sm font-bold text-[#ffffff] group-hover:text-[#93c572]">ProBuilder, Blender &amp; Figma</span>
               <span class="stamp-moss text-[9px]">Equipped</span>
             </div>
-            <p class="font-serif text-xs text-[#948d80] mb-2 leading-relaxed">Level grayboxing, 3D asset conversion pipelines, responsive UI design.</p>
+            <p class="font-serif text-xs text-[#b5ac9d] mb-2 leading-relaxed">Level grayboxing, 3D asset conversion pipelines, responsive UI design.</p>
             <div class="space-y-1">
-              <div class="flex justify-between font-typewriter text-[10px] text-[#706a5f]">
+              <div class="flex justify-between font-typewriter text-[10px] text-[#8c8577]">
                 <span>EFFICIENCY RATING</span>
-                <span class="font-handwriting text-xs text-[#d6a842] font-bold">92%</span>
+                <span class="font-handwriting text-xs text-[#f0c05a] font-bold">92%</span>
               </div>
-              <div class="h-2 w-full bg-[#242629] rounded-xs overflow-hidden p-0.5 border border-[#303337]">
-                <div class="h-full bg-gradient-to-r from-[#3f4f30] to-[#8ca672] rounded-xs" style="width: 92%;"></div>
+              <div class="h-2 w-full bg-[#1e2023] rounded-xs overflow-hidden p-0.5 border border-[#2f3236]">
+                <div class="h-full bg-gradient-to-r from-[#3f4f30] to-[#93c572] rounded-xs" style="width: 92%;"></div>
               </div>
             </div>
           </div>
@@ -718,43 +688,43 @@
   </section>
 
   <!-- 4. EXPERIENCE & TIMELINE ("WORK LOGS") -->
-  <section id="journal" class="py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3 border-b border-[#2d3033] pb-4">
+  <section id="journal" class="py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3 border-b border-[#2d3033] pb-4">
       <div>
         <div class="flex items-center gap-2">
-          <span class="stamp-red text-xs">CHRONICLE</span>
-          <span class="font-handwriting text-lg text-[#9e3a2b]">field journal // experience</span>
+          <span class="stamp-red">CHRONICLE</span>
+          <span class="font-handwriting text-lg text-[#ff7b63]">field journal // experience</span>
         </div>
-        <h2 class="font-typewriter text-3xl sm:text-4xl font-bold text-[#e6dfd3] mt-1">
+        <h2 class="font-typewriter text-3xl sm:text-4xl font-bold text-[#ffffff] mt-1">
           WORK LOGS &amp; SERVICE TIMELINE
         </h2>
       </div>
-      <div class="font-typewriter text-xs text-[#9c9384] max-w-sm">
+      <div class="font-typewriter text-xs text-[#b5ac9d] max-w-sm">
         *Chronological diary logs written during live commercial game cycles.
       </div>
     </div>
 
-    <div class="space-y-10">
+    <div class="space-y-8">
       
       <!-- LOG 1: TEC VENTURES -->
-      <div class="paper-sheet rounded-xs p-6 sm:p-8 border border-[#d6cdbd] relative">
+      <div class="survivor-card rounded-xs p-6 sm:p-8 border border-[#2f3236] bg-[#18191c] relative">
         <div class="masking-tape" style="top: -10px; left: 15%; width: 90px; height: 20px; transform: rotate(-2deg);"></div>
 
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-dashed border-[#cfc4b2] pb-4 mb-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#2b2e31] pb-4 mb-5">
           <div>
-            <div class="font-handwriting text-lg text-[#9e3a2b] font-bold">
+            <div class="font-handwriting text-lg text-[#ff7b63] font-bold">
               Journal Entry #1 &bull; Australia (Remote)
             </div>
-            <h3 class="font-typewriter text-2xl sm:text-3xl font-black text-[#1c1b18]">
+            <h3 class="font-typewriter text-2xl sm:text-3xl font-black text-[#ffffff]">
               Senior Unity Developer
             </h3>
-            <div class="font-typewriter text-sm font-bold text-[#2e3a23]">
+            <div class="font-typewriter text-sm font-bold text-[#93c572]">
               @ TEC VENTURES
             </div>
           </div>
 
           <div class="flex flex-col sm:items-end gap-1">
-            <span class="font-typewriter text-xs font-bold text-[#1c1b18] bg-[#ded5c4] px-2.5 py-1 rounded-xs border border-[#cfc4b2]">
+            <span class="font-typewriter text-xs font-bold text-[#ffffff] bg-[#242629] px-2.5 py-1 rounded-xs border border-[#383b40]">
               📅 OCTOBER 2025 – PRESENT
             </span>
             <span class="stamp-moss text-[9px]">
@@ -764,54 +734,54 @@
         </div>
 
         <div class="space-y-3 mb-6">
-          <div class="font-typewriter text-xs font-bold text-[#5c5344] uppercase">
+          <div class="font-typewriter text-xs font-bold text-[#b5ac9d] uppercase">
             // FIELD ACCOMPLISHMENTS &amp; CODE MILESTONES:
           </div>
-          <ul class="space-y-2 font-serif text-sm text-[#2b271f]">
+          <ul class="space-y-2 font-serif text-sm text-[#ded7cc]">
             <li class="flex items-start gap-2">
-              <span class="text-[#9e3a2b] font-bold mt-0.5">✔</span>
+              <span class="text-[#f0c05a] font-bold mt-0.5">✔</span>
               <span class="leading-relaxed">Spearheaded the development, networking, and deployment of <strong>Mystic Motors</strong> on the Google Play Store.</span>
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-[#9e3a2b] font-bold mt-0.5">✔</span>
+              <span class="text-[#f0c05a] font-bold mt-0.5">✔</span>
               <span class="leading-relaxed">Architected and optimized multiplayer networking using <strong>Unity Netcode for GameObjects (NGO)</strong> for low-latency synchronization.</span>
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-[#9e3a2b] font-bold mt-0.5">✔</span>
+              <span class="text-[#f0c05a] font-bold mt-0.5">✔</span>
               <span class="leading-relaxed">Engineered real-time vehicle physics and a custom spell-casting gameplay mechanic for competitive multiplayer racing.</span>
             </li>
           </ul>
         </div>
 
-        <div class="pt-3 border-t border-[#cfc4b2] flex flex-wrap items-center gap-2">
-          <span class="font-typewriter text-[10px] text-[#7a7162] uppercase font-bold mr-1">KIT USED:</span>
-          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#e6dfd3] text-[#2e3a23] border border-[#cfc4b2] rounded-xs font-bold">Unity 6</span>
-          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#e6dfd3] text-[#2e3a23] border border-[#cfc4b2] rounded-xs font-bold">C#</span>
-          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#e6dfd3] text-[#2e3a23] border border-[#cfc4b2] rounded-xs font-bold">NGO Netcode</span>
-          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#e6dfd3] text-[#2e3a23] border border-[#cfc4b2] rounded-xs font-bold">Vehicle Physics</span>
-          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#e6dfd3] text-[#2e3a23] border border-[#cfc4b2] rounded-xs font-bold">Google Play</span>
+        <div class="pt-3 border-t border-[#2b2e31] flex flex-wrap items-center gap-2">
+          <span class="font-typewriter text-[10px] text-[#8c8577] uppercase font-bold mr-1">KIT USED:</span>
+          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#111214] text-[#93c572] border border-[#2b2e31] rounded-xs font-bold">Unity 6</span>
+          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#111214] text-[#93c572] border border-[#2b2e31] rounded-xs font-bold">C#</span>
+          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#111214] text-[#93c572] border border-[#2b2e31] rounded-xs font-bold">NGO Netcode</span>
+          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#111214] text-[#93c572] border border-[#2b2e31] rounded-xs font-bold">Vehicle Physics</span>
+          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#111214] text-[#93c572] border border-[#2b2e31] rounded-xs font-bold">Google Play</span>
         </div>
       </div>
 
       <!-- LOG 2: ABHIWAN TECHNOLOGY -->
-      <div class="paper-sheet rounded-xs p-6 sm:p-8 border border-[#d6cdbd] relative">
+      <div class="survivor-card rounded-xs p-6 sm:p-8 border border-[#2f3236] bg-[#18191c] relative">
         <div class="masking-tape" style="top: -10px; left: 70%; width: 90px; height: 20px; transform: rotate(2deg);"></div>
 
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-dashed border-[#cfc4b2] pb-4 mb-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#2b2e31] pb-4 mb-5">
           <div>
-            <div class="font-handwriting text-lg text-[#9e3a2b] font-bold">
+            <div class="font-handwriting text-lg text-[#ff7b63] font-bold">
               Journal Entry #2 &bull; New Delhi, Delhi, India
             </div>
-            <h3 class="font-typewriter text-2xl sm:text-3xl font-black text-[#1c1b18]">
+            <h3 class="font-typewriter text-2xl sm:text-3xl font-black text-[#ffffff]">
               Unity Developer
             </h3>
-            <div class="font-typewriter text-sm font-bold text-[#2e3a23]">
+            <div class="font-typewriter text-sm font-bold text-[#93c572]">
               @ Abhiwan Technology Pvt Ltd.
             </div>
           </div>
 
           <div class="flex flex-col sm:items-end gap-1">
-            <span class="font-typewriter text-xs font-bold text-[#1c1b18] bg-[#ded5c4] px-2.5 py-1 rounded-xs border border-[#cfc4b2]">
+            <span class="font-typewriter text-xs font-bold text-[#ffffff] bg-[#242629] px-2.5 py-1 rounded-xs border border-[#383b40]">
               📅 AUGUST 2022 – OCTOBER 2025
             </span>
             <span class="stamp-moss text-[9px]">
@@ -821,38 +791,38 @@
         </div>
 
         <div class="space-y-3 mb-6">
-          <div class="font-typewriter text-xs font-bold text-[#5c5344] uppercase">
+          <div class="font-typewriter text-xs font-bold text-[#b5ac9d] uppercase">
             // FIELD ACCOMPLISHMENTS &amp; CODE MILESTONES:
           </div>
-          <ul class="space-y-2 font-serif text-sm text-[#2b271f]">
+          <ul class="space-y-2 font-serif text-sm text-[#ded7cc]">
             <li class="flex items-start gap-2">
-              <span class="text-[#9e3a2b] font-bold mt-0.5">✔</span>
+              <span class="text-[#f0c05a] font-bold mt-0.5">✔</span>
               <span class="leading-relaxed">Developed and maintained diverse casual mobile games, multiplayer systems, and immersive AR/VR projects using Unity &amp; C#.</span>
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-[#9e3a2b] font-bold mt-0.5">✔</span>
+              <span class="text-[#f0c05a] font-bold mt-0.5">✔</span>
               <span class="leading-relaxed">Built and deployed an immersive VR museum experience commemorating the 100 Glorious Years of IMNS (officially inaugurated by the Chief of Defence Staff, General Anil Chauhan).</span>
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-[#9e3a2b] font-bold mt-0.5">✔</span>
+              <span class="text-[#f0c05a] font-bold mt-0.5">✔</span>
               <span class="leading-relaxed">Utilized ProBuilder for level blocking and rapid prototyping; managed 3D asset pipelines and integration using Blender.</span>
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-[#9e3a2b] font-bold mt-0.5">✔</span>
+              <span class="text-[#f0c05a] font-bold mt-0.5">✔</span>
               <span class="leading-relaxed">Collaborated with design teams via Figma to implement intuitive, responsive UI across various mobile and VR screen ratios.</span>
             </li>
           </ul>
         </div>
 
-        <div class="pt-3 border-t border-[#cfc4b2] flex flex-wrap items-center gap-2">
-          <span class="font-typewriter text-[10px] text-[#7a7162] uppercase font-bold mr-1">KIT USED:</span>
-          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#e6dfd3] text-[#2e3a23] border border-[#cfc4b2] rounded-xs font-bold">Unity</span>
-          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#e6dfd3] text-[#2e3a23] border border-[#cfc4b2] rounded-xs font-bold">C#</span>
-          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#e6dfd3] text-[#2e3a23] border border-[#cfc4b2] rounded-xs font-bold">Photon PUN / Fusion</span>
-          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#e6dfd3] text-[#2e3a23] border border-[#cfc4b2] rounded-xs font-bold">VR/AR Defense</span>
-          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#e6dfd3] text-[#2e3a23] border border-[#cfc4b2] rounded-xs font-bold">ProBuilder</span>
-          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#e6dfd3] text-[#2e3a23] border border-[#cfc4b2] rounded-xs font-bold">Blender</span>
-          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#e6dfd3] text-[#2e3a23] border border-[#cfc4b2] rounded-xs font-bold">Figma</span>
+        <div class="pt-3 border-t border-[#2b2e31] flex flex-wrap items-center gap-2">
+          <span class="font-typewriter text-[10px] text-[#8c8577] uppercase font-bold mr-1">KIT USED:</span>
+          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#111214] text-[#93c572] border border-[#2b2e31] rounded-xs font-bold">Unity</span>
+          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#111214] text-[#93c572] border border-[#2b2e31] rounded-xs font-bold">C#</span>
+          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#111214] text-[#93c572] border border-[#2b2e31] rounded-xs font-bold">Photon PUN / Fusion</span>
+          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#111214] text-[#93c572] border border-[#2b2e31] rounded-xs font-bold">VR/AR Defense</span>
+          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#111214] text-[#93c572] border border-[#2b2e31] rounded-xs font-bold">ProBuilder</span>
+          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#111214] text-[#93c572] border border-[#2b2e31] rounded-xs font-bold">Blender</span>
+          <span class="font-typewriter text-xs px-2 py-0.5 bg-[#111214] text-[#93c572] border border-[#2b2e31] rounded-xs font-bold">Figma</span>
         </div>
       </div>
 
@@ -860,18 +830,18 @@
   </section>
 
   <!-- 5. ACADEMIC & ARCHIVE RECORDS -->
-  <section id="archives" class="py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3 border-b border-[#2d3033] pb-4">
+  <section id="archives" class="py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3 border-b border-[#2d3033] pb-4">
       <div>
         <div class="flex items-center gap-2">
-          <span class="stamp-moss text-xs">ARCHIVES</span>
-          <span class="font-handwriting text-lg text-[#e6dfd3]">verified credentials</span>
+          <span class="stamp-moss">ARCHIVES</span>
+          <span class="font-handwriting text-lg text-[#ded7cc]">verified credentials</span>
         </div>
-        <h2 class="font-typewriter text-3xl sm:text-4xl font-bold text-[#e6dfd3] mt-1">
+        <h2 class="font-typewriter text-3xl sm:text-4xl font-bold text-[#ffffff] mt-1">
           ACADEMIC &amp; CITATION RECORDS
         </h2>
       </div>
-      <div class="font-typewriter text-xs text-[#9c9384] max-w-sm">
+      <div class="font-typewriter text-xs text-[#b5ac9d] max-w-sm">
         *Official records, degree citations, and defense ministry tributes.
       </div>
     </div>
@@ -879,70 +849,70 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       
       <!-- Degree -->
-      <div class="paper-sheet rounded-xs p-5 border border-[#d6cdbd] flex flex-col justify-between">
+      <div class="survivor-card rounded-xs p-5 border border-[#2f3236] bg-[#18191c] flex flex-col justify-between">
         <div>
-          <div class="flex items-center justify-between font-typewriter text-[10px] text-[#736a5c] pb-2 border-b border-[#cfc4b2] mb-3">
+          <div class="flex items-center justify-between font-typewriter text-[10px] text-[#8c8577] pb-2 border-b border-[#2b2e31] mb-3">
             <span class="uppercase font-bold">ACADEMIC ARCHIVE // DEGREE</span>
-            <span class="text-[#9e3a2b] font-bold">2019 – 2023</span>
+            <span class="text-[#ff7b63] font-bold">2019 – 2023</span>
           </div>
-          <h3 class="font-typewriter text-lg font-bold text-[#1c1b18] mb-1 leading-snug">
+          <h3 class="font-typewriter text-lg font-bold text-[#ffffff] mb-1 leading-snug">
             Bachelor of Technology (B.Tech) in Computer Science
           </h3>
-          <div class="font-typewriter text-xs text-[#2e3a23] font-bold mb-3">
+          <div class="font-typewriter text-xs text-[#93c572] font-bold mb-3">
             APJ Abdul Kalam Technological University
           </div>
-          <p class="font-serif text-xs text-[#423d34] leading-relaxed mb-4">
+          <p class="font-serif text-xs text-[#ded7cc] leading-relaxed mb-4">
             Specialized in Computer Graphics, Game Physics Math, Algorithms, Object-Oriented Software Architecture, and Distributed Systems.
           </p>
         </div>
-        <div class="pt-3 border-t border-[#cfc4b2] flex items-center justify-between">
-          <span class="font-handwriting text-sm text-[#9e3a2b] font-bold">GRADUATED // CS</span>
+        <div class="pt-3 border-t border-[#2b2e31] flex items-center justify-between">
+          <span class="font-handwriting text-sm text-[#f0c05a] font-bold">GRADUATED // CS</span>
           <span class="stamp-moss text-[9px]">VERIFIED GRADUATE</span>
         </div>
       </div>
 
       <!-- Defense Commendation -->
-      <div class="paper-sheet rounded-xs p-5 border border-[#d6cdbd] flex flex-col justify-between">
+      <div class="survivor-card rounded-xs p-5 border border-[#2f3236] bg-[#18191c] flex flex-col justify-between">
         <div>
-          <div class="flex items-center justify-between font-typewriter text-[10px] text-[#736a5c] pb-2 border-b border-[#cfc4b2] mb-3">
+          <div class="flex items-center justify-between font-typewriter text-[10px] text-[#8c8577] pb-2 border-b border-[#2b2e31] mb-3">
             <span class="uppercase font-bold">DEFENSE COMMENDATION</span>
-            <span class="text-[#9e3a2b] font-bold">SPECIAL</span>
+            <span class="text-[#ff7b63] font-bold">SPECIAL</span>
           </div>
-          <h3 class="font-typewriter text-lg font-bold text-[#1c1b18] mb-1 leading-snug">
+          <h3 class="font-typewriter text-lg font-bold text-[#ffffff] mb-1 leading-snug">
             National Defense VR Museum Tribute
           </h3>
-          <div class="font-typewriter text-xs text-[#2e3a23] font-bold mb-3">
+          <div class="font-typewriter text-xs text-[#93c572] font-bold mb-3">
             Indian Military Nursing Service (IMNS) &amp; Armed Forces
           </div>
-          <p class="font-serif text-xs text-[#423d34] leading-relaxed mb-4">
+          <p class="font-serif text-xs text-[#ded7cc] leading-relaxed mb-4">
             Built immersive VR museum commemorating 100 Years of IMNS. Officially inaugurated by Chief of Defence Staff, General Anil Chauhan.
           </p>
         </div>
-        <div class="pt-3 border-t border-[#cfc4b2] flex items-center justify-between">
-          <span class="font-handwriting text-sm text-[#9e3a2b] font-bold">NATIONAL DEFENSE</span>
+        <div class="pt-3 border-t border-[#2b2e31] flex items-center justify-between">
+          <span class="font-handwriting text-sm text-[#f0c05a] font-bold">NATIONAL DEFENSE</span>
           <span class="stamp-moss text-[9px]">MINISTRY INAUGURATED</span>
         </div>
       </div>
 
       <!-- Commercial Publishing -->
-      <div class="paper-sheet rounded-xs p-5 border border-[#d6cdbd] flex flex-col justify-between">
+      <div class="survivor-card rounded-xs p-5 border border-[#2f3236] bg-[#18191c] flex flex-col justify-between">
         <div>
-          <div class="flex items-center justify-between font-typewriter text-[10px] text-[#736a5c] pb-2 border-b border-[#cfc4b2] mb-3">
+          <div class="flex items-center justify-between font-typewriter text-[10px] text-[#8c8577] pb-2 border-b border-[#2b2e31] mb-3">
             <span class="uppercase font-bold">STORE ARCHIVES // GOOGLE PLAY</span>
-            <span class="text-[#9e3a2b] font-bold">2022 – 2026</span>
+            <span class="text-[#ff7b63] font-bold">2022 – 2026</span>
           </div>
-          <h3 class="font-typewriter text-lg font-bold text-[#1c1b18] mb-1 leading-snug">
+          <h3 class="font-typewriter text-lg font-bold text-[#ffffff] mb-1 leading-snug">
             Commercial Android Publishing
           </h3>
-          <div class="font-typewriter text-xs text-[#2e3a23] font-bold mb-3">
+          <div class="font-typewriter text-xs text-[#93c572] font-bold mb-3">
             Google Play Console / Releases
           </div>
-          <p class="font-serif text-xs text-[#423d34] leading-relaxed mb-4">
+          <p class="font-serif text-xs text-[#ded7cc] leading-relaxed mb-4">
             Engineered and shipped Mystic Motors, Merge Balls, and Tile Pop. Full compliance with Target SDKs, 64-bit builds, and dynamic memory delivery.
           </p>
         </div>
-        <div class="pt-3 border-t border-[#cfc4b2] flex items-center justify-between">
-          <span class="font-handwriting text-sm text-[#9e3a2b] font-bold">PRODUCTION VERIFIED</span>
+        <div class="pt-3 border-t border-[#2b2e31] flex items-center justify-between">
+          <span class="font-handwriting text-sm text-[#f0c05a] font-bold">PRODUCTION VERIFIED</span>
           <span class="stamp-moss text-[9px]">100% STORE PASS</span>
         </div>
       </div>
@@ -951,61 +921,61 @@
   </section>
 
   <!-- 6. EMERGENCY RADIO & DISPATCH -->
-  <section id="radio" class="py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3 border-b border-[#2d3033] pb-4">
+  <section id="radio" class="py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3 border-b border-[#2d3033] pb-4">
       <div>
         <div class="flex items-center gap-2">
-          <span class="stamp-red text-xs">RADIO STATION</span>
-          <span class="font-handwriting text-lg text-[#d6a842]">direct contact // frequency</span>
+          <span class="stamp-red">RADIO STATION</span>
+          <span class="font-handwriting text-lg text-[#f0c05a]">direct contact // frequency</span>
         </div>
-        <h2 class="font-typewriter text-3xl sm:text-4xl font-bold text-[#e6dfd3] mt-1">
+        <h2 class="font-typewriter text-3xl sm:text-4xl font-bold text-[#ffffff] mt-1">
           EMERGENCY RADIO &amp; DISPATCH
         </h2>
       </div>
-      <div class="font-typewriter text-xs text-[#9c9384] max-w-sm">
+      <div class="font-typewriter text-xs text-[#b5ac9d] max-w-sm">
         *Send direct transmission for studio contracts, game engineering roles, or multiplayer advisory.
       </div>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       
-      <!-- Left: Pinned Contact Notes -->
+      <!-- Left: Contact Channels -->
       <div class="lg:col-span-5 space-y-4">
-        <div class="paper-sheet rounded-xs p-6 border border-[#d6cdbd] relative">
+        <div class="survivor-card rounded-xs p-6 border border-[#2f3236] bg-[#18191c] relative">
           <div class="masking-tape tape-corner"></div>
 
-          <div class="font-typewriter text-xs font-bold text-[#1c1b18] border-b border-[#cfc4b2] pb-3 mb-4 flex items-center justify-between">
+          <div class="font-typewriter text-xs font-bold text-[#ffffff] border-b border-[#2b2e31] pb-3 mb-4 flex items-center justify-between">
             <span>📻 TRANSMISSION CHANNELS</span>
             <span class="stamp-moss text-[9px]">OPEN</span>
           </div>
 
-          <div class="space-y-4 font-typewriter text-xs text-[#2b271f]">
-            <div class="bg-[#ece4d6] p-3 rounded-xs border border-[#ded5c5]">
-              <span class="text-[10px] text-[#7a7162] block font-bold uppercase">DIRECT PHONE / WHATSAPP:</span>
-              <a href="tel:+918171638120" class="text-sm font-bold text-[#1c1b18] hover:text-[#9e3a2b] flex items-center justify-between mt-0.5">
+          <div class="space-y-4 font-typewriter text-xs text-[#ded7cc]">
+            <div class="bg-[#111214] p-3.5 rounded-xs border border-[#26282b]">
+              <span class="text-[10px] text-[#8c8577] block font-bold uppercase">DIRECT PHONE / WHATSAPP:</span>
+              <a href="tel:+918171638120" class="text-sm font-bold text-[#ffffff] hover:text-[#f0c05a] flex items-center justify-between mt-1">
                 <span>+91 8171638120</span>
-                <i class="fa-solid fa-phone text-[#2e3a23]"></i>
+                <i class="fa-solid fa-phone text-[#93c572]"></i>
               </a>
             </div>
 
-            <div class="bg-[#ece4d6] p-3 rounded-xs border border-[#ded5c5]">
-              <span class="text-[10px] text-[#7a7162] block font-bold uppercase">WRITTEN DISPATCH (EMAIL):</span>
-              <a href="mailto:sahilahmed262001@gmail.com" class="text-xs font-bold text-[#1c1b18] hover:text-[#9e3a2b] flex items-center justify-between mt-0.5 break-all">
+            <div class="bg-[#111214] p-3.5 rounded-xs border border-[#26282b]">
+              <span class="text-[10px] text-[#8c8577] block font-bold uppercase">WRITTEN DISPATCH (EMAIL):</span>
+              <a href="mailto:sahilahmed262001@gmail.com" class="text-xs font-bold text-[#f0c05a] hover:underline flex items-center justify-between mt-1 break-all">
                 <span>sahilahmed262001@gmail.com</span>
-                <i class="fa-solid fa-envelope text-[#9e3a2b]"></i>
+                <i class="fa-solid fa-envelope text-[#ff7b63]"></i>
               </a>
             </div>
 
-            <div class="bg-[#ece4d6] p-3 rounded-xs border border-[#ded5c5]">
-              <span class="text-[10px] text-[#7a7162] block font-bold uppercase">PROFESSIONAL FREQUENCY (LINKEDIN):</span>
-              <a href="https://linkedin.com/in/sahil-ahmed-81018a228" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-[#2e3a23] hover:text-[#9e3a2b] flex items-center justify-between mt-0.5">
-                <span>linkedin.com/in/sahil-ahmed-81018a228</span>
-                <i class="fa-brands fa-linkedin text-[#2e3a23]"></i>
+            <div class="bg-[#111214] p-3.5 rounded-xs border border-[#26282b]">
+              <span class="text-[10px] text-[#8c8577] block font-bold uppercase">PROFESSIONAL FREQUENCY:</span>
+              <a href="https://linkedin.com/in/sahil-ahmed-81018a228" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-[#93c572] hover:underline flex items-center justify-between mt-1">
+                <span>linkedin.com/in/sahil-ahmed</span>
+                <i class="fa-brands fa-linkedin text-[#93c572]"></i>
               </a>
             </div>
           </div>
 
-          <div class="mt-5 pt-3 border-t border-[#cfc4b2] font-handwriting text-base text-[#9e3a2b] text-center font-bold">
+          <div class="mt-5 pt-3 border-t border-[#2b2e31] font-handwriting text-base text-[#f0c05a] text-center font-bold">
             "Ready to join your development team"
           </div>
         </div>
@@ -1013,10 +983,10 @@
 
       <!-- Right: Dispatch Form -->
       <div class="lg:col-span-7">
-        <div class="paper-sheet rounded-xs p-6 sm:p-8 border border-[#d6cdbd] relative">
+        <div class="survivor-card rounded-xs p-6 sm:p-8 border border-[#2f3236] bg-[#18191c] relative">
           <div class="masking-tape" style="top: -10px; right: 20%; width: 90px; height: 20px; transform: rotate(1deg);"></div>
 
-          <div class="font-typewriter text-xs font-bold text-[#1c1b18] border-b border-[#cfc4b2] pb-3 mb-5 flex items-center justify-between">
+          <div class="font-typewriter text-xs font-bold text-[#ffffff] border-b border-[#2b2e31] pb-3 mb-5 flex items-center justify-between">
             <span>✍️ SEND WRITTEN DISPATCH</span>
             <span class="stamp-red text-[9px]">ENCRYPTED</span>
           </div>
@@ -1024,28 +994,28 @@
           <form action="mailto:sahilahmed262001@gmail.com" method="GET" class="space-y-4 font-typewriter text-xs">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label class="block text-[10px] text-[#595244] uppercase font-bold mb-1">
+                <label class="block text-[10px] text-[#b5ac9d] uppercase font-bold mb-1">
                   SENDER NAME / STUDIO CALLSIGN *
                 </label>
-                <input type="text" name="subject" required placeholder="e.g. Lead Producer / Studio Director" class="w-full bg-[#fbf8f2] border border-[#cfc4b2] p-2.5 text-[#1c1b18] placeholder-[#9c9384] rounded-xs text-xs outline-hidden focus:border-[#2e3a23]" />
+                <input type="text" name="subject" required placeholder="e.g. Lead Producer / Studio Director" class="w-full bg-[#111214] border border-[#2f3236] p-2.5 text-[#ffffff] placeholder-[#706a5f] rounded-xs text-xs outline-hidden focus:border-[#f0c05a]" />
               </div>
 
               <div>
-                <label class="block text-[10px] text-[#595244] uppercase font-bold mb-1">
+                <label class="block text-[10px] text-[#b5ac9d] uppercase font-bold mb-1">
                   RETURN EMAIL ADDRESS *
                 </label>
-                <input type="email" required placeholder="contact@studio.com" class="w-full bg-[#fbf8f2] border border-[#cfc4b2] p-2.5 text-[#1c1b18] placeholder-[#9c9384] rounded-xs text-xs outline-hidden focus:border-[#2e3a23]" />
+                <input type="email" required placeholder="contact@studio.com" class="w-full bg-[#111214] border border-[#2f3236] p-2.5 text-[#ffffff] placeholder-[#706a5f] rounded-xs text-xs outline-hidden focus:border-[#f0c05a]" />
               </div>
             </div>
 
             <div>
-              <label class="block text-[10px] text-[#595244] uppercase font-bold mb-1">
+              <label class="block text-[10px] text-[#b5ac9d] uppercase font-bold mb-1">
                 DISPATCH MESSAGE *
               </label>
-              <textarea name="body" rows="4" required placeholder="Write project details, role expectations, or contract inquiries..." class="w-full bg-[#fbf8f2] border border-[#cfc4b2] p-2.5 text-[#1c1b18] placeholder-[#9c9384] rounded-xs text-xs outline-hidden resize-none focus:border-[#2e3a23]"></textarea>
+              <textarea name="body" rows="4" required placeholder="Write project details, role expectations, or contract inquiries..." class="w-full bg-[#111214] border border-[#2f3236] p-2.5 text-[#ffffff] placeholder-[#706a5f] rounded-xs text-xs outline-hidden resize-none focus:border-[#f0c05a]"></textarea>
             </div>
 
-            <button type="submit" class="w-full py-3 bg-[#2e3a23] hover:bg-[#3f4f30] text-[#f3eee6] font-typewriter text-xs font-bold uppercase tracking-wider shadow-md transition-all flex items-center justify-center gap-2">
+            <button type="submit" class="w-full py-3 bg-[#2e3a23] hover:bg-[#3f4f30] text-[#ffffff] font-typewriter text-xs font-bold uppercase tracking-wider border border-[#455734] shadow-md transition-all flex items-center justify-center gap-2">
               <span>✉️ TRANSMIT MESSAGE DIRECTLY TO SAHIL</span>
             </button>
           </form>
@@ -1056,16 +1026,16 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="border-t border-[#262829] bg-[#0d0e0f] py-12 px-4 text-center font-typewriter text-xs text-[#9c9384] mt-20">
+  <footer class="border-t border-[#262829] bg-[#090a0b] py-12 px-4 text-center font-typewriter text-xs text-[#8c8577] mt-16">
     <div class="max-w-4xl mx-auto space-y-3">
       <div class="flex items-center justify-center gap-2">
         <span class="stamp-moss text-[10px]">SURVIVOR ARCHIVE</span>
-        <span class="text-[#e6dfd3] font-bold">SAHIL AHMED &bull; GAMEPLAY &amp; SYSTEMS ENGINEER</span>
+        <span class="text-[#ffffff] font-bold">SAHIL AHMED &bull; GAMEPLAY &amp; SYSTEMS ENGINEER</span>
       </div>
-      <p class="font-handwriting text-base text-[#d6a842]">
+      <p class="font-handwriting text-base text-[#f0c05a]">
         "When you're lost in the darkness, look for the light." &bull; Built with Astro &amp; Tailwind CSS
       </p>
-      <div class="flex flex-wrap justify-center gap-4 text-[11px] text-[#7a7366] pt-2">
+      <div class="flex flex-wrap justify-center gap-4 text-[11px] text-[#706a5f] pt-2">
         <span>📍 Muradnagar, UP, India</span>
         <span>📞 +91 8171638120</span>
         <span>✉️ sahilahmed262001@gmail.com</span>
@@ -1074,29 +1044,29 @@
   </footer>
 
   <!-- Interactive Simulation Modal -->
-  <div id="sim-modal" class="fixed inset-0 z-50 hidden bg-[#0d0e0f]/90 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="paper-sheet max-w-2xl w-full p-6 sm:p-8 rounded-xs border-2 border-[#1c1b18] relative shadow-2xl">
-      <button id="modal-close" class="absolute top-4 right-4 text-[#736a5c] hover:text-[#1c1b18] font-typewriter text-lg font-bold">
+  <div id="sim-modal" class="fixed inset-0 z-50 hidden bg-[#090a0b]/90 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="survivor-card max-w-2xl w-full p-6 sm:p-8 rounded-xs border-2 border-[#d6a842] bg-[#18191c] relative shadow-2xl">
+      <button id="modal-close" class="absolute top-4 right-4 text-[#b5ac9d] hover:text-[#ffffff] font-typewriter text-lg font-bold">
         ✕
       </button>
       
-      <div class="font-typewriter text-xs text-[#9e3a2b] font-bold mb-1">
+      <div class="font-typewriter text-xs text-[#f0c05a] font-bold mb-1">
         // INTERACTIVE FIELD SIMULATION
       </div>
-      <h3 id="modal-title" class="font-typewriter text-2xl font-black text-[#1c1b18] mb-4">
+      <h3 id="modal-title" class="font-typewriter text-2xl font-black text-[#ffffff] mb-4">
         GAMEPLAY SIMULATION
       </h3>
 
-      <div class="bg-[#121314] border border-[#303337] rounded-xs aspect-video relative overflow-hidden flex items-center justify-center">
+      <div class="bg-[#0e0f10] border border-[#2d3033] rounded-xs aspect-video relative overflow-hidden flex items-center justify-center">
         <canvas id="sim-canvas" class="w-full h-full"></canvas>
-        <div class="absolute top-2 left-2 font-typewriter text-[10px] text-[#8ca672] bg-[#1c1d1f]/90 px-2 py-0.5 border border-[#2d3033]">
+        <div class="absolute top-2 left-2 font-typewriter text-[10px] text-[#93c572] bg-[#1a1c1d]/90 px-2 py-0.5 border border-[#2d3033]">
           PHYSICS SOLVER: RUNNING
         </div>
       </div>
 
-      <div class="mt-4 flex items-center justify-between font-typewriter text-xs text-[#595244]">
+      <div class="mt-4 flex items-center justify-between font-typewriter text-xs text-[#ded7cc]">
         <span>Click inside canvas to drop physics collision entities</span>
-        <button id="sim-reset" class="px-3 py-1 bg-[#2e3a23] hover:bg-[#3f4f30] text-[#f3eee6] font-bold">
+        <button id="sim-reset" class="px-3 py-1 bg-[#2e3a23] hover:bg-[#3f4f30] text-[#ffffff] border border-[#455734] font-bold">
           RESET SIM
         </button>
       </div>
