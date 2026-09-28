@@ -1,0 +1,87 @@
+---
+// src/components/ArchiveRecords.astro
+// Education & Academic Archives on stamped paper slips
+
+const archives = [
+  {
+    type: "ACADEMIC ARCHIVE // DEGREE",
+    title: "Bachelor of Technology (B.Tech) in Computer Science",
+    institution: "APJ Abdul Kalam Technological University",
+    dates: "2019 – 2023",
+    tag: "GRADUATED // CS",
+    note: "Specialized in Computer Graphics, Game Physics Math, Algorithms, Object-Oriented Software Architecture, and Distributed Systems.",
+    stamp: "VERIFIED GRADUATE"
+  },
+  {
+    type: "DEFENSE COMMENDATION",
+    title: "National Defense VR Museum Inauguration Tribute",
+    institution: "Indian Military Nursing Service (IMNS) & Armed Forces",
+    dates: "SPECIAL COMMENDATION",
+    tag: "NATIONAL DEFENSE",
+    note: "Built immersive VR museum commemorating the 100 Glorious Years of IMNS. Officially inaugurated by Chief of Defence Staff, General Anil Chauhan.",
+    stamp: "MINISTRY INAUGURATED"
+  },
+  {
+    type: "STORE ARCHIVES // GOOGLE PLAY",
+    title: "Multi-Title Commercial Android Publishing",
+    institution: "Google Play Console / Production Releases",
+    dates: "2022 – 2026",
+    tag: "PRODUCTION VERIFIED",
+    note: "Engineered and shipped Mystic Motors, Merge Balls, and Tile Pop. End-to-end memory profiling, AAB deployment, and Target SDK compliance.",
+    stamp: "100% STORE PASS"
+  }
+];
+---
+
+<section id="archives" class="py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+  
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3 border-b border-[#2d3033] pb-4">
+    <div>
+      <div class="flex items-center gap-2">
+        <span class="stamp-moss text-xs">ARCHIVES</span>
+        <span class="font-handwriting text-lg text-[#e6dfd3]">verified credentials</span>
+      </div>
+      <h2 class="font-typewriter text-3xl sm:text-4xl font-bold text-[#e6dfd3] mt-1">
+        ACADEMIC &amp; CITATION RECORDS
+      </h2>
+    </div>
+    <div class="font-typewriter text-xs text-[#9c9384] max-w-sm">
+      *Official records, degree citations, and defense ministry tributes.
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {archives.map((item) => (
+      <div class="paper-sheet rounded-xs p-5 border border-[#d6cdbd] flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between font-typewriter text-[10px] text-[#736a5c] pb-2 border-b border-[#cfc4b2] mb-3">
+            <span class="uppercase font-bold">{item.type}</span>
+            <span class="text-[#9e3a2b] font-bold">{item.dates}</span>
+          </div>
+
+          <h3 class="font-typewriter text-lg font-bold text-[#1c1b18] mb-1 leading-snug">
+            {item.title}
+          </h3>
+
+          <div class="font-typewriter text-xs text-[#2e3a23] font-bold mb-3">
+            {item.institution}
+          </div>
+
+          <p class="font-serif text-xs text-[#423d34] leading-relaxed mb-4">
+            {item.note}
+          </p>
+        </div>
+
+        <div class="pt-3 border-t border-[#cfc4b2] flex items-center justify-between">
+          <span class="font-handwriting text-sm text-[#9e3a2b] font-bold">
+            {item.tag}
+          </span>
+          <span class="stamp-moss text-[9px]">
+            {item.stamp}
+          </span>
+        </div>
+      </div>
+    ))}
+  </div>
+
+</section>

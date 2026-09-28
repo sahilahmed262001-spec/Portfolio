@@ -1,0 +1,285 @@
+---
+// src/pages/index.astro
+// Grounded survivor journal portfolio in Astro + Tailwind CSS
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ProjectDossier from '../components/ProjectDossier.astro';
+import SurvivalInventory from '../components/SurvivalInventory.astro';
+import MissionLogs from '../components/MissionLogs.astro';
+import ArchiveRecords from '../components/ArchiveRecords.astro';
+import RadioFrequencies from '../components/RadioFrequencies.astro';
+
+const caseReports = [
+  {
+    caseId: "DEF-01",
+    title: "VR Centenary Museum",
+    role: "Lead VR Developer",
+    organization: "Indian Military Nursing Service (IMNS)",
+    engine: "Unity 6 // OpenXR",
+    perf: "90 FPS",
+    stamp: "MINISTRY INAUGURATED",
+    stampType: "moss" as const,
+    summary: "High-fidelity immersive VR museum experience commemorating the 100 Glorious Years of IMNS. Built and deployed for national defense showcases, officially inaugurated by the Chief of Defence Staff, General Anil Chauhan.",
+    features: [
+      "Engineered high-immersion VR interaction systems and spatial audio triggers for standalone hardware.",
+      "Optimized high-detail historical 3D models with LOD pipelines and draw call batching for 90 FPS.",
+      "Architected intuitive VR teleportation, grab physics, and archival showcase exhibits."
+    ],
+    handwrittenTags: ["Unity", "VR Hardware", "High-Poly LOD", "Spatial Audio", "Defense Tech"],
+    imageSrc: "./assets/vr_museum.jpg"
+  },
+  {
+    caseId: "XR-02",
+    title: "Educational VR Metaverse",
+    role: "VR Systems Architect",
+    organization: "EdTech Virtual Worlds",
+    engine: "Unity // XR Interaction Toolkit",
+    perf: "72 FPS",
+    stamp: "MULTI-USER ACTIVE",
+    stampType: "moss" as const,
+    summary: "Semi-open world educational metaverse featuring dynamic virtual libraries, TED Talk auditoriums, and interactive exploration side-worlds with multiplayer mini-games designed for high student engagement.",
+    features: [
+      "Built interactive mini-game subsystems: realistic boat steering physics, target shooting ranges, and skating.",
+      "Developed synchronized multi-user presentation stages with real-time video streaming screens.",
+      "Created modular world streaming zones to allow expansive world roaming without memory crashes."
+    ],
+    handwrittenTags: ["Unity", "VR Systems", "Metaverse", "Mini-Games", "Spatial UI"],
+    imageSrc: "./assets/metaverse.jpg"
+  },
+  {
+    caseId: "NET-03",
+    title: "Mystic Motors",
+    role: "Lead Developer & Netcode Architect",
+    organization: "TEC VENTURES",
+    engine: "Unity // NGO Netcode",
+    perf: "60 FPS",
+    stamp: "GOOGLE PLAY RELEASE",
+    stampType: "red" as const,
+    summary: "Competitive multiplayer vehicular racing game combining high-speed drifting physics, customizable vehicles, dynamic modular tracks, and real-time spell-casting combat mechanisms.",
+    features: [
+      "Architected multiplayer networking using Unity Netcode for GameObjects (NGO) for low-latency sync.",
+      "Engineered real-time vehicle raycast suspension physics, friction modeling, and nitro boost dynamics.",
+      "Programmed spell-casting projectile collision mechanics and networked player buff/debuff systems."
+    ],
+    handwrittenTags: ["Unity", "C#", "NGO Netcode", "Vehicle Physics", "Spell Casting", "Google Play"],
+    imageSrc: "./assets/mystic_motors.jpg",
+    playStoreUrl: "https://play.google.com/store/apps"
+  },
+  {
+    caseId: "PUZ-04",
+    title: "Merge Balls",
+    role: "Unity Developer",
+    organization: "DevKraken",
+    engine: "Unity // 2D/3D Physics",
+    perf: "60 FPS",
+    stamp: "GOOGLE PLAY LIVE",
+    stampType: "red" as const,
+    summary: "Physics-based number puzzle game featuring dynamic ball dropping, cascading collision merge reactions, power-up items, and combo multiplication algorithms.",
+    features: [
+      "Implemented physics solver tuning for tight, deterministic ball bounce and merge contact listeners.",
+      "Engineered combo score multipliers, screen-shake juicy effects, and haptic vibration feedback on merge.",
+      "Built object pooling systems for zero runtime memory allocations during massive multi-ball cascades."
+    ],
+    handwrittenTags: ["Unity", "2D/3D Physics", "Casual Mechanics", "Object Pooling", "Haptics"],
+    imageSrc: "./assets/casual_puzzle.jpg",
+    playStoreUrl: "https://play.google.com/store/apps"
+  },
+  {
+    caseId: "GRD-05",
+    title: "Tile Pop",
+    role: "Unity Developer",
+    organization: "DevKraken",
+    engine: "Unity // Board State Logic",
+    perf: "60 FPS",
+    stamp: "GOOGLE PLAY LIVE",
+    stampType: "red" as const,
+    summary: "Vibrant block-clearing mobile puzzle title featuring procedural level layouts, score multipliers, and optimized matrix board state logic for silky smooth performance across low-end mobile devices.",
+    features: [
+      "Architected 2D grid matrix algorithms for recursive match-finding and cascading gravity tile drops.",
+      "Designed responsive UI in Figma and implemented dynamic scaling across all Android aspect ratios.",
+      "Implemented save/load state serialization and offline local caching for persistent player progress."
+    ],
+    handwrittenTags: ["Unity", "Grid Logic", "Mobile UI", "Optimization", "Casual Puzzle"],
+    imageSrc: "./assets/casual_puzzle.jpg",
+    playStoreUrl: "https://play.google.com/store/apps"
+  }
+];
+---
+
+<Layout 
+  title="Sahil Ahmed // Unity Systems & Gameplay Engineer — Field Logbook"
+  description="Survivor field journal & technical game dev portfolio of Sahil Ahmed: 4+ years architecting Multiplayer Netcode (NGO & Photon), Defense VR Simulations, and Google Play titles."
+>
+  <!-- 1. Header / Intro Journal Entry -->
+  <Hero />
+
+  <!-- 2. Project Gallery ("Field Reports") -->
+  <section id="reports" class="py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3 border-b border-[#2d3033] pb-4">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="stamp-red text-xs">CASE FILES</span>
+          <span class="font-handwriting text-lg text-[#d6a842]">field reports // game projects</span>
+        </div>
+        <h2 class="font-typewriter text-3xl sm:text-4xl font-bold text-[#e6dfd3] mt-1">
+          PROJECT FIELD REPORTS
+        </h2>
+      </div>
+      <div class="font-typewriter text-xs text-[#9c9384] max-w-sm">
+        *Detailed case files with polaroid records, system architecture breakdowns, and tech tags.
+      </div>
+    </div>
+
+    <!-- Grid of Case Files -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {caseReports.map((report) => (
+        <ProjectDossier {...report} />
+      ))}
+    </div>
+  </section>
+
+  <!-- 3. Tech Stack ("Gear & Inventory") -->
+  <SurvivalInventory />
+
+  <!-- 4. Experience & Timeline ("Work Logs") -->
+  <MissionLogs />
+
+  <!-- 5. Academic & Archive Records -->
+  <ArchiveRecords />
+
+  <!-- 6. Emergency Radio & Dispatch -->
+  <RadioFrequencies />
+
+  <!-- Interactive Simulation Modal (Field Test Sandbox) -->
+  <div id="sim-modal" class="fixed inset-0 z-50 hidden bg-[#0d0e0f]/90 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="paper-sheet max-w-2xl w-full p-6 sm:p-8 rounded-xs border-2 border-[#1c1b18] relative shadow-2xl">
+      <button id="modal-close" class="absolute top-4 right-4 text-[#736a5c] hover:text-[#1c1b18] font-typewriter text-lg font-bold">
+        ✕
+      </button>
+      
+      <div class="font-typewriter text-xs text-[#9e3a2b] font-bold mb-1">
+        // INTERACTIVE FIELD SIMULATION
+      </div>
+      <h3 id="modal-title" class="font-typewriter text-2xl font-black text-[#1c1b18] mb-4">
+        GAMEPLAY SIMULATION
+      </h3>
+
+      <div class="bg-[#121314] border border-[#303337] rounded-xs aspect-video relative overflow-hidden flex items-center justify-center">
+        <canvas id="sim-canvas" class="w-full h-full"></canvas>
+        <div class="absolute top-2 left-2 font-typewriter text-[10px] text-[#8ca672] bg-[#1c1d1f]/90 px-2 py-0.5 border border-[#2d3033]">
+          PHYSICS SOLVER: RUNNING
+        </div>
+      </div>
+
+      <div class="mt-4 flex items-center justify-between font-typewriter text-xs text-[#595244]">
+        <span>Click inside canvas to drop physics collision entities</span>
+        <button id="sim-reset" class="px-3 py-1 bg-[#2e3a23] hover:bg-[#3f4f30] text-[#f3eee6] font-bold">
+          RESET SIM
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    // Simulator Modal Controller
+    const modal = document.getElementById('sim-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalClose = document.getElementById('modal-close');
+    const simCanvas = document.getElementById('sim-canvas');
+    let simCtx = null;
+    let simBalls = [];
+
+    if (simCanvas) {
+      simCtx = simCanvas.getContext('2d');
+      const resizeSim = () => {
+        simCanvas.width = simCanvas.clientWidth;
+        simCanvas.height = simCanvas.clientHeight;
+      };
+      window.addEventListener('resize', resizeSim);
+
+      class BallEntity {
+        constructor(x, y) {
+          this.x = x || Math.random() * simCanvas.width;
+          this.y = y || Math.random() * (simCanvas.height / 2);
+          this.vx = (Math.random() - 0.5) * 5;
+          this.vy = (Math.random() - 0.5) * 5;
+          this.radius = Math.random() * 12 + 8;
+          this.color = Math.random() > 0.5 ? '#d6a842' : '#8ca672';
+          this.label = Math.pow(2, Math.floor(Math.random() * 5) + 1);
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.vy += 0.16;
+          if (this.x - this.radius < 0) {
+            this.vx *= -0.85;
+            this.x = this.radius;
+          } else if (this.x + this.radius > simCanvas.width) {
+            this.vx *= -0.85;
+            this.x = simCanvas.width - this.radius;
+          }
+          if (this.y + this.radius > simCanvas.height) {
+            this.vy *= -0.72;
+            this.y = simCanvas.height - this.radius;
+          }
+        }
+        draw() {
+          simCtx.beginPath();
+          simCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          simCtx.fillStyle = this.color;
+          simCtx.fill();
+          simCtx.fillStyle = '#121314';
+          simCtx.font = 'bold 9px monospace';
+          simCtx.textAlign = 'center';
+          simCtx.textBaseline = 'middle';
+          simCtx.fillText(this.label, this.x, this.y);
+        }
+      }
+
+      function initSim() {
+        resizeSim();
+        simBalls = [];
+        for (let i = 0; i < 12; i++) simBalls.push(new BallEntity());
+      }
+
+      function animSim() {
+        if (!modal.classList.contains('hidden')) {
+          simCtx.fillStyle = 'rgba(18, 19, 20, 0.3)';
+          simCtx.fillRect(0, 0, simCanvas.width, simCanvas.height);
+          simBalls.forEach(b => {
+            b.update();
+            b.draw();
+          });
+        }
+        requestAnimationFrame(animSim);
+      }
+      animSim();
+
+      simCanvas.addEventListener('mousedown', (e) => {
+        const rect = simCanvas.getBoundingClientRect();
+        simBalls.push(new BallEntity(e.clientX - rect.left, e.clientY - rect.top));
+        if (simBalls.length > 25) simBalls.shift();
+      });
+
+      document.getElementById('sim-reset')?.addEventListener('click', initSim);
+    }
+
+    document.querySelectorAll('.preview-trigger-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const title = btn.getAttribute('data-title') || 'Game Simulation';
+        if (modalTitle) modalTitle.textContent = title + " // Field Simulation";
+        modal.classList.remove('hidden');
+        if (simCanvas) {
+          simCanvas.width = simCanvas.clientWidth;
+          simCanvas.height = simCanvas.clientHeight;
+        }
+      });
+    });
+
+    modalClose?.addEventListener('click', () => modal.classList.add('hidden'));
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') modal.classList.add('hidden');
+    });
+  </script>
+</Layout>

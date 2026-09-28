@@ -1,59 +1,154 @@
 ---
 // src/components/ProjectDossier.astro
-// Clair Obscur & Cyberpunk Compatible Game Studio Technical Project Dossier
+// Grounded "Field Report" Case File with Polaroid Photo & Handwritten Notes
+
 interface Props {
+  caseId: string;
   title: string;
+  role: string;
+  organization: string;
   engine: string;
-  fps: number | string;
-  tags: string[];
-  status?: string;
-  studio?: string;
+  perf: string;
+  stamp: string;
+  stampType?: 'red' | 'moss';
+  summary: string;
+  features: string[];
+  handwrittenTags: string[];
+  imageSrc: string;
+  playStoreUrl?: string;
 }
 
-const { 
-  title, 
-  engine, 
-  fps, 
-  tags, 
-  status = "SYSTEM_STATUS // OK", 
-  studio 
+const {
+  caseId,
+  title,
+  role,
+  organization,
+  engine,
+  perf,
+  stamp,
+  stampType = 'red',
+  summary,
+  features,
+  handwrittenTags,
+  imageSrc,
+  playStoreUrl
 } = Astro.props;
 ---
 
-<div class="project-dossier relative border border-slate-700/80 bg-slate-900/90 p-6 rounded-md shadow-2xl overflow-hidden backdrop-blur-md transition-all duration-300 hover:border-amber-500/50 hover:shadow-amber-500/10">
-  <!-- Concrete distress status accent badge -->
-  <div class="dossier-status-pill absolute top-0 right-0 bg-yellow-500/20 text-yellow-400 text-xs font-mono px-3 py-1 border-b border-l border-yellow-500/40 uppercase tracking-wider font-semibold">
-    {status}
-  </div>
-
-  {studio && (
-    <div class="text-xs font-mono text-amber-400/80 uppercase tracking-widest mb-1">
-      {studio}
+<div class="paper-sheet rounded-xs p-6 sm:p-7 border border-[#d6cdbd] relative transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+  
+  <!-- Tape Corner Accent -->
+  <div class="masking-tape tape-corner"></div>
+  
+  <!-- Case File Header -->
+  <div class="flex items-center justify-between border-b border-[#cfc4b2] pb-3 mb-4">
+    <div>
+      <span class="font-typewriter text-[11px] text-[#736a5c] block uppercase">
+        CASE FILE: {caseId} &bull; {organization}
+      </span>
+      <h3 class="font-typewriter text-xl sm:text-2xl font-black text-[#1c1b18] tracking-tight">
+        {title}
+      </h3>
     </div>
-  )}
-
-  <h3 class="dossier-title text-2xl font-bold text-stone-100 tracking-wide font-mono uppercase border-b border-stone-700/80 pb-2 mb-4">
-    {title}
-  </h3>
-
-  <!-- Technical Engine & Target Perf Grid -->
-  <div class="dossier-specs-grid grid grid-cols-2 gap-4 text-sm font-mono text-stone-300 mb-5 bg-stone-950/60 p-3 rounded border border-stone-800">
-    <p><span class="spec-label text-emerald-400 font-bold">ENGINE:</span> {engine}</p>
-    <p><span class="spec-label text-emerald-400 font-bold">TARGET_PERF:</span> {fps} {typeof fps === 'number' ? 'FPS' : ''}</p>
+    <div>
+      <span class={stampType === 'red' ? 'stamp-red text-xs' : 'stamp-moss text-xs'}>
+        {stamp}
+      </span>
+    </div>
   </div>
 
-  <!-- Dynamic Tags Array -->
-  <div class="dossier-tags-row flex flex-wrap gap-2 mb-6">
-    {tags.map((tag) => (
-      <span class="dossier-tag bg-stone-800 text-amber-400 text-xs px-2.5 py-1 border border-stone-700 rounded-sm font-mono font-medium shadow-sm">
-        #{tag.replace(/^#/, '')}
+  <!-- Role & Specs Note Strip -->
+  <div class="bg-[#ece4d6] p-2.5 rounded-xs font-typewriter text-xs text-[#33302a] mb-4 border border-[#ddd3c1] flex flex-wrap items-center justify-between gap-2">
+    <div>
+      <span class="text-[#7a7162] uppercase">ROLE:</span> <strong>{role}</strong>
+    </div>
+    <div>
+      <span class="text-[#7a7162] uppercase">ENGINE:</span> <strong>{engine}</strong> ({perf})
+    </div>
+  </div>
+
+  <!-- Polaroid-Style Photo Frame -->
+  <div class="polaroid-frame mb-4 relative group">
+    <!-- Small corner tape on polaroid -->
+    <div class="masking-tape" style="top: -6px; left: -6px; width: 45px; height: 16px; transform: rotate(-25deg);"></div>
+    
+    <div class="overflow-hidden bg-[#121314] aspect-video relative">
+      <img 
+        src={imageSrc} 
+        alt={title} 
+        class="w-full h-full object-cover filter contrast-[105%] group-hover:scale-105 transition-transform duration-500"
+        loading="lazy"
+      />
+    </div>
+    
+    <div class="pt-2 font-handwriting text-base font-bold text-[#473f32] text-center">
+      photo archive // {title}
+    </div>
+
+    <!-- Hover Preview Button -->
+    <button 
+      class="preview-trigger-btn absolute inset-0 flex items-center justify-center bg-[#121314]/70 opacity-0 group-hover:opacity-100 transition-opacity font-typewriter text-xs font-bold text-[#e6dfd3] gap-2"
+      data-title={title}
+    >
+      <span class="px-3 py-1.5 bg-[#d6a842] text-[#1c1b18] shadow-tape">
+        ▶ INSPECT SIMULATION
+      </span>
+    </button>
+  </div>
+
+  <!-- Summary Log -->
+  <p class="font-serif text-xs sm:text-sm text-[#38342c] leading-relaxed mb-4 bg-[#fbf8f2] p-3 border-l-2 border-l-[#9e3a2b]">
+    {summary}
+  </p>
+
+  <!-- Key Engineered Systems -->
+  <div class="mb-4">
+    <div class="font-typewriter text-[11px] font-bold text-[#5c5344] uppercase mb-1.5">
+      // ENGINEERED SYSTEMS:
+    </div>
+    <ul class="space-y-1 font-typewriter text-xs text-[#2b271f]">
+      {features.map((item) => (
+        <li class="flex items-start gap-1.5">
+          <span class="text-[#9e3a2b] font-bold mt-0.5">✔</span>
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <!-- Handwritten Tech Tags -->
+  <div class="border-t border-dashed border-[#cfc4b2] pt-3 mb-4 flex flex-wrap items-center gap-2">
+    <span class="font-typewriter text-[10px] text-[#7a7162] uppercase mr-1">TAGS:</span>
+    {handwrittenTags.map((tag) => (
+      <span class="font-handwriting text-base font-bold text-[#2e3a23] bg-[#e6dfd3] px-2 py-0.5 rounded-xs border border-[#cfc4b2] shadow-xs">
+        #{tag}
       </span>
     ))}
   </div>
 
-  <!-- Hydrate WebGL Embed dynamically only when visible -->
-  <div class="dossier-slot mt-4">
-    <slot name="unity-player" />
-    <slot />
+  <!-- Action Row -->
+  <div class="pt-2 border-t border-[#cfc4b2] flex items-center justify-between">
+    {playStoreUrl ? (
+      <a 
+        href={playStoreUrl} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="font-typewriter text-xs font-bold text-[#9e3a2b] hover:underline flex items-center gap-1"
+      >
+        <i class="fa-brands fa-google-play"></i> GOOGLE PLAY ARCHIVE &gt;
+      </a>
+    ) : (
+      <span class="font-typewriter text-[11px] text-[#698252] font-bold">
+        🌿 DEFENSE &amp; VR DEPLOYMENT
+      </span>
+    )}
+    
+    <button 
+      class="preview-trigger-btn font-typewriter text-xs font-bold px-2.5 py-1 bg-[#2e3a23] text-[#f3eee6] hover:bg-[#3f4f30] transition-colors"
+      data-title={title}
+    >
+      SIMULATOR &gt;
+    </button>
   </div>
+
 </div>

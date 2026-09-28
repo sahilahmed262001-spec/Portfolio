@@ -1,0 +1,131 @@
+---
+// src/components/Hero.astro
+// Grounded survivor journal entry header on aged paper sheet
+---
+
+<section id="hero" class="pt-8 pb-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+  
+  <!-- Main Aged Paper Sheet Dossier -->
+  <div class="paper-sheet rounded-xs p-6 sm:p-10 border border-[#d8d0c2] relative transform rotate-[-0.3deg] transition-transform hover:rotate-0">
+    
+    <!-- Physical Masking Tape Strip on Top -->
+    <div class="masking-tape tape-top"></div>
+    <!-- Paperclip Graphic Top Left -->
+    <div class="absolute -top-3 left-8 text-2xl text-[#6b675d] drop-shadow-sm select-none">
+      📎
+    </div>
+
+    <!-- Header Stamps & Metadata -->
+    <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-dashed border-[#b8ab9a] pb-4 mb-6">
+      <div class="flex items-center gap-3">
+        <span class="stamp-red text-xs">ENTRY #1461</span>
+        <span class="stamp-moss text-xs">SECTOR: ASIA-NORTH</span>
+        <span class="font-typewriter text-xs text-[#59554d]">SURVIVOR TIME: 4+ YEARS</span>
+      </div>
+      <div class="font-handwriting text-lg text-[#9e3a2b] font-bold">
+        *Verified field-ready
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Left Column: Name, Title & Journal Log -->
+      <div class="lg:col-span-8 space-y-4">
+        
+        <div>
+          <h1 class="font-typewriter text-3xl sm:text-5xl font-black text-[#1c1b18] tracking-tight">
+            SAHIL AHMED
+          </h1>
+          <div class="flex items-center gap-2 mt-1">
+            <span class="font-typewriter text-sm sm:text-base font-bold text-[#2e3a23] bg-[#d5cbbe]/50 px-2 py-0.5 rounded-xs">
+              &gt; Unity Systems &amp; Gameplay Engineer
+            </span>
+            <span class="font-handwriting text-base text-[#9e3a2b] font-bold sm:inline hidden">
+              (Multiplayer &amp; XR Specialist)
+            </span>
+          </div>
+        </div>
+
+        <!-- Survivor Summary Log Text -->
+        <div class="bg-[#f0eae0] p-4 sm:p-5 rounded-xs border-l-4 border-l-[#2e3a23] border border-[#ded5c5] font-serif text-sm leading-relaxed text-[#2a2926]">
+          <p class="font-bold text-[#1c1b18] mb-1 font-typewriter text-xs text-[#698252]">
+            // LOGBOOK SUMMARY:
+          </p>
+          <p>
+            Innovative Unity Game Developer with <strong>4 years of hands-on experience</strong> specializing in multiplayer game architecture, casual mobile titles, and immersive AR/VR experiences. Highly proficient in C#, Unity Netcode for GameObjects (NGO), Photon (PUN &amp; Fusion), and ProBuilder.
+          </p>
+          <p class="mt-2 text-[#47443e]">
+            Proven track record of architecting, optimizing, and deploying high-profile interactive VR applications for national defense (officially inaugurated by the Chief of Defence Staff, General Anil Chauhan) as well as commercially published mobile titles across Google Play.
+          </p>
+        </div>
+
+        <!-- Handwritten Notes & Action Links -->
+        <div class="pt-2 flex flex-wrap items-center gap-3">
+          <a href="#reports" class="px-4 py-2 bg-[#2e3a23] hover:bg-[#3f4f30] text-[#f3eee6] font-typewriter text-xs font-bold shadow-md transition-all flex items-center gap-2">
+            <span>📁 READ FIELD REPORTS</span>
+          </a>
+          <a href="#inventory" class="px-4 py-2 bg-[#d6a842] hover:bg-[#e8be5d] text-[#1c1b18] font-typewriter text-xs font-bold shadow-tape transition-all flex items-center gap-2">
+            <span>🎒 GEAR INVENTORY</span>
+          </a>
+          <a href="#radio" class="px-4 py-2 bg-[#9e3a2b] hover:bg-[#bd4b3a] text-[#f3eee6] font-typewriter text-xs font-bold shadow-md transition-all flex items-center gap-2">
+            <span>📻 EMERGENCY RADIO</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Radio Telemetry Post-It Note -->
+      <div class="lg:col-span-4">
+        
+        <div class="bg-[#fdf3cc] p-5 rounded-xs border border-[#e2d499] shadow-md relative transform rotate-[1.5deg]">
+          <!-- Post-It Tape -->
+          <div class="masking-tape" style="top: -8px; left: 30%; width: 70px; height: 18px; transform: rotate(-3deg);"></div>
+          
+          <div class="font-typewriter text-xs font-bold text-[#4d3d19] border-b border-[#ebd78f] pb-2 mb-3 flex items-center justify-between">
+            <span>📻 RADIO FREQUENCIES</span>
+            <span class="stamp-red text-[9px]">LIVE</span>
+          </div>
+
+          <div class="space-y-2.5 font-typewriter text-xs text-[#2b271d]">
+            
+            <div>
+              <span class="text-[10px] text-[#73633e] block font-bold">DIRECT COMMS / WHATSAPP:</span>
+              <a href="tel:+918171638120" class="font-bold text-[#1c1b18] hover:text-[#9e3a2b] underline">
+                +91 8171638120
+              </a>
+            </div>
+
+            <div>
+              <span class="text-[10px] text-[#73633e] block font-bold">WRITTEN DISPATCH (EMAIL):</span>
+              <a href="mailto:sahilahmed262001@gmail.com" class="font-bold text-[#1c1b18] hover:text-[#9e3a2b] underline text-[11px] break-all">
+                sahilahmed262001@gmail.com
+              </a>
+            </div>
+
+            <div>
+              <span class="text-[10px] text-[#73633e] block font-bold">SURVIVOR NETWORK (LINKEDIN):</span>
+              <a href="https://linkedin.com/in/sahil-ahmed-81018a228" target="_blank" rel="noopener noreferrer" class="font-bold text-[#2e3a23] hover:text-[#9e3a2b] underline text-[11px]">
+                linkedin.com/in/sahil-ahmed
+              </a>
+            </div>
+
+            <div>
+              <span class="text-[10px] text-[#73633e] block font-bold">OUTPOST COORDINATES:</span>
+              <span class="text-[#2b271d] font-bold text-[11px]">Muradnagar, Uttar Pradesh, India</span>
+            </div>
+
+          </div>
+
+          <div class="mt-4 pt-2 border-t border-[#ebd78f] font-handwriting text-sm text-[#9e3a2b] font-bold">
+            ~ "Available for full-time &amp; contract missions"
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

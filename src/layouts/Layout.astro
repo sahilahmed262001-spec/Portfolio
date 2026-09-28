@@ -1,0 +1,285 @@
+---
+// src/layouts/Layout.astro
+// The Last of Us Inspired Grounded Organic Survivor Journal Layout
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Sahil Ahmed // Unity Systems & Gameplay Engineer — Field Logbook",
+  description = "Survivor field journal & technical game dev portfolio of Sahil Ahmed: 4+ years architecting Multiplayer Netcode (NGO & Photon), Defense VR Simulations, and Google Play titles."
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-[#121314] text-[#e6dfd3]">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+
+  <!-- Google Fonts: Special Elite (Worn Typewriter), Courier Prime, Caveat (Handwritten Notes), Permanent Marker -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Permanent+Marker&family=Special+Elite&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style is:global>
+    :root {
+      --bg-charcoal: #121314;
+      --bg-charcoal-dark: #0d0e0f;
+      --parchment-beige: #e6dfd3;
+      --parchment-light: #f3eee6;
+      --parchment-ink: #1c1b18;
+      --moss-green: #2e3a23;
+      --moss-light: #698252;
+      --rust-orange: #9e3a2b;
+      --tape-yellow: #d6a842;
+      --tape-faded: #e8c878;
+    }
+
+    body {
+      background-color: var(--bg-charcoal);
+      color: var(--parchment-beige);
+      font-family: 'Courier Prime', Courier, monospace;
+      background-image: 
+        radial-gradient(circle at 50% 50%, rgba(46, 58, 35, 0.15) 0%, transparent 80%),
+        radial-gradient(rgba(230, 223, 211, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 24px 24px;
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+    /* Paper Sheets / Field Notes */
+    .paper-sheet {
+      background-color: var(--parchment-light);
+      color: var(--parchment-ink);
+      box-shadow: 
+        0 1px 1px rgba(0,0,0,0.2), 
+        0 8px 0 -3px #ded7cb, 
+        0 9px 1px -3px rgba(0,0,0,0.3), 
+        0 16px 0 -6px #d1c8b8, 
+        0 17px 2px -6px rgba(0,0,0,0.3),
+        2px 10px 30px rgba(0, 0, 0, 0.7);
+      position: relative;
+    }
+
+    .dark-paper {
+      background: #1c1d1f;
+      color: #e6dfd3;
+      border: 1px solid #2d3033;
+      box-shadow: 4px 6px 20px rgba(0,0,0,0.6);
+    }
+
+    /* Masking Tape Strips */
+    .masking-tape {
+      background-color: var(--tape-yellow);
+      background-image: linear-gradient(135deg, rgba(255,255,255,0.2) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, transparent 75%, transparent);
+      background-size: 8px 8px;
+      opacity: 0.88;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.35);
+      position: absolute;
+      z-index: 10;
+      clip-path: polygon(3% 0%, 97% 2%, 100% 98%, 0% 95%);
+    }
+
+    .tape-top {
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1.5deg);
+      width: 110px;
+      height: 24px;
+    }
+
+    .tape-corner {
+      top: -10px;
+      right: -10px;
+      width: 65px;
+      height: 22px;
+      transform: rotate(35deg);
+    }
+
+    /* Polaroid Image Styling */
+    .polaroid-frame {
+      background: #fdfaf5;
+      padding: 10px 10px 30px 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+      border: 1px solid #e0d8cc;
+    }
+
+    /* Handwritten Font Helper */
+    .font-handwriting {
+      font-family: 'Caveat', cursive;
+    }
+    .font-marker {
+      font-family: 'Permanent Marker', cursive;
+    }
+    .font-typewriter {
+      font-family: 'Special Elite', monospace;
+    }
+
+    /* Red Ink / Chalk Stencil Stamps */
+    .stamp-red {
+      border: 2px solid var(--rust-orange);
+      color: var(--rust-orange);
+      font-family: 'Special Elite', monospace;
+      text-transform: uppercase;
+      transform: rotate(-2deg);
+      display: inline-block;
+      padding: 2px 8px;
+      letter-spacing: 0.1em;
+      opacity: 0.9;
+    }
+
+    .stamp-moss {
+      border: 2px solid var(--moss-light);
+      color: var(--moss-light);
+      font-family: 'Special Elite', monospace;
+      text-transform: uppercase;
+      transform: rotate(1.5deg);
+      display: inline-block;
+      padding: 2px 8px;
+      letter-spacing: 0.1em;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0d0e0f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2e3a23;
+      border: 1px solid #3f4f30;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #d6a842;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen">
+  
+  <!-- Subtle Floating Dust Spores Canvas -->
+  <canvas id="spores-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-30"></canvas>
+
+  <!-- Navigation: Worn Wooden/Paper Tape Header -->
+  <header class="sticky top-0 z-40 bg-[#121314]/95 border-b border-[#2a2d28] backdrop-blur-sm py-3 px-4 sm:px-8">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      
+      <!-- Survivor Log Sigil -->
+      <a href="#hero" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-sm bg-[#2e3a23] border border-[#4a5e38] flex items-center justify-center text-[#e6dfd3] shadow-sm">
+          <i class="fa-solid fa-seedling text-sm text-[#8ca672]"></i>
+        </div>
+        <div>
+          <span class="font-typewriter text-sm font-bold text-[#e6dfd3] tracking-wide block">SAHIL AHMED</span>
+          <span class="font-handwriting text-xs text-[#8ca672] -mt-1 block">survivor log // unity engineer</span>
+        </div>
+      </a>
+
+      <!-- Journal Tabs -->
+      <nav class="flex items-center gap-1 sm:gap-4 text-xs font-typewriter">
+        <a href="#reports" class="px-2.5 py-1 text-[#e6dfd3]/80 hover:text-[#d6a842] border-b border-transparent hover:border-[#d6a842] transition-colors">
+          [1] FIELD REPORTS
+        </a>
+        <a href="#inventory" class="px-2.5 py-1 text-[#e6dfd3]/80 hover:text-[#8ca672] border-b border-transparent hover:border-[#8ca672] transition-colors">
+          [2] GEAR INVENTORY
+        </a>
+        <a href="#journal" class="px-2.5 py-1 text-[#e6dfd3]/80 hover:text-[#9e3a2b] border-b border-transparent hover:border-[#9e3a2b] transition-colors">
+          [3] WORK LOGS
+        </a>
+        <a href="#archives" class="px-2.5 py-1 text-[#e6dfd3]/80 hover:text-[#e6dfd3] border-b border-transparent hover:border-[#e6dfd3] transition-colors">
+          [4] ARCHIVES
+        </a>
+        <a href="#radio" class="ml-2 px-3 py-1 bg-[#d6a842] text-[#1c1b18] font-bold shadow-tape hover:bg-[#e8be5d] transition-all transform rotate-[-1deg]">
+          📻 RADIO COMMS
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="relative z-10">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-[#262829] bg-[#0d0e0f] py-12 px-4 text-center font-typewriter text-xs text-[#9c9384] mt-20">
+    <div class="max-w-4xl mx-auto space-y-3">
+      <div class="flex items-center justify-center gap-2">
+        <span class="stamp-moss text-[10px]">SURVIVOR ARCHIVE</span>
+        <span class="text-[#e6dfd3] font-bold">SAHIL AHMED &bull; GAMEPLAY &amp; SYSTEMS ENGINEER</span>
+      </div>
+      <p class="font-handwriting text-base text-[#d6a842]">
+        "When you're lost in the darkness, look for the light." &bull; Built with Astro &amp; Tailwind CSS
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 text-[11px] text-[#7a7366] pt-2">
+        <span>📍 Muradnagar, UP, India</span>
+        <span>📞 +91 8171638120</span>
+        <span>✉️ sahilahmed262001@gmail.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dust Spore Script -->
+  <script is:inline>
+    const canvas = document.getElementById('spores-canvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      const resize = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      };
+      window.addEventListener('resize', resize);
+      resize();
+
+      class Spore {
+        constructor() { this.reset(); }
+        reset() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 2 + 0.5;
+          this.speedX = (Math.random() - 0.48) * 0.3;
+          this.speedY = -Math.random() * 0.4 - 0.1;
+          this.alpha = Math.random() * 0.5 + 0.15;
+          this.color = Math.random() > 0.6 ? '140, 166, 114' : '230, 223, 211'; // earthy moss / dust beige
+        }
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          if (this.y < -5 || this.x < -5 || this.x > canvas.width + 5) {
+            this.reset();
+            this.y = canvas.height + 5;
+          }
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${this.color}, ${this.alpha})`;
+          ctx.fill();
+        }
+      }
+
+      for (let i = 0; i < 35; i++) particles.push(new Spore());
+
+      function loop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(loop);
+      }
+      loop();
+    }
+  </script>
+</body>
+</html>

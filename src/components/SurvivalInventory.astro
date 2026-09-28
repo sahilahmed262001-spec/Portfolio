@@ -1,0 +1,120 @@
+---
+// src/components/SurvivalInventory.astro
+// Tech Stack & Gear Inventory on Rugged Workbench Grid
+
+const inventoryPacks = [
+  {
+    category: "PRIMARY WEAPONRY & ENGINE TOOLS",
+    icon: "fa-hammer",
+    items: [
+      { name: "C# (.NET Core & Unity CLR)", condition: "Mastered", durability: 98, note: "Memory management, data structures, event buses, gameplay math" },
+      { name: "Unity Engine (6 / 2022.3 LTS)", condition: "Mastered", durability: 96, note: "URP, job systems, asset pipelines, profiling & architecture" },
+      { name: "Gameplay Mechanics & Physics", condition: "Field-tested", durability: 94, note: "Raycast vehicle physics, spell-casting projectiles, collision solvers" },
+      { name: "Shader Graph & Visual FX", condition: "Equipped", durability: 88, note: "Surface shaders, vertex animation, screen distortion, mobile FX" },
+      { name: "Addressables & Asset Bundles", condition: "Equipped", durability: 86, note: "Dynamic streaming, remote asset hosting, zero-hiccup loading" }
+    ]
+  },
+  {
+    category: "COMMS RIG & MULTIPLAYER NETCODE",
+    icon: "fa-radio",
+    items: [
+      { name: "Unity Netcode for GameObjects (NGO)", condition: "Mission-proven", durability: 94, note: "Client prediction, server reconciliation, NetworkVariables" },
+      { name: "Photon PUN & Photon Fusion", condition: "Active", durability: 90, note: "Cloud rooms, distributed authority, lag compensation" },
+      { name: "Client-Server State Sync", condition: "Active", durability: 92, note: "Delta compression, custom serialization, anti-cheat architecture" }
+    ]
+  },
+  {
+    category: "CRAFTING & 3D PROTOTYPING KITS",
+    icon: "fa-cube",
+    items: [
+      { name: "ProBuilder Level Blocking", condition: "Mastered", durability: 95, note: "Rapid level grayboxing, modular obstacles, instant playtesting" },
+      { name: "Blender 3D Asset Pipeline", condition: "Equipped", durability: 84, note: "Model navigation, asset integration, coordinate transforms, LODs" },
+      { name: "Figma UI/UX & Canvas", condition: "Equipped", durability: 88, note: "Cross-platform mobile & VR layout scaling, UI design skins" }
+    ]
+  },
+  {
+    category: "FIELD MUNITIONS & STORE DEPLOYMENTS",
+    icon: "fa-shield-halved",
+    items: [
+      { name: "Android & Google Play Console", condition: "Production", durability: 96, note: "AAB releases, Target SDK updates, automated build pipelines" },
+      { name: "VR / AR Hardware Deployment", condition: "Defense-grade", durability: 92, note: "Meta Quest, OpenXR, military museum installations" },
+      { name: "Mobile Profiling & Optimization", condition: "Optimized", durability: 94, note: "Draw call batching, texture atlasing, thermal stability" }
+    ]
+  }
+];
+---
+
+<section id="inventory" class="py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+  
+  <!-- Section Title -->
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3 border-b border-[#2d3033] pb-4">
+    <div>
+      <div class="flex items-center gap-2">
+        <span class="stamp-moss text-xs">SURVIVAL KIT</span>
+        <span class="font-handwriting text-lg text-[#d6a842]">equipped tools // workbench</span>
+      </div>
+      <h2 class="font-typewriter text-3xl sm:text-4xl font-bold text-[#e6dfd3] mt-1">
+        GEAR &amp; INVENTORY
+      </h2>
+    </div>
+    <div class="font-typewriter text-xs text-[#9c9384] max-w-sm">
+      *All technical tools are sharpened and maintained through 4+ years of live game development.
+    </div>
+  </div>
+
+  <!-- Workbench Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {inventoryPacks.map((pack) => (
+      <div class="bg-[#18191c] border border-[#2b2d30] rounded-xs p-5 sm:p-6 shadow-md relative">
+        
+        <!-- Category Top Strip -->
+        <div class="flex items-center justify-between border-b border-[#2b2d30] pb-3 mb-4">
+          <div class="font-typewriter text-sm font-bold text-[#e6dfd3] flex items-center gap-2">
+            <i class={`fa-solid ${pack.icon} text-[#8ca672]`}></i>
+            <span>{pack.category}</span>
+          </div>
+          <span class="font-handwriting text-sm text-[#d6a842] font-bold">
+            ready
+          </span>
+        </div>
+
+        <!-- Items List -->
+        <div class="space-y-4">
+          {pack.items.map((item) => (
+            <div class="bg-[#121315] p-3.5 border border-[#242629] rounded-xs group hover:border-[#4a5e38] transition-colors">
+              <div class="flex items-center justify-between gap-2 mb-1">
+                <span class="font-typewriter text-xs sm:text-sm font-bold text-[#e6dfd3] group-hover:text-[#8ca672] transition-colors">
+                  {item.name}
+                </span>
+                <span class="stamp-moss text-[9px]">
+                  {item.condition}
+                </span>
+              </div>
+
+              <p class="font-serif text-xs text-[#948d80] mb-2 leading-relaxed">
+                {item.note}
+              </p>
+
+              <!-- Durability Meter -->
+              <div class="space-y-1">
+                <div class="flex justify-between font-typewriter text-[10px] text-[#706a5f]">
+                  <span>EFFICIENCY RATING</span>
+                  <span class="font-handwriting text-xs text-[#d6a842] font-bold">{item.durability}%</span>
+                </div>
+                <div class="h-2 w-full bg-[#242629] rounded-xs overflow-hidden p-0.5 border border-[#303337]">
+                  <div 
+                    class="h-full bg-gradient-to-r from-[#3f4f30] to-[#8ca672] rounded-xs"
+                    style={`width: ${item.durability}%`}
+                  ></div>
+                </div>
+              </div>
+
+            </div>
+          ))}
+        </div>
+
+      </div>
+    ))}
+  </div>
+
+</section>
