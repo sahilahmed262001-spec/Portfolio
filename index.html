@@ -1,235 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sahil Ahmed | Senior Unity Game & XR Developer — Cyberpunk Portfolio</title>
-  <meta name="description"
-    content="Portfolio of Sahil Ahmed - Senior Unity Game Developer with 4+ years experience in Multiplayer Architecture, VR/AR, Unity Netcode (NGO), Photon, and Mobile Publishing." />
+  <title>Sahil Ahmed // Senior Unity & XR Game Architect</title>
+  <meta name="description" content="Senior Unity Game Developer with 4+ years specializing in Multiplayer Netcode (NGO & Photon), VR/AR Defense Experiences, and Published Mobile Games." />
 
-  <!-- Favicon / Cyber Icon -->
-  <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+  <!-- OpenGraph / Social Meta for GitHub / LinkedIn -->
+  <meta property="og:title" content="Sahil Ahmed // Senior Unity & XR Game Architect" />
+  <meta property="og:description" content="Explore published multiplayer racing titles, military defense VR simulations, and interactive game physics." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./assets/mystic_motors.jpg" />
 
-  <!-- Fonts -->
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+
+  <!-- Google Fonts: Modern Syne, Orbitron, Space Grotesk & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Orbitron:wght@500;700;900&family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- FontAwesome Icons via CDN -->
+  <!-- FontAwesome Icons CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <!-- Three.js CDN -->
+  <!-- Three.js & Confetti CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <!-- Canvas Confetti for Game/Win effects -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  <!-- Main Styles -->
+  <!-- Modern Cyberpunk Stylesheet -->
   <link rel="stylesheet" href="style.css" />
 </head>
+<body class="cyber-theme">
 
-<body class="cyber-theme crt-scanlines">
-
-  <!-- Three.js 3D Background Canvas -->
+  <!-- 3D Three.js Ambient Metropolis Scene -->
   <div id="canvas-container"></div>
-  <div class="cyber-vignette"></div>
-  <div class="cyber-grid-floor"></div>
+  <div class="ambient-cyber-glow"></div>
+  <div class="cyber-radial-overlay"></div>
 
-  <!-- HUD Top Navigation Bar -->
-  <header class="cyber-hud-header">
-    <div class="hud-left">
-      <div class="status-beacon active">
-        <span class="pulse-dot"></span>
-        <span class="beacon-text">SYSTEM ONLINE // NETCODE: OK</span>
+  <!-- TOP MODERN FLOATING HUD HEADER -->
+  <header class="cyber-header">
+    <div class="header-inner">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="brand-logo" data-sound="hover">
+        <div class="logo-icon">
+          <i class="fa-brands fa-unity"></i>
+          <span class="pulse-ring"></span>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">SAHIL AHMED</span>
+          <span class="brand-tag">SENIOR UNITY // NETCODE ARCHITECT</span>
+        </div>
+      </a>
+
+      <!-- Center Floating Nav Menu -->
+      <nav class="hud-nav" id="hud-nav">
+        <a href="#hero" class="nav-link active" data-sound="hover">
+          <i class="fa-solid fa-crosshairs"></i> OVERVIEW
+        </a>
+        <a href="#projects" class="nav-link" data-sound="hover">
+          <i class="fa-solid fa-gamepad"></i> GAMES & TITLES
+        </a>
+        <a href="#arcade" class="nav-link nav-highlight" data-sound="hover">
+          <i class="fa-solid fa-bolt"></i> PLAY DEMO
+        </a>
+        <a href="#skills" class="nav-link" data-sound="hover">
+          <i class="fa-solid fa-microchip"></i> TECH STACK
+        </a>
+        <a href="#experience" class="nav-link" data-sound="hover">
+          <i class="fa-solid fa-layer-group"></i> CAREER LOG
+        </a>
+        <a href="#contact" class="nav-link" data-sound="hover">
+          <i class="fa-solid fa-satellite-dish"></i> UPLINK
+        </a>
+      </nav>
+
+      <!-- Right Action Controls -->
+      <div class="header-controls">
+        <button id="btn-audio" class="control-btn" title="Toggle Sci-Fi SFX" aria-label="Toggle Sound">
+          <i class="fa-solid fa-volume-high"></i>
+          <span class="btn-lbl">SFX: ON</span>
+        </button>
+        <a href="mailto:sahilahmed262001@gmail.com" class="hire-cta-btn" data-sound="click">
+          <span>CONTACT ME</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
       </div>
-      <div class="brand-glitch" data-text="SAHIL.DEV // 2077">
-        <span class="brand-bracket">[</span>SAHIL AHMED<span class="brand-bracket">]</span>
-        <span class="tag-role">SENIOR UNITY DEV</span>
-      </div>
-    </div>
 
-    <!-- Center Nav Links -->
-    <nav class="hud-nav" id="hud-nav">
-      <a href="#hero" class="nav-item active" data-sound="hover">
-        <i class="fa-solid fa-terminal"></i> <span>OVERVIEW</span>
-      </a>
-      <a href="#projects" class="nav-item" data-sound="hover">
-        <i class="fa-solid fa-gamepad"></i> <span>PROJECTS</span>
-      </a>
-      <a href="#arcade" class="nav-item neon-item" data-sound="hover">
-        <i class="fa-solid fa-ghost"></i> <span>CYBER ARCADE</span>
-      </a>
-      <a href="#skills" class="nav-item" data-sound="hover">
-        <i class="fa-solid fa-microchip"></i> <span>TECH AUGMENTS</span>
-      </a>
-      <a href="#experience" class="nav-item" data-sound="hover">
-        <i class="fa-solid fa-timeline"></i> <span>CAREER LOG</span>
-      </a>
-      <a href="#contact" class="nav-item" data-sound="hover">
-        <i class="fa-solid fa-satellite-dish"></i> <span>UPLINK</span>
-      </a>
-    </nav>
-
-    <!-- Top Right Controls -->
-    <div class="hud-right">
-      <button id="btn-audio" class="hud-btn" title="Toggle Cyber Audio FX" aria-label="Toggle Sound">
-        <i class="fa-solid fa-volume-high"></i>
-        <span class="hud-btn-text">SFX: ON</span>
-      </button>
-      <button id="btn-crt" class="hud-btn" title="Toggle Scanlines / CRT" aria-label="Toggle CRT Effect">
-        <i class="fa-solid fa-tv"></i>
-        <span class="hud-btn-text">CRT</span>
-      </button>
-      <a href="mailto:sahilahmed262001@gmail.com" class="hud-btn primary-hud-btn" data-sound="click">
-        <i class="fa-solid fa-bolt"></i>
-        <span>HIRE ME</span>
-      </a>
     </div>
   </header>
 
-  <!-- Live Telemetry HUD Bar -->
-  <aside class="telemetry-bar">
-    <div class="telemetry-item">
-      <span class="t-label">FPS:</span>
-      <span class="t-val" id="telemetry-fps">60</span>
+  <!-- MODERN REAL-TIME TELEMETRY STRIP -->
+  <div class="telemetry-hud-strip">
+    <div class="telemetry-container">
+      <div class="t-pill"><span class="t-dot live"></span> NGO NETCODE: <strong class="neon-cyan">LOW-LATENCY 16ms</strong></div>
+      <div class="t-pill"><i class="fa-solid fa-gauge-high"></i> ENGINE: <strong class="neon-white">UNITY 6 / URP & HDRP</strong></div>
+      <div class="t-pill"><i class="fa-solid fa-vr-cardboard"></i> DEFENSE VR: <strong class="neon-gold">INAUGURATED BY CDS</strong></div>
+      <div class="t-pill"><i class="fa-solid fa-code-branch"></i> EXP: <strong class="neon-pink">4+ YEARS</strong></div>
+      <div class="t-pill hide-mobile"><i class="fa-solid fa-location-dot"></i> LOCATION: <strong>MURADNAGAR, INDIA / REMOTE</strong></div>
     </div>
-    <div class="telemetry-item">
-      <span class="t-label">PING:</span>
-      <span class="t-val" id="telemetry-ping">18ms (NGO Low-Lat)</span>
-    </div>
-    <div class="telemetry-item">
-      <span class="t-label">ENGINE:</span>
-      <span class="t-val neon-cyan">UNITY 6 / URP / HDRP</span>
-    </div>
-    <div class="telemetry-item">
-      <span class="t-label">EXP:</span>
-      <span class="t-val neon-pink">4+ YEARS</span>
-    </div>
-    <div class="telemetry-item hide-mobile">
-      <span class="t-label">CITY SECTOR:</span>
-      <span class="t-val neon-yellow">NEO-METROPOLIS 09</span>
-    </div>
-  </aside>
+  </div>
 
-  <!-- Main Content Container -->
-  <main class="content-wrapper">
+  <!-- MAIN WRAPPER -->
+  <main class="page-container">
 
-    <!-- HERO / OVERVIEW SECTION -->
-    <section id="hero" class="cyber-section hero-section">
-      <div class="hero-grid">
-
-        <!-- Left: Holo Terminal Bio -->
-        <div class="hero-left cyber-card glass-panel tech-border">
-          <div class="card-header">
-            <span class="header-led red"></span>
-            <span class="header-led yellow"></span>
-            <span class="header-led green"></span>
-            <span class="card-title">DEV_PROFILE // CLASSIFIED // LEVEL_04</span>
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="hero" class="hero-section">
+      <div class="hero-layout">
+        
+        <!-- Left Hero Content -->
+        <div class="hero-content">
+          <div class="status-chip">
+            <span class="live-dot"></span>
+            <span>AVAILABLE FOR SENIOR UNITY & XR ROLES</span>
           </div>
 
-          <div class="hero-main-content">
-            <div class="cyber-badge-row">
-              <span class="cyber-pill pill-cyan"><i class="fa-brands fa-unity"></i> UNITY SPECIALIST</span>
-              <span class="cyber-pill pill-pink"><i class="fa-solid fa-vr-cardboard"></i> AR/VR & XR</span>
-              <span class="cyber-pill pill-yellow"><i class="fa-solid fa-network-wired"></i> MULTIPLAYER NETCODE</span>
+          <h1 class="hero-main-title">
+            CRAFTING <span class="neon-gradient-text">HIGH-OCTANE</span> MULTIPLAYER GAMES & DEFENSE VR
+          </h1>
+
+          <p class="hero-description">
+            I'm <strong class="highlight-white">Sahil Ahmed</strong> — a <strong>Senior Unity Game Developer</strong> with <strong>4+ years</strong> of hands-on expertise building server-authoritative multiplayer netcode (NGO & Photon), high-precision vehicle physics, commercial mobile hits, and defense VR simulations inaugurated by India's Chief of Defence Staff.
+          </p>
+
+          <!-- Core Stat Counters -->
+          <div class="hero-stats-row">
+            <div class="stat-card">
+              <span class="stat-num neon-cyan">4+</span>
+              <span class="stat-desc">Years Production</span>
             </div>
-
-            <h1 class="hero-title">
-              ARCHITECTING <span class="glitch-word" data-text="VIRTUAL WORLDS">VIRTUAL WORLDS</span> & MULTIPLAYER
-              REALMS
-            </h1>
-
-            <p class="hero-desc">
-              Hey, I'm <strong class="highlight-name">Sahil Ahmed</strong> — an innovative
-              <strong>Unity Game & XR Developer</strong> with <strong>4+ years</strong> of hands-on experience crafting
-              high-performance multiplayer architectures, immersive VR/AR applications for national defense, and
-              commercially published games with millions of physics calculations.
-            </p>
-
-            <!-- Quick Metrics Deck -->
-            <div class="metrics-grid">
-              <div class="metric-box">
-                <span class="metric-num neon-cyan">4+</span>
-                <span class="metric-label">Years Game Dev</span>
-              </div>
-              <div class="metric-box">
-                <span class="metric-num neon-pink">5+</span>
-                <span class="metric-label">Published / Deployed</span>
-              </div>
-              <div class="metric-box">
-                <span class="metric-num neon-yellow">100%</span>
-                <span class="metric-label">Netcode & Physics</span>
-              </div>
-              <div class="metric-box">
-                <span class="metric-num neon-green">MIL-VR</span>
-                <span class="metric-label">National Defense XR</span>
-              </div>
+            <div class="stat-card">
+              <span class="stat-num neon-pink">5+</span>
+              <span class="stat-desc">Shipped Titles</span>
             </div>
-
-            <!-- CTA Actions -->
-            <div class="hero-actions">
-              <a href="#projects" class="cyber-btn primary-btn" data-sound="click">
-                <span class="btn-glitch-layer"></span>
-                <i class="fa-solid fa-play"></i> EXPLORE PORTFOLIO
-              </a>
-              <a href="#arcade" class="cyber-btn secondary-btn" data-sound="click">
-                <i class="fa-solid fa-gamepad"></i> PLAY DEMO
-              </a>
-              <a href="https://linkedin.com/in/sahil-ahmed-81018a228" target="_blank" rel="noopener noreferrer"
-                class="cyber-btn icon-btn" title="LinkedIn Profile" data-sound="click">
-                <i class="fa-brands fa-linkedin"></i>
-              </a>
-              <a href="mailto:sahilahmed262001@gmail.com" class="cyber-btn icon-btn" title="Email Sahil"
-                data-sound="click">
-                <i class="fa-solid fa-envelope"></i>
-              </a>
+            <div class="stat-card">
+              <span class="stat-num neon-yellow">90 FPS</span>
+              <span class="stat-desc">VR Optimization</span>
             </div>
+            <div class="stat-card">
+              <span class="stat-num neon-green">NGO</span>
+              <span class="stat-desc">Netcode Sync</span>
+            </div>
+          </div>
+
+          <!-- Hero Action Buttons -->
+          <div class="hero-cta-group">
+            <a href="#projects" class="cyber-btn primary-glow-btn" data-sound="click">
+              <i class="fa-solid fa-gamepad"></i> EXPLORE GAMES
+            </a>
+            <a href="#arcade" class="cyber-btn secondary-ghost-btn" data-sound="click">
+              <i class="fa-solid fa-play"></i> PLAY IN-BROWSER DEMO
+            </a>
+            <a href="https://linkedin.com/in/sahil-ahmed-81018a228" target="_blank" rel="noopener noreferrer" class="cyber-btn icon-only-btn" title="LinkedIn Profile" data-sound="click">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="mailto:sahilahmed262001@gmail.com" class="cyber-btn icon-only-btn" title="Send Email" data-sound="click">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
           </div>
         </div>
 
-        <!-- Right: Interactive 3D Holographic Model / Core Radar -->
-        <div class="hero-right cyber-card glass-panel tech-border">
-          <div class="card-header">
-            <span class="card-title"><i class="fa-solid fa-atom"></i> HOLO-CORE // LIVE DRIVERS</span>
-            <span class="badge-status">SYNC: 99.8%</span>
-          </div>
+        <!-- Right Hero Interactive Showcase Card -->
+        <div class="hero-visual-card">
+          <div class="holo-glass-card">
+            <div class="holo-top-bar">
+              <div class="dots-group">
+                <span class="dot-led red"></span>
+                <span class="dot-led yellow"></span>
+                <span class="dot-led green"></span>
+              </div>
+              <span class="holo-id">SYSTEM://SAHIL_CORE.EXE</span>
+              <span class="holo-chip">UNITY 6</span>
+            </div>
 
-          <div class="holo-stage" id="holo-stage">
-            <div class="holo-ring outer"></div>
-            <div class="holo-ring middle"></div>
-            <div class="holo-ring inner"></div>
-
-            <div class="holo-avatar-box">
-              <div class="cyber-cube">
-                <div class="cube-face front"><i class="fa-brands fa-unity"></i><span>UNITY</span></div>
-                <div class="cube-face back"><i class="fa-solid fa-code"></i><span>C# DEV</span></div>
-                <div class="cube-face right"><i class="fa-solid fa-vr-cardboard"></i><span>VR / XR</span></div>
-                <div class="cube-face left"><i class="fa-solid fa-network-wired"></i><span>NETCODE</span></div>
-                <div class="cube-face top"><i class="fa-solid fa-cube"></i><span>BLENDER</span></div>
-                <div class="cube-face bottom"><i class="fa-solid fa-mobile-screen"></i><span>MOBILE</span></div>
+            <!-- Featured Banner inside Hero -->
+            <div class="hero-banner-art">
+              <img src="./assets/mystic_motors.jpg" alt="Mystic Motors Cyberpunk Racing" class="hero-img-backdrop" />
+              <div class="banner-glass-overlay">
+                <div class="banner-badge"><i class="fa-brands fa-google-play"></i> FEATURED TITLE</div>
+                <h3 class="banner-title">MYSTIC MOTORS</h3>
+                <p class="banner-subtitle">Low-Latency Multiplayer Spell-Racing (Unity NGO)</p>
               </div>
             </div>
 
-            <div class="holo-scandeck">
-              <div class="scan-beam"></div>
-              <div class="holo-text-feed" id="holo-feed">
-                > Initializing Unity Netcode (NGO)...<br />
-                > Synchronizing 64-player server state...<br />
-                > Loading VR HMD Spatial Anchors...<br />
-                > Optimizing Draw Calls & Batching...<br />
-                > Status: <span class="neon-green">READY TO DEPLOY</span>
-              </div>
+            <!-- Live Terminal Output -->
+            <div class="hero-terminal-box">
+              <div class="terminal-line"><span class="term-prompt">&gt;</span> <span class="term-cmd">Initializing Unity Netcode for GameObjects (NGO)...</span></div>
+              <div class="terminal-line"><span class="term-prompt">&gt;</span> <span class="term-cmd">Vehicle suspension & drift physics calibrated.</span></div>
+              <div class="terminal-line"><span class="term-prompt">&gt;</span> <span class="term-cmd">Spatial VR occlusion culling optimized: <strong class="neon-green">90 FPS STABLE</strong></span></div>
             </div>
-          </div>
 
-          <div class="quick-terminal-info">
-            <div class="loc-tag"><i class="fa-solid fa-location-crosshairs"></i> Muradnagar, UP, India / Global Remote
+            <div class="hero-card-footer">
+              <div class="footer-spec"><i class="fa-solid fa-code"></i> C# • ProBuilder • Blender • VR</div>
+              <button class="view-spec-btn open-modal-btn" data-project="mystic" data-sound="click">
+                VIEW SPECS <i class="fa-solid fa-angle-right"></i>
+              </button>
             </div>
-            <div class="avail-tag"><i class="fa-solid fa-circle-check"></i> Available for Full-Time & High-Impact
-              Contracts</div>
           </div>
         </div>
 
@@ -237,279 +203,204 @@
     </section>
 
 
-    <!-- PROJECTS DISTRICT SECTION -->
-    <section id="projects" class="cyber-section">
-      <div class="section-heading">
-        <div class="cyber-tag">MISSION PORTFOLIO</div>
-        <h2 class="section-title">KEY PROJECTS & <span class="neon-cyan">PUBLISHED TITLES</span></h2>
-        <p class="section-subtitle">Real-time multiplayer games, defense-grade VR simulations, and viral mobile titles.
-        </p>
+    <!-- ==================== GAMES & TITLES SHOWCASE ==================== -->
+    <section id="projects" class="section-block">
+      <div class="section-head-wrap">
+        <div class="eyebrow-tag"><i class="fa-solid fa-layer-group"></i> PRODUCTION PORTFOLIO</div>
+        <h2 class="section-heading">KEY PROJECTS & <span class="neon-gradient-text">PUBLISHED TITLES</span></h2>
+        <p class="section-desc">Commercial titles shipped to Google Play, high-stakes defense VR experiences, and multi-user metaverse worlds.</p>
 
         <!-- Filter Tabs -->
-        <div class="project-filter-bar">
-          <button class="filter-btn active" data-filter="all" data-sound="hover">ALL TITLES [5]</button>
-          <button class="filter-btn" data-filter="multiplayer" data-sound="hover">MULTIPLAYER / NETCODE</button>
-          <button class="filter-btn" data-filter="vr-xr" data-sound="hover">VR / AR / METAVERSE</button>
-          <button class="filter-btn" data-filter="mobile" data-sound="hover">CASUAL & MOBILE</button>
+        <div class="filter-pills-row">
+          <button class="filter-pill active" data-filter="all" data-sound="hover">ALL TITLES [5]</button>
+          <button class="filter-pill" data-filter="multiplayer" data-sound="hover">MULTIPLAYER / NETCODE</button>
+          <button class="filter-pill" data-filter="vr-xr" data-sound="hover">VR / AR / METAVERSE</button>
+          <button class="filter-pill" data-filter="mobile" data-sound="hover">CASUAL & MOBILE</button>
         </div>
       </div>
 
-      <div class="projects-grid">
+      <div class="games-showcase-grid">
 
-        <!-- PROJECT 1: VR CENTENARY MUSEUM -->
-        <div class="project-card cyber-card tech-border" data-category="vr-xr">
-          <div class="card-glow"></div>
-          <div class="project-badge-top">
-            <span class="badge-military"><i class="fa-solid fa-shield-halved"></i> DEFENSE TRIBUTE</span>
-            <span class="badge-role">LEAD VR DEVELOPER</span>
+        <!-- TITLE 1: MYSTIC MOTORS (HERO FEATURED) -->
+        <div class="game-card featured-game" data-category="multiplayer mobile">
+          <div class="card-visual-header">
+            <img src="./assets/mystic_motors.jpg" alt="Mystic Motors Game Artwork" class="game-cover-art" />
+            <div class="card-tag-floating"><i class="fa-brands fa-google-play"></i> GOOGLE PLAY</div>
+            <div class="card-role-chip">LEAD DEVELOPER</div>
           </div>
 
-          <div class="project-img-container">
-            <div class="project-art-canvas art-museum">
-              <div class="vr-hmd-hologram">
-                <i class="fa-solid fa-vr-cardboard"></i>
-                <div class="scan-ring"></div>
-              </div>
-              <div class="art-overlay-text">INDIAN MILITARY NURSING SERVICE</div>
-            </div>
-          </div>
-
-          <div class="project-content">
-            <div class="project-tech-tags">
-              <span class="tech-tag">Unity</span>
-              <span class="tech-tag">VR Hardware</span>
-              <span class="tech-tag">Oculus/Vive</span>
-              <span class="tech-tag">Spatial Audio</span>
+          <div class="game-card-body">
+            <div class="game-tags-list">
+              <span class="tech-chip">Unity Netcode (NGO)</span>
+              <span class="tech-chip">Vehicle Physics</span>
+              <span class="tech-chip">Spell Combat</span>
+              <span class="tech-chip">C# Client-Server</span>
             </div>
 
-            <h3 class="project-title">VR Centenary Museum</h3>
-            <h4 class="project-client">Indian Military Nursing Service (IMNS)</h4>
+            <h3 class="game-title">Mystic Motors</h3>
+            <h4 class="game-studio">TEC VENTURES | Australia</h4>
 
-            <p class="project-desc">
-              Built and deployed an immersive VR museum experience commemorating <strong>100 Glorious Years of
-                IMNS</strong>. Officially inaugurated by the <strong>Chief of Defence Staff, General Anil
-                Chauhan</strong>, serving as a high-profile interactive tribute to national armed forces.
+            <p class="game-summary">
+              High-intensity competitive multiplayer racing game incorporating customizable sci-fi vehicles, dynamic drift tracks, and a custom spell-casting mechanic for combat racing.
             </p>
 
-            <ul class="project-highlights">
-              <li><i class="fa-solid fa-chevron-right"></i> Optimized high-fidelity historical artifacts for smooth 90
-                FPS VR hardware.</li>
-              <li><i class="fa-solid fa-chevron-right"></i> Implemented interactive touch, audio guide triggers, and
-                custom kiosk deployment mode.</li>
-            </ul>
+            <div class="feature-bullets">
+              <div class="bullet-item"><i class="fa-solid fa-bolt"></i> Architected real-time low-latency multiplayer sync with Unity NGO.</div>
+              <div class="bullet-item"><i class="fa-solid fa-bolt"></i> Custom wheel friction, suspension dynamics & projectile spell collision.</div>
+            </div>
 
-            <div class="project-footer">
-              <span class="status-indicator live"><i class="fa-solid fa-certificate"></i> Inaugurated by CDS</span>
-              <button class="cyber-btn-sm open-modal-btn" data-project="museum" data-sound="click">
-                DETAILS <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <div class="game-card-action">
+              <span class="game-status-badge live"><i class="fa-solid fa-circle-check"></i> Published on Google Play</span>
+              <button class="details-cta-btn open-modal-btn" data-project="mystic" data-sound="click">
+                FULL SPECS <i class="fa-solid fa-arrow-right"></i>
               </button>
             </div>
           </div>
         </div>
 
-        <!-- PROJECT 2: MYSTIC MOTORS -->
-        <div class="project-card cyber-card tech-border featured-card" data-category="multiplayer mobile">
-          <div class="featured-ribbon">FEATURED MULTIPLAYER</div>
-          <div class="card-glow"></div>
-          <div class="project-badge-top">
-            <span class="badge-store"><i class="fa-brands fa-google-play"></i> GOOGLE PLAY</span>
-            <span class="badge-role">LEAD DEVELOPER</span>
+        <!-- TITLE 2: VR CENTENARY MUSEUM -->
+        <div class="game-card" data-category="vr-xr">
+          <div class="card-visual-header">
+            <img src="./assets/vr_museum.jpg" alt="VR Centenary Museum Experience" class="game-cover-art" />
+            <div class="card-tag-floating military-tag"><i class="fa-solid fa-shield-halved"></i> DEFENSE TRIBUTE</div>
+            <div class="card-role-chip">LEAD VR DEVELOPER</div>
           </div>
 
-          <div class="project-img-container">
-            <div class="project-art-canvas art-racing">
-              <div class="neon-car-graphic">
-                <i class="fa-solid fa-car-burst"></i>
-                <div class="speed-lines"></div>
-              </div>
-              <div class="art-overlay-text">MYSTIC MOTORS // NETCODE NGO</div>
-            </div>
-          </div>
-
-          <div class="project-content">
-            <div class="project-tech-tags">
-              <span class="tech-tag">Unity Netcode (NGO)</span>
-              <span class="tech-tag">Vehicle Physics</span>
-              <span class="tech-tag">C# Sync</span>
-              <span class="tech-tag">Google Play</span>
+          <div class="game-card-body">
+            <div class="game-tags-list">
+              <span class="tech-chip">Unity VR</span>
+              <span class="tech-chip">Oculus / SteamVR</span>
+              <span class="tech-chip">Spatial Audio</span>
+              <span class="tech-chip">Kiosk Lock System</span>
             </div>
 
-            <h3 class="project-title">Mystic Motors</h3>
-            <h4 class="project-client">TEC VENTURES | Australia</h4>
+            <h3 class="game-title">VR Centenary Museum</h3>
+            <h4 class="game-studio">Indian Military Nursing Service (IMNS)</h4>
 
-            <p class="project-desc">
-              Competitive multiplayer racing game featuring customizable futuristic vehicles, dynamic physics tracks,
-              and a custom spell-casting gameplay mechanic for high-intensity combat racing.
+            <p class="game-summary">
+              Immersive VR museum experience commemorating the <strong>100 Glorious Years of IMNS</strong>. Officially inaugurated by the <strong>Chief of Defence Staff, General Anil Chauhan</strong>, serving as a high-profile tribute to national armed forces.
             </p>
 
-            <ul class="project-highlights">
-              <li><i class="fa-solid fa-chevron-right"></i> Architected and tuned Unity Netcode for GameObjects (NGO)
-                for low-latency server-client sync.</li>
-              <li><i class="fa-solid fa-chevron-right"></i> Engineered real-time vehicle suspension, drift dynamics, and
-                spell-casting hit detection.</li>
-            </ul>
+            <div class="feature-bullets">
+              <div class="bullet-item"><i class="fa-solid fa-bolt"></i> Optimized high-detail historical artifacts to sustain rock-solid 90 FPS.</div>
+              <div class="bullet-item"><i class="fa-solid fa-bolt"></i> Interactive touch exhibits, spatial audio narration, and kiosk kiosk deployment.</div>
+            </div>
 
-            <div class="project-footer">
-              <span class="status-indicator live"><i class="fa-solid fa-check-circle"></i> Published on Google
-                Play</span>
-              <button class="cyber-btn-sm open-modal-btn" data-project="mystic" data-sound="click">
-                DETAILS <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <div class="game-card-action">
+              <span class="game-status-badge military"><i class="fa-solid fa-medal"></i> Inaugurated by CDS</span>
+              <button class="details-cta-btn open-modal-btn" data-project="museum" data-sound="click">
+                FULL SPECS <i class="fa-solid fa-arrow-right"></i>
               </button>
             </div>
           </div>
         </div>
 
-        <!-- PROJECT 3: EDUCATIONAL VR METAVERSE -->
-        <div class="project-card cyber-card tech-border" data-category="vr-xr">
-          <div class="card-glow"></div>
-          <div class="project-badge-top">
-            <span class="badge-metaverse"><i class="fa-solid fa-cubes"></i> METAVERSE</span>
-            <span class="badge-role">VR DEVELOPER</span>
+        <!-- TITLE 3: EDUCATIONAL VR METAVERSE -->
+        <div class="game-card" data-category="vr-xr">
+          <div class="card-visual-header">
+            <img src="./assets/metaverse.jpg" alt="Educational VR Metaverse" class="game-cover-art" />
+            <div class="card-tag-floating metaverse-tag"><i class="fa-solid fa-globe"></i> METAVERSE</div>
+            <div class="card-role-chip">VR DEVELOPER</div>
           </div>
 
-          <div class="project-img-container">
-            <div class="project-art-canvas art-metaverse">
-              <div class="metaverse-portal">
-                <i class="fa-solid fa-globe"></i>
-                <div class="portal-ring"></div>
-              </div>
-              <div class="art-overlay-text">SEMI-OPEN WORLD METAVERSE</div>
-            </div>
-          </div>
-
-          <div class="project-content">
-            <div class="project-tech-tags">
-              <span class="tech-tag">Unity</span>
-              <span class="tech-tag">VR Interactive Systems</span>
-              <span class="tech-tag">3D Level Design</span>
-              <span class="tech-tag">Mini-Games</span>
+          <div class="game-card-body">
+            <div class="game-tags-list">
+              <span class="tech-chip">Unity 3D</span>
+              <span class="tech-chip">VR Interactive Systems</span>
+              <span class="tech-chip">Multi-World Streaming</span>
+              <span class="tech-chip">Mini-Games</span>
             </div>
 
-            <h3 class="project-title">Educational VR Metaverse</h3>
-            <h4 class="project-client">Abhiwan Technology Pvt Ltd</h4>
+            <h3 class="game-title">Educational VR Metaverse</h3>
+            <h4 class="game-studio">Abhiwan Technology Pvt Ltd</h4>
 
-            <p class="project-desc">
-              Created a semi-open world educational metaverse featuring virtual libraries, TED Talk auditoriums, and
-              interactive exploration side-worlds with mini-games (boating, shooting, skating) tailored for active
-              student learning.
+            <p class="game-summary">
+              Semi-open world educational metaverse featuring virtual libraries, synchronized TED Talk auditoriums, and interactive exploration side-worlds with boating, shooting, and skating mini-games.
             </p>
 
-            <ul class="project-highlights">
-              <li><i class="fa-solid fa-chevron-right"></i> Interactive auditoriums with spatial audio & synced
-                presentation screens.</li>
-              <li><i class="fa-solid fa-chevron-right"></i> Multiple mini-game physics systems for boating and
-                physics-based interactions.</li>
-            </ul>
+            <div class="feature-bullets">
+              <div class="bullet-item"><i class="fa-solid fa-bolt"></i> Networked lecture auditoriums with synchronized presentation slides.</div>
+              <div class="bullet-item"><i class="fa-solid fa-bolt"></i> Physics-driven mini-games for active student engagement.</div>
+            </div>
 
-            <div class="project-footer">
-              <span class="status-indicator deployed"><i class="fa-solid fa-layer-group"></i> Multi-World VR</span>
-              <button class="cyber-btn-sm open-modal-btn" data-project="metaverse" data-sound="click">
-                DETAILS <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <div class="game-card-action">
+              <span class="game-status-badge deployed"><i class="fa-solid fa-cubes"></i> Multi-World VR</span>
+              <button class="details-cta-btn open-modal-btn" data-project="metaverse" data-sound="click">
+                FULL SPECS <i class="fa-solid fa-arrow-right"></i>
               </button>
             </div>
           </div>
         </div>
 
-        <!-- PROJECT 4: MERGE BALLS -->
-        <div class="project-card cyber-card tech-border" data-category="mobile">
-          <div class="card-glow"></div>
-          <div class="project-badge-top">
-            <span class="badge-store"><i class="fa-brands fa-google-play"></i> GOOGLE PLAY</span>
-            <span class="badge-role">UNITY DEVELOPER</span>
+        <!-- TITLE 4: MERGE BALLS -->
+        <div class="game-card" data-category="mobile">
+          <div class="card-visual-header">
+            <img src="./assets/casual_puzzle.jpg" alt="Merge Balls Physics Game" class="game-cover-art" />
+            <div class="card-tag-floating"><i class="fa-brands fa-google-play"></i> GOOGLE PLAY</div>
+            <div class="card-role-chip">UNITY DEVELOPER</div>
           </div>
 
-          <div class="project-img-container">
-            <div class="project-art-canvas art-merge">
-              <div class="physics-balls-icon">
-                <span class="b-circle b-1">2</span>
-                <span class="b-circle b-2">4</span>
-                <span class="b-circle b-3">8</span>
-              </div>
-              <div class="art-overlay-text">PHYSICS CASUAL HIT</div>
-            </div>
-          </div>
-
-          <div class="project-content">
-            <div class="project-tech-tags">
-              <span class="tech-tag">Unity 2D/3D Physics</span>
-              <span class="tech-tag">Cascade Mechanics</span>
-              <span class="tech-tag">Power-Ups</span>
-              <span class="tech-tag">Mobile Optimization</span>
+          <div class="game-card-body">
+            <div class="game-tags-list">
+              <span class="tech-chip">2D/3D Physics</span>
+              <span class="tech-chip">Cascade Combo Chain</span>
+              <span class="tech-chip">Zero GC Alloc</span>
+              <span class="tech-chip">Haptics</span>
             </div>
 
-            <h3 class="project-title">Merge Balls</h3>
-            <h4 class="project-client">DevKraken</h4>
+            <h3 class="game-title">Merge Balls</h3>
+            <h4 class="game-studio">DevKraken</h4>
 
-            <p class="project-desc">
-              A physics-based number puzzle game featuring dynamic ball dropping, cascading merge reactions, power-up
-              items, and rewarding combo systems for hyper-casual gamers.
+            <p class="game-summary">
+              Physics-based number puzzle game featuring dynamic ball drops, cascading merge reactions, power-up systems, and hyper-satisfying combo multipliers.
             </p>
 
-            <ul class="project-highlights">
-              <li><i class="fa-solid fa-chevron-right"></i> Optimized 2D/3D rigidbodies and bounce collision restitution
-                for ultra-satisfying drops.</li>
-              <li><i class="fa-solid fa-chevron-right"></i> Dynamic combo multipliers, particle bursts, and haptic
-                feedback.</li>
-            </ul>
+            <div class="feature-bullets">
+              <div class="bullet-item"><i class="fa-solid fa-bolt"></i> Tuned rigidbody physics restitution curves and elasticity.</div>
+              <div class="bullet-item"><i class="fa-solid fa-bolt"></i> Zero garbage collection spikes during high-frequency drops.</div>
+            </div>
 
-            <div class="project-footer">
-              <span class="status-indicator live"><i class="fa-solid fa-check-circle"></i> Published on Google
-                Play</span>
-              <button class="cyber-btn-sm open-modal-btn" data-project="merge" data-sound="click">
-                DETAILS <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <div class="game-card-action">
+              <span class="game-status-badge live"><i class="fa-solid fa-circle-check"></i> Published on Google Play</span>
+              <button class="details-cta-btn open-modal-btn" data-project="merge" data-sound="click">
+                FULL SPECS <i class="fa-solid fa-arrow-right"></i>
               </button>
             </div>
           </div>
         </div>
 
-        <!-- PROJECT 5: TILE POP -->
-        <div class="project-card cyber-card tech-border" data-category="mobile">
-          <div class="card-glow"></div>
-          <div class="project-badge-top">
-            <span class="badge-store"><i class="fa-brands fa-google-play"></i> GOOGLE PLAY</span>
-            <span class="badge-role">UNITY DEVELOPER</span>
+        <!-- TITLE 5: TILE POP -->
+        <div class="game-card" data-category="mobile">
+          <div class="card-visual-header">
+            <img src="./assets/casual_puzzle.jpg" alt="Tile Pop Puzzle Game" class="game-cover-art" />
+            <div class="card-tag-floating"><i class="fa-brands fa-google-play"></i> GOOGLE PLAY</div>
+            <div class="card-role-chip">UNITY DEVELOPER</div>
           </div>
 
-          <div class="project-img-container">
-            <div class="project-art-canvas art-tile">
-              <div class="tile-grid-icon">
-                <div class="t-cell neon-pink-cell"></div>
-                <div class="t-cell neon-cyan-cell"></div>
-                <div class="t-cell neon-yellow-cell"></div>
-                <div class="t-cell neon-green-cell"></div>
-              </div>
-              <div class="art-overlay-text">VIBRANT BLOCK PUZZLE</div>
-            </div>
-          </div>
-
-          <div class="project-content">
-            <div class="project-tech-tags">
-              <span class="tech-tag">Grid Logic & State</span>
-              <span class="tech-tag">Mobile UI/UX</span>
-              <span class="tech-tag">Score Multipliers</span>
-              <span class="tech-tag">Google Play</span>
+          <div class="game-card-body">
+            <div class="game-tags-list">
+              <span class="tech-chip">Grid Logic</span>
+              <span class="tech-chip">Mobile UI/UX</span>
+              <span class="tech-chip">Score Multipliers</span>
+              <span class="tech-chip">Board Optimization</span>
             </div>
 
-            <h3 class="project-title">Tile Pop</h3>
-            <h4 class="project-client">DevKraken</h4>
+            <h3 class="game-title">Tile Pop</h3>
+            <h4 class="game-studio">DevKraken</h4>
 
-            <p class="project-desc">
-              A vibrant block-clearing puzzle game featuring multiple game modes, score multipliers, and highly
-              optimized board state logic running smoothly across all mobile aspect ratios.
+            <p class="game-summary">
+              Vibrant block-clearing puzzle game with multiple game modes, score multipliers, and highly optimized board state logic running smoothly across all mobile aspect ratios.
             </p>
 
-            <ul class="project-highlights">
-              <li><i class="fa-solid fa-chevron-right"></i> Architected clean, deterministic board grid solver with zero
-                memory allocation spikes.</li>
-              <li><i class="fa-solid fa-chevron-right"></i> Smooth UI transitions and dynamic particle animations for
-                tile blast combos.</li>
-            </ul>
+            <div class="feature-bullets">
+              <div class="bullet-item"><i class="fa-solid fa-bolt"></i> Deterministic grid solver with flood-fill cluster clearing.</div>
+              <div class="bullet-item"><i class="fa-solid fa-bolt"></i> Ultra-responsive UI transitions and particle VFX.</div>
+            </div>
 
-            <div class="project-footer">
-              <span class="status-indicator live"><i class="fa-solid fa-check-circle"></i> Published on Google
-                Play</span>
-              <button class="cyber-btn-sm open-modal-btn" data-project="tile" data-sound="click">
-                DETAILS <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <div class="game-card-action">
+              <span class="game-status-badge live"><i class="fa-solid fa-circle-check"></i> Published on Google Play</span>
+              <button class="details-cta-btn open-modal-btn" data-project="tile" data-sound="click">
+                FULL SPECS <i class="fa-solid fa-arrow-right"></i>
               </button>
             </div>
           </div>
@@ -519,263 +410,195 @@
     </section>
 
 
-    <!-- CYBER ARCADE / PLAYABLE MINI-GAME -->
-    <section id="arcade" class="cyber-section arcade-section">
-      <div class="section-heading">
-        <div class="cyber-tag highlight-tag"><i class="fa-solid fa-gamepad"></i> INTERACTIVE ARCADE STATION</div>
-        <h2 class="section-title">CYBER DRIVER & <span class="neon-pink">PHYSICS LAB</span></h2>
-        <p class="section-subtitle">Test out gameplay mechanics right in your browser! Steer the cyber racer and collect
-          data packets.</p>
+    <!-- ==================== PLAYABLE CYBER ARCADE ==================== -->
+    <section id="arcade" class="section-block">
+      <div class="section-head-wrap">
+        <div class="eyebrow-tag pink-tag"><i class="fa-solid fa-gamepad"></i> INTERACTIVE GAMEPLAY STATION</div>
+        <h2 class="section-heading">NEO VELOCITY // <span class="neon-pink">PHYSICS ENGINE DEMO</span></h2>
+        <p class="section-desc">Experience real-time game architecture directly in your browser. Steer the cyber racer, collect energy orbs, and dodge glitch firewalls.</p>
       </div>
 
-      <div class="arcade-cabinet cyber-card tech-border">
-        <div class="cabinet-header">
-          <div class="cabinet-brand">
-            <i class="fa-solid fa-microchip"></i> CYBER_PULSE // ENGINE MINI-RUNNER v2.4
+      <div class="arcade-console-container">
+        <!-- Top Arcade Bar -->
+        <div class="console-top-header">
+          <div class="console-title-wrap">
+            <span class="console-led"></span>
+            <span>CYBER_RUNNER // TICK RATE: 60Hz // CANV_RENDERER</span>
           </div>
-          <div class="cabinet-stats">
-            <span class="score-display">SCORE: <strong id="game-score">0</strong></span>
-            <span class="highscore-display">BEST: <strong id="game-highscore">0</strong></span>
-            <span class="net-status"><i class="fa-solid fa-wifi"></i> TICK: 60Hz</span>
+          <div class="console-stats-hud">
+            <div class="hud-stat-item">SCORE: <strong id="game-score" class="neon-cyan">0</strong></div>
+            <div class="hud-stat-item">HIGH SCORE: <strong id="game-highscore" class="neon-yellow">0</strong></div>
           </div>
         </div>
 
-        <!-- Canvas Mini Game Display -->
-        <div class="game-viewport-container">
-          <canvas id="mini-game-canvas" width="800" height="400"></canvas>
-          <div id="game-start-overlay" class="game-overlay">
-            <div class="overlay-modal">
-              <div class="glitch-title" data-text="NEO VELOCITY">NEO VELOCITY</div>
-              <p>DODGE GLITCH BLOCKS • COLLECT ENERGY DATA ORBS • MULTIPLY SCORE</p>
-              <div class="controls-hint">
-                <span><kbd>▲</kbd> / <kbd>W</kbd> or <kbd>▼</kbd> / <kbd>S</kbd> or <strong>TOUCH / CLICK</strong> to
-                  Steer</span>
+        <!-- Canvas Viewport -->
+        <div class="game-viewport">
+          <canvas id="mini-game-canvas" width="840" height="420"></canvas>
+
+          <!-- Start Screen Overlay -->
+          <div id="game-start-overlay" class="game-screen-overlay">
+            <div class="screen-modal">
+              <div class="arcade-badge">ARCADE SIMULATOR v3.0</div>
+              <h3 class="arcade-modal-title">NEO VELOCITY</h3>
+              <p class="arcade-modal-desc">Dodge red glitch firewalls • Collect yellow data orbs • Maximize your multiplier</p>
+              <div class="keys-guide">
+                <span>Use <kbd>▲</kbd> / <kbd>▼</kbd> or <kbd>W</kbd> / <kbd>S</kbd> or <strong>Touch / Drag</strong> to Steer</span>
               </div>
-              <button id="btn-start-game" class="cyber-btn primary-btn pulse-glow" data-sound="click">
-                <i class="fa-solid fa-play"></i> LAUNCH SIMULATOR
+              <button id="btn-start-game" class="cyber-btn primary-glow-btn" data-sound="click">
+                <i class="fa-solid fa-play"></i> LAUNCH GAME SIMULATION
               </button>
             </div>
           </div>
-          <div id="game-over-overlay" class="game-overlay hidden">
-            <div class="overlay-modal">
-              <h3 class="game-over-text">CRITICAL OVERLOAD!</h3>
-              <p>FINAL DATA PACKETS COLLECTED: <span id="final-score" class="neon-yellow">0</span></p>
-              <button id="btn-restart-game" class="cyber-btn primary-btn" data-sound="click">
+
+          <!-- Game Over Overlay -->
+          <div id="game-over-overlay" class="game-screen-overlay hidden">
+            <div class="screen-modal">
+              <div class="arcade-badge pink-badge">CRITICAL COLLISION</div>
+              <h3 class="arcade-modal-title neon-pink">SYSTEM OVERLOAD</h3>
+              <p class="arcade-modal-desc">Data Packets Harvested: <strong id="final-score" class="neon-yellow">0</strong></p>
+              <button id="btn-restart-game" class="cyber-btn primary-glow-btn" data-sound="click">
                 <i class="fa-solid fa-rotate-right"></i> RESTART RUN
               </button>
             </div>
           </div>
         </div>
 
-        <!-- Cabinet Controls Deck -->
-        <div class="cabinet-deck">
-          <div class="touch-controls hide-desktop">
-            <button id="btn-touch-up" class="touch-btn"><i class="fa-solid fa-arrow-up"></i> UP</button>
-            <button id="btn-touch-down" class="touch-btn"><i class="fa-solid fa-arrow-down"></i> DOWN</button>
+        <!-- Arcade Deck Footer -->
+        <div class="console-bottom-deck">
+          <div class="touch-controls-group hide-desktop">
+            <button id="btn-touch-up" class="touch-dir-btn"><i class="fa-solid fa-arrow-up"></i> UP</button>
+            <button id="btn-touch-down" class="touch-dir-btn"><i class="fa-solid fa-arrow-down"></i> DOWN</button>
           </div>
-          <div class="deck-notes">
-            <i class="fa-solid fa-lightbulb"></i> Built using HTML5 Canvas & Custom Physics Loop, illustrating Sahil's
-            real-time game architecture & particle systems!
+          <div class="deck-tip">
+            <i class="fa-solid fa-microchip"></i> Demonstrating custom particle pooling, AABB collision hitboxes, and audio synthesis!
           </div>
         </div>
       </div>
     </section>
 
 
-    <!-- TECH AUGMENTATIONS / SKILLS SECTION -->
-    <section id="skills" class="cyber-section">
-      <div class="section-heading">
-        <div class="cyber-tag">CYBERNETIC ARSENAL</div>
-        <h2 class="section-title">CORE SKILLS & <span class="neon-yellow">AUGMENTATIONS</span></h2>
-        <p class="section-subtitle">Specialized skillsets engineered over 4+ years of professional game production.</p>
+    <!-- ==================== TECH STACK & AUGMENTATIONS ==================== -->
+    <section id="skills" class="section-block">
+      <div class="section-head-wrap">
+        <div class="eyebrow-tag"><i class="fa-solid fa-microchip"></i> CYBERNETIC CAPABILITIES</div>
+        <h2 class="section-heading">TECHNICAL SKILLS & <span class="neon-gradient-text">AUGMENTATIONS</span></h2>
+        <p class="section-desc">Specialized technical proficiencies honed over 4+ years of professional game production.</p>
       </div>
 
-      <div class="skills-grid">
+      <div class="skills-matrix-grid">
 
-        <!-- Category 1: Game & XR Development -->
-        <div class="skill-category-card cyber-card tech-border">
-          <div class="category-header">
-            <div class="cat-icon neon-cyan-bg"><i class="fa-brands fa-unity"></i></div>
-            <div class="cat-title-wrap">
+        <!-- Card 1: Game & XR Engine -->
+        <div class="matrix-card">
+          <div class="matrix-header">
+            <div class="matrix-icon cyan-icon"><i class="fa-brands fa-unity"></i></div>
+            <div>
               <h3>Game & XR Development</h3>
               <span>CORE ARCHITECTURE</span>
             </div>
           </div>
-          <div class="skills-list">
-            <div class="skill-item">
-              <div class="skill-info"><span>Unity Engine (2D / 3D / XR)</span><span class="neon-cyan">98%</span></div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-cyan" style="width: 98%"></div>
-              </div>
+          <div class="matrix-bars">
+            <div class="skill-row">
+              <div class="row-label"><span>Unity Engine (2D/3D/XR)</span><strong class="neon-cyan">98%</strong></div>
+              <div class="bar-track"><div class="bar-fill cyan-fill" style="width:98%"></div></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>C# Programming & Design Patterns</span><span class="neon-cyan">95%</span>
-              </div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-cyan" style="width: 95%"></div>
-              </div>
+            <div class="skill-row">
+              <div class="row-label"><span>C# Programming & Systems</span><strong class="neon-cyan">95%</strong></div>
+              <div class="bar-track"><div class="bar-fill cyan-fill" style="width:95%"></div></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>Virtual Reality (VR) / Oculus / SteamVR</span><span
-                  class="neon-cyan">92%</span></div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-cyan" style="width: 92%"></div>
-              </div>
+            <div class="skill-row">
+              <div class="row-label"><span>VR / Oculus / SteamVR</span><strong class="neon-cyan">92%</strong></div>
+              <div class="bar-track"><div class="bar-fill cyan-fill" style="width:92%"></div></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>Augmented Reality (AR) & Spatial Tracking</span><span
-                  class="neon-cyan">88%</span></div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-cyan" style="width: 88%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>Gameplay Mechanics & Physics Engines</span><span
-                  class="neon-cyan">94%</span></div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-cyan" style="width: 94%"></div>
-              </div>
+            <div class="skill-row">
+              <div class="row-label"><span>Gameplay & Physics Mechanics</span><strong class="neon-cyan">94%</strong></div>
+              <div class="bar-track"><div class="bar-fill cyan-fill" style="width:94%"></div></div>
             </div>
           </div>
         </div>
 
-        <!-- Category 2: Multiplayer Networking -->
-        <div class="skill-category-card cyber-card tech-border">
-          <div class="category-header">
-            <div class="cat-icon neon-pink-bg"><i class="fa-solid fa-network-wired"></i></div>
-            <div class="cat-title-wrap">
+        <!-- Card 2: Multiplayer Netcode -->
+        <div class="matrix-card">
+          <div class="matrix-header">
+            <div class="matrix-icon pink-icon"><i class="fa-solid fa-network-wired"></i></div>
+            <div>
               <h3>Multiplayer Networking</h3>
-              <span>NETCODE & SYNCHRONIZATION</span>
+              <span>LOW-LATENCY NETCODE</span>
             </div>
           </div>
-          <div class="skills-list">
-            <div class="skill-item">
-              <div class="skill-info"><span>Unity Netcode for GameObjects (NGO)</span><span class="neon-pink">92%</span>
-              </div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-pink" style="width: 92%"></div>
-              </div>
+          <div class="matrix-bars">
+            <div class="skill-row">
+              <div class="row-label"><span>Unity Netcode (NGO)</span><strong class="neon-pink">94%</strong></div>
+              <div class="bar-track"><div class="bar-fill pink-fill" style="width:94%"></div></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>Photon PUN 2 / Photon Fusion</span><span class="neon-pink">90%</span></div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-pink" style="width: 90%"></div>
-              </div>
+            <div class="skill-row">
+              <div class="row-label"><span>Photon PUN 2 & Fusion</span><strong class="neon-pink">90%</strong></div>
+              <div class="bar-track"><div class="bar-fill pink-fill" style="width:90%"></div></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>Server-Authoritative Physics & RPCs</span><span class="neon-pink">88%</span>
-              </div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-pink" style="width: 88%"></div>
-              </div>
+            <div class="skill-row">
+              <div class="row-label"><span>Server-Authoritative State</span><strong class="neon-pink">88%</strong></div>
+              <div class="bar-track"><div class="bar-fill pink-fill" style="width:88%"></div></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>Lag Compensation & Client Prediction</span><span
-                  class="neon-pink">86%</span></div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-pink" style="width: 86%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>Lobby Matchmaking & Relay Services</span><span class="neon-pink">89%</span>
-              </div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-pink" style="width: 89%"></div>
-              </div>
+            <div class="skill-row">
+              <div class="row-label"><span>Lag Comp & Client Prediction</span><strong class="neon-pink">86%</strong></div>
+              <div class="bar-track"><div class="bar-fill pink-fill" style="width:86%"></div></div>
             </div>
           </div>
         </div>
 
-        <!-- Category 3: 3D & Design Tools -->
-        <div class="skill-category-card cyber-card tech-border">
-          <div class="category-header">
-            <div class="cat-icon neon-yellow-bg"><i class="fa-solid fa-cubes-stacked"></i></div>
-            <div class="cat-title-wrap">
-              <h3>3D & Design Pipelines</h3>
-              <span>PIPELINE INTEGRATION</span>
+        <!-- Card 3: 3D Pipelines & Level Design -->
+        <div class="matrix-card">
+          <div class="matrix-header">
+            <div class="matrix-icon yellow-icon"><i class="fa-solid fa-cubes-stacked"></i></div>
+            <div>
+              <h3>3D & Prototyping</h3>
+              <span>LEVEL & ASSET INTEGRATION</span>
             </div>
           </div>
-          <div class="skills-list">
-            <div class="skill-item">
-              <div class="skill-info"><span>ProBuilder (Rapid Prototyping/Blocking)</span><span
-                  class="neon-yellow">95%</span></div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-yellow" style="width: 95%"></div>
-              </div>
+          <div class="matrix-bars">
+            <div class="skill-row">
+              <div class="row-label"><span>ProBuilder Rapid Blocking</span><strong class="neon-yellow">95%</strong></div>
+              <div class="bar-track"><div class="bar-fill yellow-fill" style="width:95%"></div></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>Blender (Navigation & Asset Integration)</span><span
-                  class="neon-yellow">85%</span></div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-yellow" style="width: 85%"></div>
-              </div>
+            <div class="skill-row">
+              <div class="row-label"><span>Blender Pipeline Integration</span><strong class="neon-yellow">85%</strong></div>
+              <div class="bar-track"><div class="bar-fill yellow-fill" style="width:85%"></div></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>Figma UI/UX Implementation</span><span class="neon-yellow">90%</span></div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-yellow" style="width: 90%"></div>
-              </div>
+            <div class="skill-row">
+              <div class="row-label"><span>Figma UI/UX Implementation</span><strong class="neon-yellow">90%</strong></div>
+              <div class="bar-track"><div class="bar-fill yellow-fill" style="width:90%"></div></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>Shader Graph & Particle VFX</span><span class="neon-yellow">84%</span></div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-yellow" style="width: 84%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>Lighting, Baking & URP Optimization</span><span
-                  class="neon-yellow">91%</span></div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-yellow" style="width: 91%"></div>
-              </div>
+            <div class="skill-row">
+              <div class="row-label"><span>URP Lighting & Shaders</span><strong class="neon-yellow">90%</strong></div>
+              <div class="bar-track"><div class="bar-fill yellow-fill" style="width:90%"></div></div>
             </div>
           </div>
         </div>
 
-        <!-- Category 4: Deployment & Publishing -->
-        <div class="skill-category-card cyber-card tech-border">
-          <div class="category-header">
-            <div class="cat-icon neon-green-bg"><i class="fa-solid fa-rocket"></i></div>
-            <div class="cat-title-wrap">
-              <h3>Deployment & Publishing</h3>
+        <!-- Card 4: Publishing & Optimization -->
+        <div class="matrix-card">
+          <div class="matrix-header">
+            <div class="matrix-icon green-icon"><i class="fa-solid fa-rocket"></i></div>
+            <div>
+              <h3>Deployment & Performance</h3>
               <span>CROSS-PLATFORM DEPLOY</span>
             </div>
           </div>
-          <div class="skills-list">
-            <div class="skill-item">
-              <div class="skill-info"><span>Google Play Console & Android Build</span><span
-                  class="neon-green">96%</span></div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-green" style="width: 96%"></div>
-              </div>
+          <div class="matrix-bars">
+            <div class="skill-row">
+              <div class="row-label"><span>Google Play Console Publishing</span><strong class="neon-green">96%</strong></div>
+              <div class="bar-track"><div class="bar-fill green-fill" style="width:96%"></div></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>VR Hardware Deployment (Quest / Pico)</span><span
-                  class="neon-green">93%</span></div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-green" style="width: 93%"></div>
-              </div>
+            <div class="skill-row">
+              <div class="row-label"><span>VR Hardware (Quest / Pico)</span><strong class="neon-green">92%</strong></div>
+              <div class="bar-track"><div class="bar-fill green-fill" style="width:92%"></div></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>Mobile Performance & Draw Call Tuning</span><span
-                  class="neon-green">95%</span></div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-green" style="width: 95%"></div>
-              </div>
+            <div class="skill-row">
+              <div class="row-label"><span>Draw Call & Batching Tuning</span><strong class="neon-green">95%</strong></div>
+              <div class="bar-track"><div class="bar-fill green-fill" style="width:95%"></div></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>Git / Version Control & CI Pipelines</span><span
-                  class="neon-green">90%</span></div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-green" style="width: 90%"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-info"><span>Memory Profiling & GC Alloc Reduction</span><span
-                  class="neon-green">92%</span></div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill fill-green" style="width: 92%"></div>
-              </div>
+            <div class="skill-row">
+              <div class="row-label"><span>GC Profiling & Memory Tuning</span><strong class="neon-green">93%</strong></div>
+              <div class="bar-track"><div class="bar-fill green-fill" style="width:93%"></div></div>
             </div>
           </div>
         </div>
@@ -784,98 +607,67 @@
     </section>
 
 
-    <!-- CAREER TIMELINE / EXPERIENCE SECTION -->
-    <section id="experience" class="cyber-section">
-      <div class="section-heading">
-        <div class="cyber-tag">TRANSMISSION LOGS</div>
-        <h2 class="section-title">PROFESSIONAL <span class="neon-cyan">EXPERIENCE</span></h2>
-        <p class="section-subtitle">Track record of building enterprise VR simulations, commercial hits, and leading
-          game engineering.</p>
+    <!-- ==================== CAREER LOG & TIMELINE ==================== -->
+    <section id="experience" class="section-block">
+      <div class="section-head-wrap">
+        <div class="eyebrow-tag"><i class="fa-solid fa-timeline"></i> CAREER LOGS</div>
+        <h2 class="section-heading">WORK <span class="neon-gradient-text">EXPERIENCE</span></h2>
+        <p class="section-desc">Track record leading multiplayer game development, defense simulations, and mobile releases.</p>
       </div>
 
-      <div class="timeline-container">
-        <div class="cyber-timeline-line"></div>
-
-        <!-- Role 1: Senior Unity Developer at TEC VENTURES -->
-        <div class="timeline-entry left-entry">
-          <div class="timeline-dot active-dot"><i class="fa-solid fa-bolt"></i></div>
-          <div class="timeline-card cyber-card tech-border">
-            <div class="timeline-header">
-              <div class="company-badge">
-                <span class="comp-name">TEC VENTURES</span>
-                <span class="comp-loc"><i class="fa-solid fa-globe"></i> Australia (Remote)</span>
+      <div class="modern-timeline">
+        
+        <!-- Experience 1: Senior Unity Developer -->
+        <div class="timeline-box">
+          <div class="timeline-marker cyan-marker"><i class="fa-solid fa-bolt"></i></div>
+          <div class="timeline-inner-card">
+            <div class="t-card-header">
+              <div>
+                <h3 class="role-heading">Senior Unity Developer</h3>
+                <h4 class="company-heading">TEC VENTURES <span class="loc-sub"><i class="fa-solid fa-globe"></i> Australia (Remote)</span></h4>
               </div>
-              <div class="time-period neon-cyan">OCT 2025 – PRESENT</div>
+              <div class="t-badge cyan-badge">OCT 2025 – PRESENT</div>
             </div>
-            <h3 class="role-title">Senior Unity Developer</h3>
-            <p class="role-summary">Leading high-stakes multiplayer game development and deployment on Google Play.</p>
-            <ul class="role-bullets">
-              <li><i class="fa-solid fa-code-branch"></i> Spearheaded the end-to-end development, multiplayer
-                networking, and publishing of <strong>Mystic Motors</strong> on the Google Play Store.</li>
-              <li><i class="fa-solid fa-microchip"></i> Architected and optimized multiplayer networking using
-                <strong>Unity Netcode for GameObjects (NGO)</strong> for ultra low-latency synchronization across global
-                players.</li>
-              <li><i class="fa-solid fa-wand-magic-sparkles"></i> Engineered real-time vehicle physics, drift mechanics,
-                and a custom spell-casting gameplay system for competitive multiplayer racing.</li>
+            <p class="t-summary">Spearheaded the complete development, netcode architecture, and Google Play publishing of Mystic Motors.</p>
+            <ul class="t-points">
+              <li><i class="fa-solid fa-chevron-right"></i> Architected and optimized multiplayer networking using <strong>Unity Netcode for GameObjects (NGO)</strong> for low-latency synchronization across global players.</li>
+              <li><i class="fa-solid fa-chevron-right"></i> Engineered real-time vehicle suspension physics, drift dynamics, and custom spell-casting projectile collision systems.</li>
             </ul>
-            <div class="role-tags">
-              <span>Unity</span>
-              <span>Netcode NGO</span>
-              <span>Vehicle Physics</span>
-              <span>Google Play</span>
-            </div>
           </div>
         </div>
 
-        <!-- Role 2: Unity Developer at Abhiwan Technology -->
-        <div class="timeline-entry right-entry">
-          <div class="timeline-dot"><i class="fa-solid fa-vr-cardboard"></i></div>
-          <div class="timeline-card cyber-card tech-border">
-            <div class="timeline-header">
-              <div class="company-badge">
-                <span class="comp-name">Abhiwan Technology Pvt Ltd.</span>
-                <span class="comp-loc"><i class="fa-solid fa-location-dot"></i> New Delhi, Delhi, India</span>
+        <!-- Experience 2: Unity Developer -->
+        <div class="timeline-box">
+          <div class="timeline-marker pink-marker"><i class="fa-solid fa-vr-cardboard"></i></div>
+          <div class="timeline-inner-card">
+            <div class="t-card-header">
+              <div>
+                <h3 class="role-heading">Unity Developer</h3>
+                <h4 class="company-heading">Abhiwan Technology Pvt Ltd. <span class="loc-sub"><i class="fa-solid fa-location-dot"></i> New Delhi, India</span></h4>
               </div>
-              <div class="time-period neon-pink">AUG 2022 – OCT 2025</div>
+              <div class="t-badge pink-badge">AUG 2022 – OCT 2025</div>
             </div>
-            <h3 class="role-title">Unity Developer</h3>
-            <p class="role-summary">Developed diverse casual mobile titles, multiplayer systems, and landmark defense XR
-              projects.</p>
-            <ul class="role-bullets">
-              <li><i class="fa-solid fa-shield-halved"></i> Engineered the prestigious <strong>VR Centenary
-                  Museum</strong> for the Indian Military Nursing Service (inaugurated by Chief of Defence Staff General
-                Anil Chauhan).</li>
-              <li><i class="fa-solid fa-cube"></i> Utilized <strong>ProBuilder</strong> for level blocking, rapid
-                prototyping, and managed 3D asset pipelines & integration with <strong>Blender</strong>.</li>
-              <li><i class="fa-solid fa-pen-ruler"></i> Collaborated with UI/UX design teams via Figma to implement
-                intuitive, responsive interfaces across diverse mobile aspect ratios and VR screen spaces.</li>
-              <li><i class="fa-solid fa-gamepad"></i> Built and shipped casual games, puzzle mechanics (Merge Balls,
-                Tile Pop), and educational VR metaverse worlds.</li>
+            <p class="t-summary">Engineered high-profile VR experiences for national defense, casual games, and educational metaverses.</p>
+            <ul class="t-points">
+              <li><i class="fa-solid fa-chevron-right"></i> Built and deployed the <strong>VR Centenary Museum</strong> commemorating 100 Years of IMNS (officially inaugurated by Chief of Defence Staff General Anil Chauhan).</li>
+              <li><i class="fa-solid fa-chevron-right"></i> Utilized <strong>ProBuilder</strong> for level blocking, rapid prototyping, and managed 3D asset pipelines & integration with <strong>Blender</strong>.</li>
+              <li><i class="fa-solid fa-chevron-right"></i> Collaborated with design teams via Figma to implement intuitive, responsive UI across diverse mobile and VR screen ratios.</li>
             </ul>
-            <div class="role-tags">
-              <span>Unity C#</span>
-              <span>VR/AR</span>
-              <span>ProBuilder</span>
-              <span>Blender</span>
-              <span>Photon PUN</span>
-            </div>
           </div>
         </div>
 
-        <!-- Education Entry -->
-        <div class="timeline-entry left-entry">
-          <div class="timeline-dot"><i class="fa-solid fa-graduation-cap"></i></div>
-          <div class="timeline-card cyber-card tech-border edu-card">
-            <div class="timeline-header">
-              <div class="company-badge">
-                <span class="comp-name">APJ Abdul Kalam Technological University</span>
-                <span class="comp-loc"><i class="fa-solid fa-award"></i> University Degree</span>
+        <!-- Education Box -->
+        <div class="timeline-box">
+          <div class="timeline-marker yellow-marker"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="timeline-inner-card">
+            <div class="t-card-header">
+              <div>
+                <h3 class="role-heading">B.Tech in Computer Science</h3>
+                <h4 class="company-heading">APJ Abdul Kalam Technological University</h4>
               </div>
-              <div class="time-period neon-yellow">2019 – 2023</div>
+              <div class="t-badge yellow-badge">2019 – 2023</div>
             </div>
-            <h3 class="role-title">Bachelor of Technology (B.Tech) in Computer Science</h3>
-            <p class="role-summary">Solid foundational training in Algorithms, Data Structures, Computer Graphics,
-              Software Engineering, and Object-Oriented System Architecture.</p>
+            <p class="t-summary">Solid foundations in Data Structures, Algorithms, Computer Graphics, Software Design Patterns, and Real-Time Systems.</p>
           </div>
         </div>
 
@@ -883,122 +675,93 @@
     </section>
 
 
-    <!-- CONTACT / COMMS UPLINK SECTION -->
-    <section id="contact" class="cyber-section contact-section">
-      <div class="section-heading">
-        <div class="cyber-tag"><i class="fa-solid fa-satellite"></i> QUANTUM COMMS</div>
-        <h2 class="section-title">ESTABLISH <span class="neon-cyan">UPLINK</span></h2>
-        <p class="section-subtitle">Ready to architect your next high-performance game, VR project, or multiplayer
-          title. Send a transmission!</p>
+    <!-- ==================== CONTACT / COMMS UPLINK ==================== -->
+    <section id="contact" class="section-block">
+      <div class="section-head-wrap">
+        <div class="eyebrow-tag"><i class="fa-solid fa-satellite"></i> QUANTUM COMMS</div>
+        <h2 class="section-heading">ESTABLISH <span class="neon-gradient-text">UPLINK</span></h2>
+        <p class="section-desc">Looking for a Senior Unity Game Developer or Multiplayer / VR Architect? Let's connect.</p>
       </div>
 
-      <div class="contact-grid">
+      <div class="contact-deck-grid">
+        
+        <!-- Left: Quick Details -->
+        <div class="contact-details-card">
+          <h3 class="card-sec-title"><i class="fa-solid fa-address-card"></i> DIRECT CHANNELS</h3>
 
-        <!-- Left: Comms Info Deck -->
-        <div class="contact-info-panel cyber-card tech-border">
-          <div class="card-header">
-            <span class="card-title">COMMS TERMINAL // CONTACT DETAILS</span>
+          <div class="channel-row" data-sound="hover">
+            <div class="chan-icon cyan-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="chan-meta">
+              <span class="chan-label">DIRECT EMAIL</span>
+              <a href="mailto:sahilahmed262001@gmail.com" class="chan-val">sahilahmed262001@gmail.com</a>
+            </div>
+            <button class="copy-action-btn" data-copy="sahilahmed262001@gmail.com" title="Copy Email" data-sound="click">
+              <i class="fa-regular fa-copy"></i>
+            </button>
           </div>
 
-          <div class="comms-info-body">
-            <div class="comms-item" data-sound="hover">
-              <div class="comms-icon neon-cyan-bg"><i class="fa-solid fa-envelope"></i></div>
-              <div class="comms-meta">
-                <span class="comms-label">DIRECT EMAIL</span>
-                <a href="mailto:sahilahmed262001@gmail.com" class="comms-val">sahilahmed262001@gmail.com</a>
-              </div>
-              <button class="copy-btn" data-copy="sahilahmed262001@gmail.com" title="Copy Email" data-sound="click">
-                <i class="fa-regular fa-copy"></i>
-              </button>
+          <div class="channel-row" data-sound="hover">
+            <div class="chan-icon pink-icon"><i class="fa-solid fa-phone"></i></div>
+            <div class="chan-meta">
+              <span class="chan-label">PHONE & WHATSAPP</span>
+              <a href="tel:+918171638120" class="chan-val">+91 8171638120</a>
             </div>
-
-            <div class="comms-item" data-sound="hover">
-              <div class="comms-icon neon-pink-bg"><i class="fa-solid fa-phone"></i></div>
-              <div class="comms-meta">
-                <span class="comms-label">SECURE PHONE / WHATSAPP</span>
-                <a href="tel:+918171638120" class="comms-val">+91 8171638120</a>
-              </div>
-              <button class="copy-btn" data-copy="+918171638120" title="Copy Phone" data-sound="click">
-                <i class="fa-regular fa-copy"></i>
-              </button>
-            </div>
-
-            <div class="comms-item" data-sound="hover">
-              <div class="comms-icon neon-yellow-bg"><i class="fa-brands fa-linkedin-in"></i></div>
-              <div class="comms-meta">
-                <span class="comms-label">LINKEDIN NETWORK</span>
-                <a href="https://linkedin.com/in/sahil-ahmed-81018a228" target="_blank" rel="noopener noreferrer"
-                  class="comms-val">linkedin.com/in/sahil-ahmed-81018a228</a>
-              </div>
-              <a href="https://linkedin.com/in/sahil-ahmed-81018a228" target="_blank" rel="noopener noreferrer"
-                class="external-link-btn" title="Open LinkedIn" data-sound="click">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
-            </div>
-
-            <div class="comms-item" data-sound="hover">
-              <div class="comms-icon neon-green-bg"><i class="fa-solid fa-location-dot"></i></div>
-              <div class="comms-meta">
-                <span class="comms-label">LOCATION & TIMEZONE</span>
-                <span class="comms-val">Muradnagar, UP, India (IST / UTC+5:30) • Open to Remote & Relocation</span>
-              </div>
-            </div>
+            <button class="copy-action-btn" data-copy="+918171638120" title="Copy Phone" data-sound="click">
+              <i class="fa-regular fa-copy"></i>
+            </button>
           </div>
 
-          <!-- Quick Interactive Console Output -->
-          <div class="cyber-console-log">
-            <div class="console-title"><i class="fa-solid fa-terminal"></i> LIVE SERVER LOG:</div>
-            <div class="log-stream" id="log-stream">
-              [SYSTEM] Port 7777 open for game dev inquiries.<br />
-              [STATUS] Sahil Ahmed is ready for interview & technical assessments.
+          <div class="channel-row" data-sound="hover">
+            <div class="chan-icon yellow-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+            <div class="chan-meta">
+              <span class="chan-label">LINKEDIN PROFILE</span>
+              <a href="https://linkedin.com/in/sahil-ahmed-81018a228" target="_blank" rel="noopener noreferrer" class="chan-val">linkedin.com/in/sahil-ahmed-81018a228</a>
             </div>
+            <a href="https://linkedin.com/in/sahil-ahmed-81018a228" target="_blank" rel="noopener noreferrer" class="open-link-btn" title="Open LinkedIn" data-sound="click">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+
+          <div class="terminal-status-snippet">
+            <div class="t-line"><span class="neon-green">● SYSTEM READY:</span> Sahil is open to Full-Time Senior Unity Developer Roles & High-Impact Contracts.</div>
           </div>
         </div>
 
-        <!-- Right: Interactive Message Terminal Form -->
-        <div class="contact-form-panel cyber-card tech-border">
-          <div class="card-header">
-            <span class="card-title"><i class="fa-solid fa-paper-plane"></i> DIRECT TRANSMISSION</span>
-            <span class="badge-status">ENCRYPTION: AES-256</span>
-          </div>
+        <!-- Right: Modern Direct Transmission Form -->
+        <div class="contact-form-card">
+          <h3 class="card-sec-title"><i class="fa-solid fa-paper-plane"></i> SEND TRANSMISSION</h3>
 
-          <form id="contact-form" class="cyber-form" action="https://formspree.io/f/sahilahmed262001@gmail.com"
-            method="POST">
-            <div class="form-group">
-              <label for="sender-name"><i class="fa-solid fa-user"></i> CALLSIGN / NAME</label>
-              <input type="text" id="sender-name" name="name" required placeholder="e.g. Alex Mercer / Studio Recruiter"
-                class="cyber-input" />
+          <form id="contact-form" class="modern-form" action="https://formspree.io/f/sahilahmed262001@gmail.com" method="POST">
+            <div class="input-field">
+              <label for="name">YOUR NAME / STUDIO</label>
+              <input type="text" id="name" name="name" required placeholder="e.g. Alex Vance / Game Studio Lead" />
             </div>
 
-            <div class="form-group">
-              <label for="sender-email"><i class="fa-solid fa-at"></i> RETURN FREQUENCY (EMAIL)</label>
-              <input type="email" id="sender-email" name="email" required placeholder="name@company.com"
-                class="cyber-input" />
+            <div class="input-field">
+              <label for="email">YOUR EMAIL</label>
+              <input type="email" id="email" name="email" required placeholder="name@company.com" />
             </div>
 
-            <div class="form-group">
-              <label for="project-type"><i class="fa-solid fa-bullseye"></i> MISSION OBJECTIVE</label>
-              <select id="project-type" name="type" class="cyber-input">
-                <option value="Full-Time Unity Role">Full-Time Senior Unity Role</option>
-                <option value="Multiplayer / Netcode Game">Multiplayer / Netcode Architecture</option>
-                <option value="VR / AR / XR Simulation">VR / AR Defense or Enterprise Sim</option>
-                <option value="Mobile Casual Title">Mobile Title / Optimization</option>
-                <option value="Consulting / Freelance">Consulting / Other</option>
+            <div class="input-field">
+              <label for="role-type">PROJECT SCOPE</label>
+              <select id="role-type" name="type">
+                <option value="Senior Unity Developer Role">Senior Unity Developer (Full-Time)</option>
+                <option value="Multiplayer / Netcode Architecture">Multiplayer Game / Netcode (NGO)</option>
+                <option value="VR / AR Defense Simulation">VR / AR Defense or Enterprise</option>
+                <option value="Mobile Hit Optimization">Mobile Title Optimization</option>
+                <option value="Other Inquiries">Other Inquiries</option>
               </select>
             </div>
 
-            <div class="form-group">
-              <label for="sender-message"><i class="fa-solid fa-comment-dots"></i> TRANSMISSION PAYLOAD
-                (MESSAGE)</label>
-              <textarea id="sender-message" name="message" rows="4" required
-                placeholder="Detail your project requirements, tech stack, or interview invite..."
-                class="cyber-input"></textarea>
+            <div class="input-field">
+              <label for="message">MESSAGE PAYLOAD</label>
+              <textarea id="message" name="message" rows="4" required placeholder="Describe your game project, tech stack, or job opportunity..."></textarea>
             </div>
 
-            <button type="submit" class="cyber-btn primary-btn submit-btn" data-sound="click">
-              <i class="fa-solid fa-satellite-dish"></i> TRANSMIT PACKET
+            <button type="submit" class="cyber-btn primary-glow-btn full-btn" data-sound="click">
+              <i class="fa-solid fa-satellite-dish"></i> SEND TRANSMISSION
             </button>
-            <div id="form-feedback" class="form-feedback hidden"></div>
+            <div id="form-feedback" class="form-feedback-box hidden"></div>
           </form>
         </div>
 
@@ -1007,41 +770,37 @@
 
   </main>
 
-  <!-- Cyber Footer -->
-  <footer class="cyber-footer">
-    <div class="footer-content">
-      <div class="footer-left">
-        <span class="brand-bracket">[</span>SAHIL AHMED<span class="brand-bracket">]</span>
-        <p>© 2026 // SENIOR UNITY GAME & XR DEVELOPER • ALL RIGHTS RESERVED</p>
+  <!-- MODERN FOOTER -->
+  <footer class="modern-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <strong>SAHIL AHMED</strong>
+        <span>SENIOR UNITY & MULTIPLAYER GAME ARCHITECT</span>
       </div>
-      <div class="footer-center">
-        <div class="system-tag">NEO-CYBER CITY PORTFOLIO MATRIX v3.0</div>
+      <div class="footer-copy">
+        © 2026 SAHIL AHMED • BUILT FOR GITHUB PAGES
       </div>
-      <div class="footer-right">
-        <a href="#hero" class="back-to-top" data-sound="click"><i class="fa-solid fa-angles-up"></i> BACK TO TOP</a>
-      </div>
+      <a href="#hero" class="scroll-top-btn" data-sound="click">
+        <i class="fa-solid fa-arrow-up"></i> TOP
+      </a>
     </div>
   </footer>
 
-  <!-- PROJECT DETAILS MODAL -->
-  <div id="project-modal" class="modal-backdrop hidden">
-    <div class="modal-card cyber-card tech-border">
-      <div class="modal-header">
-        <h3 id="modal-title" class="neon-cyan">PROJECT TITLE</h3>
-        <button id="modal-close-btn" class="modal-close" aria-label="Close modal"><i
-            class="fa-solid fa-xmark"></i></button>
+  <!-- MODAL DETAILS POPUP -->
+  <div id="project-modal" class="modern-modal-backdrop hidden">
+    <div class="modern-modal-card">
+      <div class="modal-top">
+        <div id="modal-title-wrap"></div>
+        <button id="modal-close-btn" class="modal-x-btn" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
       </div>
-      <div class="modal-body" id="modal-body-content">
-        <!-- Injected via JavaScript -->
-      </div>
+      <div class="modal-scroll-body" id="modal-body-content"></div>
     </div>
   </div>
 
-  <!-- Toast Notification Container -->
-  <div id="toast-container" class="toast-container"></div>
+  <!-- TOAST ALERTS -->
+  <div id="toast-container" class="toast-stack"></div>
 
-  <!-- Scripts -->
+  <!-- JAVASCRIPT -->
   <script src="main.js"></script>
 </body>
-
 </html>

@@ -1,9 +1,9 @@
 /* ==========================================================================
-   CYBERPUNK CITY PORTFOLIO ENGINE & INTERACTIVITY
-   Author: Sahil Ahmed | Senior Unity Game & XR Developer
+   MODERN AAA CYBERPUNK PORTFOLIO ENGINE & INTERACTIVITY
+   Author: Sahil Ahmed | Senior Unity & XR Game Architect
    ========================================================================== */
 
-// --- 1. SOUND FX SYNTHESIZER (Web Audio API) ---
+// --- 1. SCI-FI AUDIO ENGINE (Web Audio API) ---
 class CyberAudioEngine {
   constructor() {
     this.ctx = null;
@@ -33,7 +33,7 @@ class CyberAudioEngine {
       osc.type = 'sine';
       osc.frequency.setValueAtTime(800, this.ctx.currentTime);
       osc.frequency.exponentialRampToValueAtTime(1200, this.ctx.currentTime + 0.04);
-      gain.gain.setValueAtTime(0.03, this.ctx.currentTime);
+      gain.gain.setValueAtTime(0.025, this.ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
       osc.connect(gain);
       gain.connect(this.ctx.destination);
@@ -50,14 +50,14 @@ class CyberAudioEngine {
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
       osc.type = 'triangle';
-      osc.frequency.setValueAtTime(440, this.ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(880, this.ctx.currentTime + 0.08);
-      gain.gain.setValueAtTime(0.08, this.ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.08);
+      osc.frequency.setValueAtTime(480, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(960, this.ctx.currentTime + 0.06);
+      gain.gain.setValueAtTime(0.06, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.06);
       osc.connect(gain);
       gain.connect(this.ctx.destination);
       osc.start();
-      osc.stop(this.ctx.currentTime + 0.08);
+      osc.stop(this.ctx.currentTime + 0.06);
     } catch (e) {}
   }
 
@@ -69,14 +69,14 @@ class CyberAudioEngine {
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
       osc.type = 'square';
-      osc.frequency.setValueAtTime(587.33, this.ctx.currentTime); // D5
-      osc.frequency.setValueAtTime(880, this.ctx.currentTime + 0.05);   // A5
-      gain.gain.setValueAtTime(0.06, this.ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.12);
+      osc.frequency.setValueAtTime(659.25, this.ctx.currentTime); // E5
+      osc.frequency.setValueAtTime(987.77, this.ctx.currentTime + 0.04); // B5
+      gain.gain.setValueAtTime(0.05, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.1);
       osc.connect(gain);
       gain.connect(this.ctx.destination);
       osc.start();
-      osc.stop(this.ctx.currentTime + 0.12);
+      osc.stop(this.ctx.currentTime + 0.1);
     } catch (e) {}
   }
 
@@ -88,90 +88,80 @@ class CyberAudioEngine {
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
       osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(180, this.ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(40, this.ctx.currentTime + 0.25);
-      gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.25);
+      osc.frequency.setValueAtTime(200, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(40, this.ctx.currentTime + 0.22);
+      gain.gain.setValueAtTime(0.09, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.22);
       osc.connect(gain);
       gain.connect(this.ctx.destination);
       osc.start();
-      osc.stop(this.ctx.currentTime + 0.25);
+      osc.stop(this.ctx.currentTime + 0.22);
     } catch (e) {}
   }
 }
 
 const cyberAudio = new CyberAudioEngine();
 
-// Attach UI sound listeners
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-sound="hover"]').forEach(el => {
-    el.addEventListener('mouseenter', () => cyberAudio.playHover());
-  });
-  document.querySelectorAll('[data-sound="click"], .cyber-btn, .filter-btn, .hud-btn').forEach(el => {
-    el.addEventListener('click', () => cyberAudio.playClick());
-  });
-});
 
-
-// --- 2. THREE.JS 3D CYBERPUNK METROPOLIS BACKGROUND ---
+// --- 2. THREE.JS 3D AMBIENT CYBER METROPOLIS ---
 function initCyberCity3D() {
   const container = document.getElementById('canvas-container');
   if (!container || typeof THREE === 'undefined') return;
 
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x07090e, 0.0025);
+  scene.fog = new THREE.FogExp2(0x030712, 0.0022);
 
-  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1500);
-  camera.position.set(0, 150, 450);
+  const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 1, 1600);
+  camera.position.set(0, 140, 420);
 
   const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   container.appendChild(renderer.domElement);
 
-  // Lights
-  const ambientLight = new THREE.AmbientLight(0x0f172a, 1.2);
+  // Volumetric Ambient & Directional Lights
+  const ambientLight = new THREE.AmbientLight(0x0f172a, 1.4);
   scene.add(ambientLight);
 
-  const cyanLight = new THREE.DirectionalLight(0x00f0ff, 1.5);
-  cyanLight.position.set(200, 300, 200);
+  const cyanLight = new THREE.DirectionalLight(0x00f0ff, 1.8);
+  cyanLight.position.set(250, 300, 200);
   scene.add(cyanLight);
 
-  const pinkLight = new THREE.DirectionalLight(0xff0055, 1.2);
-  pinkLight.position.set(-200, 200, -100);
+  const pinkLight = new THREE.DirectionalLight(0xff0055, 1.4);
+  pinkLight.position.set(-250, 200, -100);
   scene.add(pinkLight);
 
-  // City Grid Buildings Group
+  // Buildings Group
   const cityGroup = new THREE.Group();
   scene.add(cityGroup);
 
-  const buildingCount = 75;
+  const buildingCount = 80;
   const buildingMaterials = [
-    new THREE.MeshBasicMaterial({ color: 0x0c1222, wireframe: false }),
-    new THREE.MeshBasicMaterial({ color: 0x11192e, wireframe: false }),
-    new THREE.MeshBasicMaterial({ color: 0x080c18, wireframe: false })
+    new THREE.MeshBasicMaterial({ color: 0x070c1a }),
+    new THREE.MeshBasicMaterial({ color: 0x0c1328 }),
+    new THREE.MeshBasicMaterial({ color: 0x050812 })
   ];
 
-  const wireframeCyan = new THREE.LineBasicMaterial({ color: 0x00f0ff, transparent: true, opacity: 0.25 });
-  const wireframePink = new THREE.LineBasicMaterial({ color: 0xff0055, transparent: true, opacity: 0.25 });
+  const wireframeCyan = new THREE.LineBasicMaterial({ color: 0x00f0ff, transparent: true, opacity: 0.22 });
+  const wireframePink = new THREE.LineBasicMaterial({ color: 0xff0055, transparent: true, opacity: 0.22 });
 
   for (let i = 0; i < buildingCount; i++) {
-    const width = 25 + Math.random() * 40;
-    const height = 80 + Math.random() * 320;
-    const depth = 25 + Math.random() * 40;
+    const width = 28 + Math.random() * 45;
+    const height = 90 + Math.random() * 340;
+    const depth = 28 + Math.random() * 45;
 
     const geo = new THREE.BoxGeometry(width, height, depth);
     const mat = buildingMaterials[Math.floor(Math.random() * buildingMaterials.length)];
     const building = new THREE.Mesh(geo, mat);
 
-    const x = (Math.random() - 0.5) * 1100;
-    const z = (Math.random() - 0.5) * 900 - 150;
+    const x = (Math.random() - 0.5) * 1200;
+    const z = (Math.random() - 0.5) * 950 - 150;
     const y = height / 2;
 
     building.position.set(x, y, z);
     cityGroup.add(building);
 
-    // Wireframe edge accent
+    // Accent edge wireframe
     const edges = new THREE.EdgesGeometry(geo);
     const lineMat = Math.random() > 0.5 ? wireframeCyan : wireframePink;
     const wireframe = new THREE.LineSegments(edges, lineMat);
@@ -179,8 +169,8 @@ function initCyberCity3D() {
     cityGroup.add(wireframe);
   }
 
-  // Hovercar Traffic Streams (Flying light streaks)
-  const trafficCount = 45;
+  // Hovercar Traffic Streams
+  const trafficCount = 50;
   const trafficGeometry = new THREE.BufferGeometry();
   const trafficPositions = [];
   const trafficColors = [];
@@ -191,13 +181,13 @@ function initCyberCity3D() {
   const colYellow = new THREE.Color(0xffe600);
 
   for (let i = 0; i < trafficCount; i++) {
-    const x = (Math.random() - 0.5) * 1200;
-    const y = 30 + Math.random() * 220;
-    const z = (Math.random() - 0.5) * 800;
-    const speed = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? 1 : -1);
+    const x = (Math.random() - 0.5) * 1300;
+    const y = 30 + Math.random() * 240;
+    const z = (Math.random() - 0.5) * 850;
+    const speed = (Math.random() * 3 + 2.5) * (Math.random() > 0.5 ? 1 : -1);
 
     trafficPositions.push(x, y, z);
-    const col = Math.random() > 0.6 ? colCyan : (Math.random() > 0.3 ? colPink : colYellow);
+    const col = Math.random() > 0.5 ? colCyan : (Math.random() > 0.3 ? colPink : colYellow);
     trafficColors.push(col.r, col.g, col.b);
 
     trafficData.push({ x, y, z, speed, axis: Math.random() > 0.5 ? 'x' : 'z' });
@@ -207,23 +197,22 @@ function initCyberCity3D() {
   trafficGeometry.setAttribute('color', new THREE.Float32BufferAttribute(trafficColors, 3));
 
   const trafficMaterial = new THREE.PointsMaterial({
-    size: 6,
+    size: 5,
     vertexColors: true,
     transparent: true,
     opacity: 0.85
   });
-
   const trafficPoints = new THREE.Points(trafficGeometry, trafficMaterial);
   scene.add(trafficPoints);
 
-  // Digital Rain / Cyber Dust Particles
-  const particleCount = 400;
+  // Cyber Atmospheric Mist
+  const particleCount = 350;
   const particleGeo = new THREE.BufferGeometry();
   const pPositions = [];
 
   for (let i = 0; i < particleCount; i++) {
     pPositions.push(
-      (Math.random() - 0.5) * 1200,
+      (Math.random() - 0.5) * 1300,
       Math.random() * 500,
       (Math.random() - 0.5) * 1000
     );
@@ -234,55 +223,53 @@ function initCyberCity3D() {
     color: 0x00f0ff,
     size: 2,
     transparent: true,
-    opacity: 0.35
+    opacity: 0.3
   });
   const particles = new THREE.Points(particleGeo, pMaterial);
   scene.add(particles);
 
-  // Mouse Parallax Interaction
+  // Mouse Parallax
   let mouseX = 0, mouseY = 0;
   let targetX = 0, targetY = 0;
 
   window.addEventListener('mousemove', (e) => {
-    mouseX = (e.clientX - window.innerWidth / 2) * 0.05;
-    mouseY = (e.clientY - window.innerHeight / 2) * 0.05;
+    mouseX = (e.clientX - window.innerWidth / 2) * 0.04;
+    mouseY = (e.clientY - window.innerHeight / 2) * 0.04;
   });
 
   // Animation Loop
-  let clock = new THREE.Clock();
   function animate() {
     requestAnimationFrame(animate);
-    const delta = clock.getDelta();
 
-    targetX += (mouseX - targetX) * 0.05;
-    targetY += (mouseY - targetY) * 0.05;
+    targetX += (mouseX - targetX) * 0.04;
+    targetY += (mouseY - targetY) * 0.04;
 
     camera.position.x = targetX;
-    camera.position.y = 150 - targetY * 0.5;
+    camera.position.y = 140 - targetY * 0.4;
     camera.lookAt(0, 80, 0);
 
-    // Update traffic hovercars
+    // Update traffic
     const positions = trafficGeometry.attributes.position.array;
     for (let i = 0; i < trafficCount; i++) {
       const d = trafficData[i];
       if (d.axis === 'x') {
         d.x += d.speed;
-        if (d.x > 600) d.x = -600;
-        if (d.x < -600) d.x = 600;
+        if (d.x > 650) d.x = -650;
+        if (d.x < -650) d.x = 650;
         positions[i * 3] = d.x;
       } else {
         d.z += d.speed;
-        if (d.z > 400) d.z = -400;
-        if (d.z < -400) d.z = 400;
+        if (d.z > 450) d.z = -450;
+        if (d.z < -450) d.z = 450;
         positions[i * 3 + 2] = d.z;
       }
     }
     trafficGeometry.attributes.position.needsUpdate = true;
 
-    // Digital rain fall
+    // Mist movement
     const rainPos = particleGeo.attributes.position.array;
     for (let i = 1; i < rainPos.length; i += 3) {
-      rainPos[i] -= 1.2;
+      rainPos[i] -= 1.0;
       if (rainPos[i] < 0) rainPos[i] = 500;
     }
     particleGeo.attributes.position.needsUpdate = true;
@@ -299,7 +286,8 @@ function initCyberCity3D() {
   });
 }
 
-// --- 3. INTERACTIVE MINI-GAME: NEO VELOCITY (Game Dev Showcase) ---
+
+// --- 3. MODERN NEO VELOCITY PLAYABLE SIMULATOR ---
 class NeoVelocityGame {
   constructor() {
     this.canvas = document.getElementById('mini-game-canvas');
@@ -316,17 +304,16 @@ class NeoVelocityGame {
 
     this.score = 0;
     this.highScore = parseInt(localStorage.getItem('neo_highscore') || '0', 10);
-    this.highScoreEl.textContent = this.highScore;
+    if (this.highScoreEl) this.highScoreEl.textContent = this.highScore;
 
     this.isRunning = false;
     this.player = {
-      x: 60,
-      y: 200,
-      width: 32,
+      x: 70,
+      y: 210,
+      width: 36,
       height: 18,
-      speed: 6,
-      targetY: 200,
-      color: '#00f0ff'
+      speed: 6.5,
+      targetY: 210
     };
 
     this.obstacles = [];
@@ -334,7 +321,7 @@ class NeoVelocityGame {
     this.particles = [];
     this.spawnTimer = 0;
     this.gemTimer = 0;
-    this.gameSpeed = 4.5;
+    this.gameSpeed = 5.0;
 
     this.keys = { up: false, down: false };
     this.initEvents();
@@ -342,25 +329,26 @@ class NeoVelocityGame {
   }
 
   initEvents() {
-    this.btnStart.addEventListener('click', () => this.startGame());
-    this.btnRestart.addEventListener('click', () => this.startGame());
+    if (this.btnStart) this.btnStart.addEventListener('click', () => this.startGame());
+    if (this.btnRestart) this.btnRestart.addEventListener('click', () => this.startGame());
 
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') this.keys.up = true;
-      if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') this.keys.down = true;
+      if (['ArrowUp', 'w', 'W'].includes(e.key)) this.keys.up = true;
+      if (['ArrowDown', 's', 'S'].includes(e.key)) this.keys.down = true;
     });
 
     window.addEventListener('keyup', (e) => {
-      if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') this.keys.up = false;
-      if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') this.keys.down = false;
+      if (['ArrowUp', 'w', 'W'].includes(e.key)) this.keys.up = false;
+      if (['ArrowDown', 's', 'S'].includes(e.key)) this.keys.down = false;
     });
 
-    // Touch / Pointer controls on canvas
+    // Touch / Pointer on canvas
     this.canvas.addEventListener('pointerdown', (e) => {
       const rect = this.canvas.getBoundingClientRect();
       const scaleY = this.canvas.height / rect.height;
       this.player.targetY = (e.clientY - rect.top) * scaleY;
     });
+
     this.canvas.addEventListener('pointermove', (e) => {
       if (e.buttons === 1) {
         const rect = this.canvas.getBoundingClientRect();
@@ -381,40 +369,39 @@ class NeoVelocityGame {
   }
 
   startGame() {
-    this.startOverlay.classList.add('hidden');
-    this.gameOverOverlay.classList.add('hidden');
+    if (this.startOverlay) this.startOverlay.classList.add('hidden');
+    if (this.gameOverOverlay) this.gameOverOverlay.classList.add('hidden');
     this.score = 0;
-    this.scoreEl.textContent = '0';
-    this.gameSpeed = 4.5;
-    this.player.y = 200;
-    this.player.targetY = 200;
+    if (this.scoreEl) this.scoreEl.textContent = '0';
+    this.gameSpeed = 5.0;
+    this.player.y = 210;
+    this.player.targetY = 210;
     this.obstacles = [];
     this.gems = [];
     this.particles = [];
     this.isRunning = true;
-    this.lastTime = performance.now();
     requestAnimationFrame(this.gameLoop.bind(this));
   }
 
   gameOver() {
     this.isRunning = false;
     cyberAudio.playCrash();
-    this.finalScoreEl.textContent = this.score;
+    if (this.finalScoreEl) this.finalScoreEl.textContent = this.score;
 
     if (this.score > this.highScore) {
       this.highScore = this.score;
       localStorage.setItem('neo_highscore', this.highScore);
-      this.highScoreEl.textContent = this.highScore;
+      if (this.highScoreEl) this.highScoreEl.textContent = this.highScore;
       if (typeof confetti === 'function') {
-        confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+        confetti({ particleCount: 90, spread: 80, origin: { y: 0.6 } });
       }
     }
 
-    this.gameOverOverlay.classList.remove('hidden');
+    if (this.gameOverOverlay) this.gameOverOverlay.classList.remove('hidden');
   }
 
   addExplosion(x, y, color) {
-    for (let i = 0; i < 14; i++) {
+    for (let i = 0; i < 16; i++) {
       this.particles.push({
         x: x,
         y: y,
@@ -427,63 +414,60 @@ class NeoVelocityGame {
     }
   }
 
-  gameLoop(now) {
+  gameLoop() {
     if (!this.isRunning) return;
 
-    this.ctx.fillStyle = '#020306';
+    this.ctx.fillStyle = '#020409';
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-    // Draw Cyber Track Grid Lines
+    // Grid Floor
     this.ctx.strokeStyle = 'rgba(0, 240, 255, 0.08)';
     this.ctx.lineWidth = 1;
-    for (let y = 0; y < this.canvas.height; y += 40) {
+    for (let y = 0; y < this.canvas.height; y += 42) {
       this.ctx.beginPath();
       this.ctx.moveTo(0, y);
       this.ctx.lineTo(this.canvas.width, y);
       this.ctx.stroke();
     }
 
-    // Player Movement (Smooth Interpolation)
+    // Player Steer
     if (this.keys.up) this.player.y -= this.player.speed;
     if (this.keys.down) this.player.y += this.player.speed;
     if (!this.keys.up && !this.keys.down && Math.abs(this.player.targetY - this.player.y) > 2) {
-      this.player.y += (this.player.targetY - this.player.y) * 0.15;
+      this.player.y += (this.player.targetY - this.player.y) * 0.18;
     }
 
-    // Keep player in bounds
-    this.player.y = Math.max(15, Math.min(this.canvas.height - 35, this.player.y));
+    this.player.y = Math.max(16, Math.min(this.canvas.height - 36, this.player.y));
 
-    // Player Trail Particle
-    if (Math.random() > 0.3) {
-      this.particles.push({
-        x: this.player.x,
-        y: this.player.y + 9,
-        vx: -this.gameSpeed * 0.8,
-        vy: (Math.random() - 0.5) * 1.5,
-        radius: Math.random() * 2 + 1,
-        color: '#00f0ff',
-        life: 0.6
-      });
-    }
+    // Thruster Trail
+    this.particles.push({
+      x: this.player.x,
+      y: this.player.y + 9,
+      vx: -this.gameSpeed * 0.9,
+      vy: (Math.random() - 0.5) * 1.5,
+      radius: Math.random() * 2.5 + 1,
+      color: '#00f0ff',
+      life: 0.6
+    });
 
-    // Draw Player (Neon Cyber Racer)
+    // Draw Player Jet / Hovercar
     this.ctx.fillStyle = '#00f0ff';
     this.ctx.shadowColor = '#00f0ff';
-    this.ctx.shadowBlur = 12;
+    this.ctx.shadowBlur = 14;
     this.ctx.beginPath();
-    this.ctx.moveTo(this.player.x + 32, this.player.y + 9);
+    this.ctx.moveTo(this.player.x + 36, this.player.y + 9);
     this.ctx.lineTo(this.player.x, this.player.y);
-    this.ctx.lineTo(this.player.x + 6, this.player.y + 9);
+    this.ctx.lineTo(this.player.x + 8, this.player.y + 9);
     this.ctx.lineTo(this.player.x, this.player.y + 18);
     this.ctx.closePath();
     this.ctx.fill();
     this.ctx.shadowBlur = 0;
 
-    // Spawning Obstacles (Glitch Firewall blocks)
+    // Obstacles
     this.spawnTimer++;
-    if (this.spawnTimer > 55) {
+    if (this.spawnTimer > 50) {
       this.spawnTimer = 0;
-      const h = 40 + Math.random() * 70;
+      const h = 45 + Math.random() * 75;
       this.obstacles.push({
         x: this.canvas.width + 20,
         y: Math.random() * (this.canvas.height - h),
@@ -493,37 +477,37 @@ class NeoVelocityGame {
       });
     }
 
-    // Spawning Energy Data Orbs
+    // Gems / Orbs
     this.gemTimer++;
-    if (this.gemTimer > 40) {
+    if (this.gemTimer > 35) {
       this.gemTimer = 0;
       this.gems.push({
         x: this.canvas.width + 20,
         y: 30 + Math.random() * (this.canvas.height - 60),
-        radius: 7,
+        radius: 8,
         color: '#ffe600'
       });
     }
 
-    // Update & Draw Obstacles
+    // Draw Obstacles
     for (let i = this.obstacles.length - 1; i >= 0; i--) {
       const obs = this.obstacles[i];
       obs.x -= this.gameSpeed;
 
       this.ctx.fillStyle = obs.color;
       this.ctx.shadowColor = obs.color;
-      this.ctx.shadowBlur = 10;
+      this.ctx.shadowBlur = 12;
       this.ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
       this.ctx.shadowBlur = 0;
 
-      // Collision Check (AABB)
+      // Hitbox
       if (
         this.player.x < obs.x + obs.width &&
         this.player.x + this.player.width > obs.x &&
         this.player.y < obs.y + obs.height &&
         this.player.y + this.player.height > obs.y
       ) {
-        this.addExplosion(this.player.x + 16, this.player.y + 9, '#ff0055');
+        this.addExplosion(this.player.x + 18, this.player.y + 9, '#ff0055');
         this.gameOver();
         return;
       }
@@ -531,28 +515,28 @@ class NeoVelocityGame {
       if (obs.x < -30) this.obstacles.splice(i, 1);
     }
 
-    // Update & Draw Gems
+    // Draw Gems
     for (let i = this.gems.length - 1; i >= 0; i--) {
       const g = this.gems[i];
       g.x -= this.gameSpeed;
 
       this.ctx.fillStyle = g.color;
       this.ctx.shadowColor = g.color;
-      this.ctx.shadowBlur = 10;
+      this.ctx.shadowBlur = 12;
       this.ctx.beginPath();
       this.ctx.arc(g.x, g.y, g.radius, 0, Math.PI * 2);
       this.ctx.fill();
       this.ctx.shadowBlur = 0;
 
-      // Collision Check with Gem
-      const dx = (this.player.x + 16) - g.x;
+      // Pickup Hitbox
+      const dx = (this.player.x + 18) - g.x;
       const dy = (this.player.y + 9) - g.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
 
-      if (dist < g.radius + 16) {
-        this.score += 25;
-        this.scoreEl.textContent = this.score;
-        this.gameSpeed += 0.08; // progressive difficulty
+      if (dist < g.radius + 18) {
+        this.score += 30;
+        if (this.scoreEl) this.scoreEl.textContent = this.score;
+        this.gameSpeed += 0.08;
         cyberAudio.playScore();
         this.addExplosion(g.x, g.y, '#ffe600');
         this.gems.splice(i, 1);
@@ -562,7 +546,7 @@ class NeoVelocityGame {
       if (g.x < -20) this.gems.splice(i, 1);
     }
 
-    // Update & Draw Particles
+    // Draw Particles
     for (let i = this.particles.length - 1; i >= 0; i--) {
       const p = this.particles[i];
       p.x += p.vx;
@@ -582,28 +566,28 @@ class NeoVelocityGame {
       this.ctx.globalAlpha = 1;
     }
 
-    // Passive score increment
     this.score += 1;
-    this.scoreEl.textContent = this.score;
+    if (this.scoreEl) this.scoreEl.textContent = this.score;
 
     requestAnimationFrame(this.gameLoop.bind(this));
   }
 
   renderInitialCanvas() {
-    this.ctx.fillStyle = '#020306';
+    this.ctx.fillStyle = '#020409';
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
   }
 }
 
 
-// --- 4. PROJECT DATA & MODAL DETAIL VIEWER ---
+// --- 4. PROJECT DATA & MODAL VIEWER ---
 const projectData = {
   museum: {
     title: "VR Centenary Museum",
-    subtitle: "Indian Military Nursing Service (IMNS) Centennial Tribute",
+    subtitle: "Indian Military Nursing Service (IMNS) Centenary Tribute",
     role: "Lead VR Developer",
     client: "Indian Military Nursing Service",
-    tech: ["Unity Engine", "VR Hardware Deployment", "Oculus / SteamVR", "Spatial Audio", "C# Architecture", "High-Poly Optimization"],
+    img: "./assets/vr_museum.jpg",
+    tech: ["Unity Engine", "VR Hardware Deployment", "Oculus / SteamVR", "Spatial Audio", "C# Architecture", "Kiosk Lock Mode"],
     overview: "Built and deployed an immersive VR museum experience commemorating the 100 Glorious Years of IMNS. The project was officially inaugurated by the Chief of Defence Staff, General Anil Chauhan, serving as a high-profile interactive tribute to the armed forces.",
     highlights: [
       "Engineered real-time VR kiosk hardware deployment with custom kiosk locking software to prevent public tampering.",
@@ -617,7 +601,7 @@ const projectData = {
     subtitle: "High-Octane Competitive Multiplayer Spell-Racing",
     role: "Lead Developer",
     client: "TEC VENTURES | Australia",
-    status: "Published on Google Play",
+    img: "./assets/mystic_motors.jpg",
     tech: ["Unity Netcode for GameObjects (NGO)", "Custom Vehicle Physics", "C# Server Sync", "Google Play Console", "Shader Graph"],
     overview: "Competitive multiplayer racing game incorporating customizable vehicles, dynamic tracks, and spell-casting mechanisms for fast-paced mobile matches.",
     highlights: [
@@ -632,6 +616,7 @@ const projectData = {
     subtitle: "Semi-Open World Academic & Exploration Platform",
     role: "VR Developer",
     client: "Abhiwan Technology Pvt Ltd",
+    img: "./assets/metaverse.jpg",
     tech: ["Unity", "VR Interactive Systems", "3D Level Design", "Mini-Games Physics", "C#", "Blender"],
     overview: "Created a semi-open world educational metaverse featuring virtual libraries, TED Talk auditoriums, and interactive exploration side-worlds with mini-games (boating, shooting, skating) tailored for active student learning.",
     highlights: [
@@ -645,7 +630,7 @@ const projectData = {
     subtitle: "Cascading Physics-Driven Number Puzzle Hit",
     role: "Unity Developer",
     client: "DevKraken",
-    status: "Published on Google Play",
+    img: "./assets/casual_puzzle.jpg",
     tech: ["Unity 2D/3D Physics", "Cascade Mechanics", "Power-Up Systems", "Mobile Performance", "Google Play"],
     overview: "A physics-based number puzzle game featuring dynamic ball dropping, cascading merge reactions, power-up items, and combo systems.",
     highlights: [
@@ -659,7 +644,7 @@ const projectData = {
     subtitle: "Vibrant Block-Clearing Puzzle Architecture",
     role: "Unity Developer",
     client: "DevKraken",
-    status: "Published on Google Play",
+    img: "./assets/casual_puzzle.jpg",
     tech: ["Deterministic Grid Logic", "Mobile UI/UX", "Score Multipliers", "Board State Optimization", "Google Play"],
     overview: "A vibrant block-clearing puzzle game featuring multiple game modes, score multipliers, and optimized board state logic.",
     highlights: [
@@ -672,7 +657,7 @@ const projectData = {
 
 function initProjectModal() {
   const modal = document.getElementById('project-modal');
-  const modalTitle = document.getElementById('modal-title');
+  const titleWrap = document.getElementById('modal-title-wrap');
   const modalBody = document.getElementById('modal-body-content');
   const closeBtn = document.getElementById('modal-close-btn');
 
@@ -682,31 +667,41 @@ function initProjectModal() {
       const p = projectData[key];
       if (!p) return;
 
-      modalTitle.innerHTML = `<span class="neon-cyan">${p.title}</span> <small style="font-size:0.75rem; color:var(--neon-pink); display:block; margin-top:4px;">${p.subtitle}</small>`;
+      titleWrap.innerHTML = `
+        <h3 style="font-family:var(--font-heading); font-size:1.4rem; font-weight:800; color:#fff;">${p.title}</h3>
+        <p style="font-size:0.85rem; color:var(--neon-cyan); margin-top:2px;">${p.subtitle}</p>
+      `;
 
-      let techBadges = p.tech.map(t => `<span class="tech-tag">${t}</span>`).join(' ');
-      let bulletItems = p.highlights.map(h => `<li><i class="fa-solid fa-chevron-right" style="color:var(--neon-cyan); margin-right:6px;"></i> ${h}</li>`).join('');
+      let techBadges = p.tech.map(t => `<span class="tech-chip">${t}</span>`).join(' ');
+      let bulletItems = p.highlights.map(h => `<li style="display:flex; gap:8px; align-items:flex-start;"><i class="fa-solid fa-chevron-right" style="color:var(--neon-cyan); margin-top:4px;"></i> <span>${h}</span></li>`).join('');
 
       modalBody.innerHTML = `
-        <div style="margin-bottom:16px;">
-          <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-family:var(--font-mono); font-size:0.8rem;">
+        <div style="display:flex; flex-direction:column; gap:18px;">
+          <img src="${p.img}" alt="${p.title}" style="width:100%; height:220px; object-fit:cover; border-radius:12px; border:1px solid rgba(255,255,255,0.1);" />
+          
+          <div style="display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:0.82rem; background:rgba(255,255,255,0.04); padding:10px 14px; border-radius:8px;">
             <span style="color:var(--neon-green);"><i class="fa-solid fa-user-gear"></i> ${p.role}</span>
             <span style="color:var(--text-muted);"><i class="fa-solid fa-building"></i> ${p.client}</span>
           </div>
-          <p style="color:var(--text-main); margin-bottom:16px;">${p.overview}</p>
-          
-          <h4 style="font-family:var(--font-display); font-size:0.95rem; color:var(--neon-yellow); margin-bottom:8px;">
-            <i class="fa-solid fa-microchip"></i> ARCHITECTURE & KEY HIGHLIGHTS:
-          </h4>
-          <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; margin-bottom:20px; font-size:0.88rem; color:var(--text-muted);">
-            ${bulletItems}
-          </ul>
 
-          <h4 style="font-family:var(--font-display); font-size:0.95rem; color:var(--neon-cyan); margin-bottom:8px;">
-            <i class="fa-solid fa-code"></i> TECH STACK:
-          </h4>
-          <div style="display:flex; flex-wrap:wrap; gap:6px;">
-            ${techBadges}
+          <p style="color:var(--text-main); font-size:0.95rem; line-height:1.6;">${p.overview}</p>
+          
+          <div>
+            <h4 style="font-family:var(--font-heading); font-size:1.05rem; font-weight:700; color:var(--neon-yellow); margin-bottom:10px;">
+              <i class="fa-solid fa-microchip"></i> ARCHITECTURE & KEY HIGHLIGHTS:
+            </h4>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:0.9rem; color:var(--text-muted);">
+              ${bulletItems}
+            </ul>
+          </div>
+
+          <div>
+            <h4 style="font-family:var(--font-heading); font-size:1.05rem; font-weight:700; color:var(--neon-cyan); margin-bottom:10px;">
+              <i class="fa-solid fa-code"></i> TECH STACK:
+            </h4>
+            <div style="display:flex; flex-wrap:wrap; gap:6px;">
+              ${techBadges}
+            </div>
           </div>
         </div>
       `;
@@ -716,7 +711,7 @@ function initProjectModal() {
   });
 
   const closeModal = () => modal.classList.add('hidden');
-  closeBtn.addEventListener('click', closeModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
   });
@@ -726,10 +721,10 @@ function initProjectModal() {
 }
 
 
-// --- 5. PROJECT FILTERING LOGIC ---
+// --- 5. FILTERING LOGIC ---
 function initProjectFilters() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
+  const filterBtns = document.querySelectorAll('.filter-pill');
+  const projectCards = document.querySelectorAll('.game-card');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -751,7 +746,7 @@ function initProjectFilters() {
 }
 
 
-// --- 6. TOAST NOTIFICATIONS & COPY CLIBPOARD ---
+// --- 6. TOAST NOTIFICATIONS & COPY BUTTONS ---
 function showToast(message) {
   const container = document.getElementById('toast-container');
   if (!container) return;
@@ -770,12 +765,12 @@ function showToast(message) {
 }
 
 function initCopyButtons() {
-  document.querySelectorAll('.copy-btn').forEach(btn => {
+  document.querySelectorAll('.copy-action-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const text = btn.getAttribute('data-copy');
       if (navigator.clipboard && text) {
         navigator.clipboard.writeText(text).then(() => {
-          showToast(`COPIED TO CLIPBOARD: ${text}`);
+          showToast(`COPIED: ${text}`);
         });
       }
     });
@@ -783,66 +778,39 @@ function initCopyButtons() {
 }
 
 
-// --- 7. TELEMETRY & HUD CONTROLS ---
-function initTelemetry() {
-  const fpsEl = document.getElementById('telemetry-fps');
-  const pingEl = document.getElementById('telemetry-ping');
-
-  let frameCount = 0;
-  let lastTime = performance.now();
-
-  function updateTelemetry(now) {
-    frameCount++;
-    if (now - lastTime >= 1000) {
-      if (fpsEl) fpsEl.textContent = frameCount;
-      frameCount = 0;
-      lastTime = now;
-
-      // Simulated NGO Netcode latency jitter
-      if (pingEl) {
-        const ping = Math.floor(14 + Math.random() * 8);
-        pingEl.textContent = `${ping}ms (NGO Low-Lat)`;
-      }
-    }
-    requestAnimationFrame(updateTelemetry);
-  }
-  requestAnimationFrame(updateTelemetry);
-
-  // Audio Toggle Button
+// --- 7. AUDIO CONTROLS ---
+function initAudioControls() {
   const btnAudio = document.getElementById('btn-audio');
   if (btnAudio) {
     btnAudio.addEventListener('click', () => {
       cyberAudio.enabled = !cyberAudio.enabled;
       btnAudio.innerHTML = cyberAudio.enabled
-        ? `<i class="fa-solid fa-volume-high"></i> <span class="hud-btn-text">SFX: ON</span>`
-        : `<i class="fa-solid fa-volume-xmark"></i> <span class="hud-btn-text">SFX: OFF</span>`;
-      showToast(`AUDIO FX: ${cyberAudio.enabled ? 'ENABLED' : 'MUTED'}`);
+        ? `<i class="fa-solid fa-volume-high"></i> <span class="btn-lbl">SFX: ON</span>`
+        : `<i class="fa-solid fa-volume-xmark"></i> <span class="btn-lbl">SFX: OFF</span>`;
+      showToast(`AUDIO SFX: ${cyberAudio.enabled ? 'ENABLED' : 'MUTED'}`);
     });
   }
 
-  // CRT Scanline Toggle
-  const btnCrt = document.getElementById('btn-crt');
-  if (btnCrt) {
-    btnCrt.addEventListener('click', () => {
-      document.body.classList.toggle('crt-scanlines');
-      const isCrt = document.body.classList.contains('crt-scanlines');
-      showToast(`CRT SCANLINES: ${isCrt ? 'ACTIVE' : 'DEACTIVATED'}`);
-    });
-  }
+  // Hover audio listeners
+  document.querySelectorAll('[data-sound="hover"]').forEach(el => {
+    el.addEventListener('mouseenter', () => cyberAudio.playHover());
+  });
+  document.querySelectorAll('[data-sound="click"], .cyber-btn, .filter-pill, .control-btn').forEach(el => {
+    el.addEventListener('click', () => cyberAudio.playClick());
+  });
 }
 
 
-// --- 8. CONTACT FORM SIMULATION ---
+// --- 8. CONTACT FORM SUBMISSION ---
 function initContactForm() {
   const form = document.getElementById('contact-form');
   const feedback = document.getElementById('form-feedback');
   if (!form || !feedback) return;
 
-  form.addEventListener('submit', (e) => {
-    // Graceful submission feedback
-    feedback.classList.remove('hidden', 'error');
+  form.addEventListener('submit', () => {
+    feedback.classList.remove('hidden');
     feedback.classList.add('success');
-    feedback.innerHTML = `<i class="fa-solid fa-satellite-dish"></i> TRANSMITTING PACKET TO SAHIL AHMED...`;
+    feedback.innerHTML = `<i class="fa-solid fa-satellite-dish"></i> TRANSMITTING MESSAGE TO SAHIL AHMED...`;
     showToast('TRANSMISSION SENT SUCCESSFULLY!');
   });
 }
@@ -850,36 +818,36 @@ function initContactForm() {
 
 // --- 9. SCROLLSPY NAVIGATION ---
 function initScrollspy() {
-  const sections = document.querySelectorAll('.cyber-section');
-  const navItems = document.querySelectorAll('.hud-nav .nav-item');
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.hud-nav .nav-link');
 
   window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(sec => {
-      const top = sec.offsetTop - 150;
+      const top = sec.offsetTop - 180;
       if (window.pageYOffset >= top) {
         current = sec.getAttribute('id');
       }
     });
 
-    navItems.forEach(item => {
-      item.classList.remove('active');
-      if (item.getAttribute('href') === `#${current}`) {
-        item.classList.add('active');
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
       }
     });
   });
 }
 
 
-// --- INITIALIZE ALL MODULES ---
+// --- BOOTSTRAP ALL SYSTEMS ---
 window.addEventListener('DOMContentLoaded', () => {
   initCyberCity3D();
   new NeoVelocityGame();
   initProjectModal();
   initProjectFilters();
   initCopyButtons();
-  initTelemetry();
+  initAudioControls();
   initContactForm();
   initScrollspy();
 });
