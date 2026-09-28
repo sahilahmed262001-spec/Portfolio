@@ -57,7 +57,7 @@
           <span class="nav-num">I.</span> OVERVIEW
         </a>
         <a href="#projects" class="nav-item" data-sound="hover">
-          <span class="nav-num">II.</span> EXPEDITION RELICS
+          <span class="nav-num">II.</span> PROJECT DOSSIERS
         </a>
         <a href="#trial" class="nav-item nav-highlight" data-sound="hover">
           <span class="nav-num">III.</span> COMBAT TRIAL
@@ -154,7 +154,7 @@
           <!-- Action Buttons -->
           <div class="hero-actions">
             <a href="#projects" class="ornate-btn gold-btn" data-sound="click">
-              <i class="fa-solid fa-scroll"></i> EXPLORE RELICS
+              <i class="fa-solid fa-scroll"></i> PROJECT DOSSIERS
             </a>
             <a href="#trial" class="ornate-btn ghost-btn" data-sound="click">
               <i class="fa-solid fa-wand-sparkles"></i> COMMENCE TRIAL
@@ -199,7 +199,7 @@
             <div class="monolith-footer">
               <span><i class="fa-solid fa-gem"></i> C# • ProBuilder • Blender • VR Systems</span>
               <button class="inspect-btn open-modal-btn" data-project="mystic" data-sound="click">
-                INSPECT SPECS <i class="fa-solid fa-arrow-right"></i>
+                INSPECT DOSSIER <i class="fa-solid fa-arrow-right"></i>
               </button>
             </div>
           </div>
@@ -209,16 +209,16 @@
     </section>
 
 
-    <!-- ==================== KEY PROJECTS & SHIPPED TITLES ==================== -->
+    <!-- ==================== KEY PROJECTS & SHIPPED TITLES (PROJECT DOSSIERS) ==================== -->
     <section id="projects" class="content-section">
       <div class="section-title-wrap">
-        <div class="section-badge"><i class="fa-solid fa-shield-halved"></i> MASTER RELICS</div>
-        <h2 class="section-header">PUBLISHED TITLES & <span class="gilded-text">GRAND ACHIEVEMENTS</span></h2>
-        <p class="section-sub">Real-time multiplayer architectures, landmark defense VR simulations, and commercial puzzle hits shipped to Google Play.</p>
+        <div class="section-badge"><i class="fa-solid fa-shield-halved"></i> PRODUCTION DOSSIERS</div>
+        <h2 class="section-header">PROJECT DOSSIERS & <span class="gilded-text">ENGINE SPECS</span></h2>
+        <p class="section-sub">Technical breakdowns, target framerates, and server architectures of commercial titles and defense VR systems.</p>
 
         <!-- Filter Tabs -->
         <div class="filter-pills">
-          <button class="pill-btn active" data-filter="all" data-sound="hover">ALL TITLES [5]</button>
+          <button class="pill-btn active" data-filter="all" data-sound="hover">ALL DOSSIERS [5]</button>
           <button class="pill-btn" data-filter="multiplayer" data-sound="hover">MULTIPLAYER / NETCODE</button>
           <button class="pill-btn" data-filter="vr-xr" data-sound="hover">VR / AR / METAVERSE</button>
           <button class="pill-btn" data-filter="mobile" data-sound="hover">CASUAL & MOBILE</button>
@@ -227,8 +227,13 @@
 
       <div class="relics-grid">
 
-        <!-- TITLE 1: MYSTIC MOTORS -->
-        <div class="relic-card featured-relic" data-category="multiplayer mobile">
+        <!-- DOSSIER 1: MYSTIC MOTORS -->
+        <div class="relic-card featured-relic project-dossier" data-category="multiplayer mobile">
+          <!-- Concrete distress status badge -->
+          <div class="dossier-status-pill">
+            SYSTEM_STATUS // DEPLOYED
+          </div>
+
           <div class="relic-top-banner">
             <img src="./assets/expedition_chariot.jpg" alt="Mystic Motors Arcane Racing" class="relic-cover-art" />
             <div class="relic-badge-top"><i class="fa-brands fa-google-play"></i> GOOGLE PLAY</div>
@@ -236,18 +241,26 @@
           </div>
 
           <div class="relic-body">
-            <div class="tech-pills-row">
-              <span class="tech-pill">Unity Netcode (NGO)</span>
-              <span class="tech-pill">Vehicle Physics</span>
-              <span class="tech-pill">Spell Combat</span>
-              <span class="tech-pill">C# Server-Client</span>
-            </div>
-
-            <h3 class="relic-name">Mystic Motors</h3>
+            <h3 class="dossier-title">Mystic Motors</h3>
             <h4 class="relic-studio">TEC VENTURES | Australia</h4>
 
+            <!-- Technical Engine & Target Perf Grid -->
+            <div class="dossier-specs-grid">
+              <p><span class="spec-label">ENGINE:</span> Unity (NGO Netcode)</p>
+              <p><span class="spec-label">TARGET_PERF:</span> 60 FPS (Mobile)</p>
+            </div>
+
+            <!-- Hash Tags Array -->
+            <div class="dossier-tags-row">
+              <span class="dossier-tag">#UnityNGO</span>
+              <span class="dossier-tag">#VehiclePhysics</span>
+              <span class="dossier-tag">#SpellCombat</span>
+              <span class="dossier-tag">#GooglePlay</span>
+              <span class="dossier-tag">#MultiplayerSync</span>
+            </div>
+
             <p class="relic-desc">
-              Competitive multiplayer racing game incorporating customizable sci-fi racing vehicles, dynamic physics tracks, and custom spell-casting gameplay mechanics for combat racing.
+              Competitive multiplayer racing game incorporating customizable vehicles, dynamic physics tracks, and custom spell-casting gameplay mechanics for combat racing.
             </p>
 
             <div class="relic-bullets">
@@ -258,14 +271,18 @@
             <div class="relic-footer">
               <span class="status-indicator live"><i class="fa-solid fa-circle-check"></i> Published on Google Play</span>
               <button class="inspect-relic-btn open-modal-btn" data-project="mystic" data-sound="click">
-                FULL SPECS <i class="fa-solid fa-arrow-right"></i>
+                OPEN DOSSIER <i class="fa-solid fa-arrow-right"></i>
               </button>
             </div>
           </div>
         </div>
 
-        <!-- TITLE 2: VR CENTENARY MUSEUM -->
-        <div class="relic-card" data-category="vr-xr">
+        <!-- DOSSIER 2: VR CENTENARY MUSEUM -->
+        <div class="relic-card project-dossier" data-category="vr-xr">
+          <div class="dossier-status-pill defense-dossier-pill">
+            DEFENSE_STATUS // INAUGURATED
+          </div>
+
           <div class="relic-top-banner">
             <img src="./assets/vr_museum.jpg" alt="VR Centenary Museum" class="relic-cover-art" />
             <div class="relic-badge-top defense-badge"><i class="fa-solid fa-shield-halved"></i> DEFENSE SANCTUARY</div>
@@ -273,15 +290,21 @@
           </div>
 
           <div class="relic-body">
-            <div class="tech-pills-row">
-              <span class="tech-pill">Unity VR</span>
-              <span class="tech-pill">Oculus / SteamVR</span>
-              <span class="tech-pill">Spatial Audio</span>
-              <span class="tech-pill">Kiosk Lockdown</span>
+            <h3 class="dossier-title">VR Centenary Museum</h3>
+            <h4 class="relic-studio">Indian Military Nursing Service (IMNS)</h4>
+
+            <div class="dossier-specs-grid">
+              <p><span class="spec-label">ENGINE:</span> Unity VR / URP</p>
+              <p><span class="spec-label">TARGET_PERF:</span> 90 FPS (VR Hardware)</p>
             </div>
 
-            <h3 class="relic-name">VR Centenary Museum</h3>
-            <h4 class="relic-studio">Indian Military Nursing Service (IMNS)</h4>
+            <div class="dossier-tags-row">
+              <span class="dossier-tag">#DefenseVR</span>
+              <span class="dossier-tag">#ChiefOfDefenceStaff</span>
+              <span class="dossier-tag">#OculusSteamVR</span>
+              <span class="dossier-tag">#SpatialAudio</span>
+              <span class="dossier-tag">#KioskLock</span>
+            </div>
 
             <p class="relic-desc">
               Immersive VR museum experience commemorating <strong>100 Glorious Years of IMNS</strong>. Officially inaugurated by the <strong>Chief of Defence Staff, General Anil Chauhan</strong>, serving as a prestigious interactive tribute to national armed forces.
@@ -295,14 +318,18 @@
             <div class="relic-footer">
               <span class="status-indicator military"><i class="fa-solid fa-medal"></i> Inaugurated by CDS</span>
               <button class="inspect-relic-btn open-modal-btn" data-project="museum" data-sound="click">
-                FULL SPECS <i class="fa-solid fa-arrow-right"></i>
+                OPEN DOSSIER <i class="fa-solid fa-arrow-right"></i>
               </button>
             </div>
           </div>
         </div>
 
-        <!-- TITLE 3: EDUCATIONAL VR METAVERSE -->
-        <div class="relic-card" data-category="vr-xr">
+        <!-- DOSSIER 3: EDUCATIONAL VR METAVERSE -->
+        <div class="relic-card project-dossier" data-category="vr-xr">
+          <div class="dossier-status-pill">
+            SYSTEM_STATUS // MULTI-WORLD
+          </div>
+
           <div class="relic-top-banner">
             <img src="./assets/metaverse.jpg" alt="Educational VR Metaverse" class="relic-cover-art" />
             <div class="relic-badge-top metaverse-badge"><i class="fa-solid fa-globe"></i> METAVERSE</div>
@@ -310,15 +337,21 @@
           </div>
 
           <div class="relic-body">
-            <div class="tech-pills-row">
-              <span class="tech-pill">Unity 3D</span>
-              <span class="tech-pill">VR Interactive Systems</span>
-              <span class="tech-pill">Level Design</span>
-              <span class="tech-pill">Mini-Games</span>
+            <h3 class="dossier-title">Educational VR Metaverse</h3>
+            <h4 class="relic-studio">Abhiwan Technology Pvt Ltd</h4>
+
+            <div class="dossier-specs-grid">
+              <p><span class="spec-label">ENGINE:</span> Unity 3D / VR Systems</p>
+              <p><span class="spec-label">TARGET_PERF:</span> 72-90 FPS (Standalone)</p>
             </div>
 
-            <h3 class="relic-name">Educational VR Metaverse</h3>
-            <h4 class="relic-studio">Abhiwan Technology Pvt Ltd</h4>
+            <div class="dossier-tags-row">
+              <span class="dossier-tag">#Metaverse</span>
+              <span class="dossier-tag">#WorldStreaming</span>
+              <span class="dossier-tag">#TEDAuditoriums</span>
+              <span class="dossier-tag">#MiniGames</span>
+              <span class="dossier-tag">#Blender3D</span>
+            </div>
 
             <p class="relic-desc">
               Semi-open world educational metaverse featuring virtual libraries, synchronized TED Talk auditoriums, and interactive exploration side-worlds with mini-games (boating, shooting, skating).
@@ -332,14 +365,18 @@
             <div class="relic-footer">
               <span class="status-indicator deployed"><i class="fa-solid fa-cubes"></i> Multi-World VR</span>
               <button class="inspect-relic-btn open-modal-btn" data-project="metaverse" data-sound="click">
-                FULL SPECS <i class="fa-solid fa-arrow-right"></i>
+                OPEN DOSSIER <i class="fa-solid fa-arrow-right"></i>
               </button>
             </div>
           </div>
         </div>
 
-        <!-- TITLE 4: MERGE BALLS -->
-        <div class="relic-card" data-category="mobile">
+        <!-- DOSSIER 4: MERGE BALLS -->
+        <div class="relic-card project-dossier" data-category="mobile">
+          <div class="dossier-status-pill">
+            SYSTEM_STATUS // PRODUCTION
+          </div>
+
           <div class="relic-top-banner">
             <img src="./assets/casual_puzzle.jpg" alt="Merge Balls Game" class="relic-cover-art" />
             <div class="relic-badge-top"><i class="fa-brands fa-google-play"></i> GOOGLE PLAY</div>
@@ -347,15 +384,20 @@
           </div>
 
           <div class="relic-body">
-            <div class="tech-pills-row">
-              <span class="tech-pill">2D/3D Physics</span>
-              <span class="tech-pill">Cascade Multipliers</span>
-              <span class="tech-pill">Zero GC Alloc</span>
-              <span class="tech-pill">Haptics</span>
+            <h3 class="dossier-title">Merge Balls</h3>
+            <h4 class="relic-studio">DevKraken</h4>
+
+            <div class="dossier-specs-grid">
+              <p><span class="spec-label">ENGINE:</span> Unity Physics 2D/3D</p>
+              <p><span class="spec-label">TARGET_PERF:</span> 60 FPS (Zero GC Spikes)</p>
             </div>
 
-            <h3 class="relic-name">Merge Balls</h3>
-            <h4 class="relic-studio">DevKraken</h4>
+            <div class="dossier-tags-row">
+              <span class="dossier-tag">#PhysicsDrops</span>
+              <span class="dossier-tag">#CascadeCombos</span>
+              <span class="dossier-tag">#Haptics</span>
+              <span class="dossier-tag">#MobileOptimization</span>
+            </div>
 
             <p class="relic-desc">
               Physics-based number puzzle game featuring dynamic ball drops, cascading merge reactions, power-up systems, and hyper-satisfying combo multipliers.
@@ -369,14 +411,18 @@
             <div class="relic-footer">
               <span class="status-indicator live"><i class="fa-solid fa-circle-check"></i> Published on Google Play</span>
               <button class="inspect-relic-btn open-modal-btn" data-project="merge" data-sound="click">
-                FULL SPECS <i class="fa-solid fa-arrow-right"></i>
+                OPEN DOSSIER <i class="fa-solid fa-arrow-right"></i>
               </button>
             </div>
           </div>
         </div>
 
-        <!-- TITLE 5: TILE POP -->
-        <div class="relic-card" data-category="mobile">
+        <!-- DOSSIER 5: TILE POP -->
+        <div class="relic-card project-dossier" data-category="mobile">
+          <div class="dossier-status-pill">
+            SYSTEM_STATUS // PRODUCTION
+          </div>
+
           <div class="relic-top-banner">
             <img src="./assets/casual_puzzle.jpg" alt="Tile Pop Game" class="relic-cover-art" />
             <div class="relic-badge-top"><i class="fa-brands fa-google-play"></i> GOOGLE PLAY</div>
@@ -384,15 +430,20 @@
           </div>
 
           <div class="relic-body">
-            <div class="tech-pills-row">
-              <span class="tech-pill">Grid Logic</span>
-              <span class="tech-pill">Mobile UI/UX</span>
-              <span class="tech-pill">Score Multipliers</span>
-              <span class="tech-pill">Optimization</span>
+            <h3 class="dossier-title">Tile Pop</h3>
+            <h4 class="relic-studio">DevKraken</h4>
+
+            <div class="dossier-specs-grid">
+              <p><span class="spec-label">ENGINE:</span> Unity Grid Solver</p>
+              <p><span class="spec-label">TARGET_PERF:</span> 60 FPS Locked</p>
             </div>
 
-            <h3 class="relic-name">Tile Pop</h3>
-            <h4 class="relic-studio">DevKraken</h4>
+            <div class="dossier-tags-row">
+              <span class="dossier-tag">#GridLogic</span>
+              <span class="dossier-tag">#Deterministic</span>
+              <span class="dossier-tag">#MobileUI</span>
+              <span class="dossier-tag">#ParticleVFX</span>
+            </div>
 
             <p class="relic-desc">
               Vibrant block-clearing puzzle game with multiple game modes, score multipliers, and highly optimized board state logic running smoothly across all mobile aspect ratios.
@@ -406,7 +457,7 @@
             <div class="relic-footer">
               <span class="status-indicator live"><i class="fa-solid fa-circle-check"></i> Published on Google Play</span>
               <button class="inspect-relic-btn open-modal-btn" data-project="tile" data-sound="click">
-                FULL SPECS <i class="fa-solid fa-arrow-right"></i>
+                OPEN DOSSIER <i class="fa-solid fa-arrow-right"></i>
               </button>
             </div>
           </div>

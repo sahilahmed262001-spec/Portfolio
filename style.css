@@ -866,6 +866,115 @@ body {
   border-radius: 4px;
 }
 
+/* ==========================================================================
+   PROJECT DOSSIER COMPONENT STYLING (ASTRO & STATIC COMPATIBLE)
+   ========================================================================== */
+.project-dossier {
+  position: relative;
+  background: rgba(11, 17, 33, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-dossier:hover {
+  border-color: var(--gold-bright);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 24px var(--gold-glow);
+}
+
+/* Concrete distress status pill badge */
+.dossier-status-pill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  background: rgba(234, 179, 8, 0.15);
+  color: #facc15;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 4px 12px;
+  border-bottom: 1px solid rgba(234, 179, 8, 0.45);
+  border-left: 1px solid rgba(234, 179, 8, 0.45);
+  border-bottom-left-radius: 6px;
+  text-transform: uppercase;
+}
+
+.defense-dossier-pill {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.45);
+}
+
+.dossier-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 8px;
+  margin-bottom: 6px;
+}
+
+/* Technical Engine & Target Perf Grid */
+.dossier-specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  background: rgba(3, 7, 18, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #cbd5e1;
+  margin: 10px 0 14px 0;
+}
+
+.dossier-specs-grid p {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.spec-label {
+  color: #34d399;
+  font-weight: 700;
+}
+
+/* Dossier Hashtags */
+.dossier-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.dossier-tag {
+  background: rgba(28, 25, 23, 0.9);
+  color: #fbbf24;
+  border: 1px solid rgba(120, 113, 108, 0.4);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 4px;
+  letter-spacing: 0.2px;
+  transition: all 0.2s ease;
+}
+
+.dossier-tag:hover {
+  background: rgba(251, 191, 36, 0.15);
+  border-color: #fbbf24;
+  color: #fef08a;
+}
+
 .relic-name {
   font-family: var(--font-serif);
   font-size: 1.4rem;

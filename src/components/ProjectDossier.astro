@@ -1,0 +1,59 @@
+---
+// src/components/ProjectDossier.astro
+// Clair Obscur & Cyberpunk Compatible Game Studio Technical Project Dossier
+interface Props {
+  title: string;
+  engine: string;
+  fps: number | string;
+  tags: string[];
+  status?: string;
+  studio?: string;
+}
+
+const { 
+  title, 
+  engine, 
+  fps, 
+  tags, 
+  status = "SYSTEM_STATUS // OK", 
+  studio 
+} = Astro.props;
+---
+
+<div class="project-dossier relative border border-slate-700/80 bg-slate-900/90 p-6 rounded-md shadow-2xl overflow-hidden backdrop-blur-md transition-all duration-300 hover:border-amber-500/50 hover:shadow-amber-500/10">
+  <!-- Concrete distress status accent badge -->
+  <div class="dossier-status-pill absolute top-0 right-0 bg-yellow-500/20 text-yellow-400 text-xs font-mono px-3 py-1 border-b border-l border-yellow-500/40 uppercase tracking-wider font-semibold">
+    {status}
+  </div>
+
+  {studio && (
+    <div class="text-xs font-mono text-amber-400/80 uppercase tracking-widest mb-1">
+      {studio}
+    </div>
+  )}
+
+  <h3 class="dossier-title text-2xl font-bold text-stone-100 tracking-wide font-mono uppercase border-b border-stone-700/80 pb-2 mb-4">
+    {title}
+  </h3>
+
+  <!-- Technical Engine & Target Perf Grid -->
+  <div class="dossier-specs-grid grid grid-cols-2 gap-4 text-sm font-mono text-stone-300 mb-5 bg-stone-950/60 p-3 rounded border border-stone-800">
+    <p><span class="spec-label text-emerald-400 font-bold">ENGINE:</span> {engine}</p>
+    <p><span class="spec-label text-emerald-400 font-bold">TARGET_PERF:</span> {fps} {typeof fps === 'number' ? 'FPS' : ''}</p>
+  </div>
+
+  <!-- Dynamic Tags Array -->
+  <div class="dossier-tags-row flex flex-wrap gap-2 mb-6">
+    {tags.map((tag) => (
+      <span class="dossier-tag bg-stone-800 text-amber-400 text-xs px-2.5 py-1 border border-stone-700 rounded-sm font-mono font-medium shadow-sm">
+        #{tag.replace(/^#/, '')}
+      </span>
+    ))}
+  </div>
+
+  <!-- Hydrate WebGL Embed dynamically only when visible -->
+  <div class="dossier-slot mt-4">
+    <slot name="unity-player" />
+    <slot />
+  </div>
+</div>
