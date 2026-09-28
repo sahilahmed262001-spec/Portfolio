@@ -1,24 +1,26 @@
 /* ==========================================================================
-   DECAY & RECLAMATION — GROUNDED SURVIVOR JOURNAL THEME
-   High-Contrast, Earthy, Post-Apocalyptic (Inspired by The Last of Us)
+   THE LAST OF US — AUTHENTIC SURVIVOR FIELD JOURNAL THEME
+   Color Palette: Weathered Concrete #131415 | Parchment #E3DED1 | Slate #7A8087
+   Accents: Muted Moss #2E3A23 | Rusted Blood Orange #8B3A2B | Tape #C69234
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Permanent+Marker&family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=Permanent+Marker&family=Special+Elite&display=swap');
 
 :root {
-  --bg-charcoal: #0e0f10;
-  --card-bg: #18191b;
-  --card-inner: #121315;
-  --text-main: #f0eae1;
-  --text-muted: #b5ac9d;
-  --text-dim: #827a6e;
-  --moss-green: #2e3a23;
-  --moss-bright: #93c572;
-  --rust-red: #c2412d;
-  --rust-bright: #ef5a42;
-  --tape-yellow: #d6a842;
-  --tape-bright: #f0c05a;
-  --border-color: #2f3236;
+  --bg-concrete: #131415;
+  --card-bg: #1a1b1d;
+  --card-inner: #151618;
+  --text-parchment: #E3DED1;
+  --text-slate: #7A8087;
+  --text-slate-light: #A5ABB3;
+  --moss-green: #2E3A23;
+  --moss-light: #5E7A45;
+  --moss-bright: #8EA870;
+  --rust-orange: #8B3A2B;
+  --rust-bright: #C7523C;
+  --tape-yellow: #C69234;
+  --tape-light: #E0AB48;
+  --border-concrete: #282A2D;
 }
 
 * {
@@ -29,77 +31,30 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: var(--bg-charcoal);
-  color: var(--text-main);
+  background-color: var(--bg-concrete);
+  color: var(--text-parchment);
 }
 
 body {
-  font-family: 'Courier Prime', Courier, monospace;
-  background-color: var(--bg-charcoal);
-  color: var(--text-main);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-concrete);
+  color: var(--text-parchment);
   background-image: 
-    radial-gradient(circle at 50% 30%, rgba(46, 58, 35, 0.22) 0%, transparent 70%),
-    radial-gradient(rgba(240, 234, 225, 0.04) 1px, transparent 1px);
-  background-size: 100% 100%, 24px 24px;
+    radial-gradient(circle at 50% 20%, rgba(46, 58, 35, 0.16) 0%, transparent 60%),
+    radial-gradient(rgba(227, 222, 209, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 28px 28px;
   background-attachment: fixed;
   overflow-x: hidden;
   line-height: 1.6;
 }
 
-/* Rugged Survivor Cards */
-.survivor-card {
-  background: #18191c;
-  color: var(--text-main);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  position: relative;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.survivor-card:hover {
-  border-color: var(--tape-yellow);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 15px rgba(214, 168, 66, 0.15);
-}
-
-/* Light Paper Sheet Accent (for hero note / dispatch) */
-.paper-sheet-light {
-  background: #f4eee3;
-  color: #1a1917;
-  border: 1px solid #d4c8b6;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
-}
-
-/* Masking Tape Strip Effects */
-.masking-tape {
-  background-color: var(--tape-yellow);
-  background-image: linear-gradient(135deg, rgba(255,255,255,0.25) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0.25) 75%, transparent 75%, transparent);
-  background-size: 8px 8px;
-  opacity: 0.92;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-  position: absolute;
-  z-index: 10;
-  clip-path: polygon(3% 0%, 97% 2%, 100% 98%, 0% 95%);
-}
-
-.tape-top {
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-1.5deg);
-  width: 120px;
-  height: 24px;
-}
-
-.tape-corner {
-  top: -10px;
-  right: -10px;
-  width: 70px;
-  height: 22px;
-  transform: rotate(35deg);
-}
-
-/* Typography Helpers */
+/* Typography */
 .font-typewriter {
-  font-family: 'Special Elite', Courier, monospace;
+  font-family: 'Special Elite', 'Courier Prime', Courier, monospace;
+}
+
+.font-courier {
+  font-family: 'Courier Prime', Courier, monospace;
 }
 
 .font-handwriting {
@@ -110,51 +65,165 @@ body {
   font-family: 'Permanent Marker', cursive;
 }
 
-/* High Contrast Stencil & Ink Stamps */
-.stamp-red {
-  border: 1.5px solid var(--rust-bright);
-  background: rgba(194, 65, 45, 0.15);
-  color: #ff7b63;
-  font-family: 'Special Elite', monospace;
-  text-transform: uppercase;
-  transform: rotate(-1.5deg);
-  display: inline-block;
-  padding: 2px 8px;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  font-weight: 700;
+.font-body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-.stamp-moss {
+/* Project Cards / Aged Field Notes */
+.field-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-concrete);
+  border-radius: 2px;
+  position: relative;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65);
+}
+
+/* Listen Mode Hover Focus Effect */
+.field-card:hover, .listen-mode-focus:hover {
+  transform: translateY(-3px);
+  border-color: rgba(198, 146, 52, 0.7);
+  box-shadow: 
+    0 14px 35px rgba(0, 0, 0, 0.85),
+    0 0 25px rgba(198, 146, 52, 0.2),
+    0 0 10px rgba(227, 222, 209, 0.15);
+}
+
+/* Physical Masking Tape Strips (CSS Clip-Path) */
+.tape-strip {
+  background-color: var(--tape-yellow);
+  background-image: linear-gradient(135deg, rgba(255,255,255,0.2) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, transparent 75%, transparent);
+  background-size: 8px 8px;
+  opacity: 0.92;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.45);
+  position: absolute;
+  z-index: 10;
+  clip-path: polygon(2% 0%, 98% 3%, 100% 97%, 0% 95%);
+}
+
+.tape-top-center {
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1.5deg);
+  width: 110px;
+  height: 22px;
+}
+
+.tape-corner-right {
+  top: -9px;
+  right: -9px;
+  width: 65px;
+  height: 22px;
+  transform: rotate(32deg);
+}
+
+/* Action Buttons: Stencil-Stamped / Physical Duct-Tape Strips */
+.btn-tape-yellow {
+  background: var(--tape-yellow);
+  color: #131415;
+  font-family: 'Special Elite', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  clip-path: polygon(1% 0%, 99% 2%, 100% 98%, 0% 96%);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-tape-yellow:hover {
+  background: var(--tape-light);
+  transform: translateY(-1px);
+}
+
+.btn-tape-moss {
+  background: var(--moss-green);
+  color: var(--text-parchment);
+  border: 1px solid var(--moss-light);
+  font-family: 'Special Elite', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  clip-path: polygon(2% 0%, 100% 1%, 98% 99%, 0% 97%);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-tape-moss:hover {
+  background: #39482c;
+  border-color: var(--moss-bright);
+  transform: translateY(-1px);
+}
+
+.btn-tape-rust {
+  background: var(--rust-orange);
+  color: var(--text-parchment);
+  border: 1px solid var(--rust-bright);
+  font-family: 'Special Elite', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  clip-path: polygon(0% 1%, 98% 0%, 100% 98%, 2% 100%);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-tape-rust:hover {
+  background: #9f4433;
+  transform: translateY(-1px);
+}
+
+/* Stamped Ink Badges */
+.stamp-ink-moss {
   border: 1.5px solid var(--moss-bright);
-  background: rgba(46, 58, 35, 0.35);
+  background: rgba(46, 58, 35, 0.4);
   color: var(--moss-bright);
   font-family: 'Special Elite', monospace;
   text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
   transform: rotate(1.5deg);
   display: inline-block;
-  padding: 2px 8px;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
-.stamp-yellow {
-  border: 1.5px solid var(--tape-bright);
-  background: rgba(214, 168, 66, 0.15);
-  color: var(--tape-bright);
+.stamp-ink-rust {
+  border: 1.5px solid var(--rust-bright);
+  background: rgba(139, 58, 43, 0.25);
+  color: #E86F58;
   font-family: 'Special Elite', monospace;
   text-transform: uppercase;
-  display: inline-block;
-  padding: 2px 8px;
   font-size: 11px;
-  letter-spacing: 0.08em;
   font-weight: 700;
+  padding: 2px 7px;
+  transform: rotate(-1.5deg);
+  display: inline-block;
+  letter-spacing: 0.05em;
 }
 
-/* Shadow Utility */
-.shadow-tape {
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+.stamp-ink-yellow {
+  border: 1.5px solid var(--tape-light);
+  background: rgba(198, 146, 52, 0.2);
+  color: var(--tape-light);
+  font-family: 'Special Elite', monospace;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  display: inline-block;
+  letter-spacing: 0.05em;
 }
 
 /* Custom Scrollbar */
@@ -162,12 +231,12 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #090a0b;
+  background: #0d0e0e;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2e3a23;
-  border: 1px solid #455734;
+  background: var(--moss-green);
+  border: 1px solid #3d4d2f;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #d6a842;
+  background: var(--tape-yellow);
 }

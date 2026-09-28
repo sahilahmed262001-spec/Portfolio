@@ -1,6 +1,6 @@
 ---
 // src/components/SurvivalInventory.astro
-// Tech Stack & Gear Inventory on Rugged Workbench Grid
+// Tech Stack & Gear Inventory on Rugged Survivor Workbench Grid
 
 const inventoryPacks = [
   {
@@ -8,8 +8,8 @@ const inventoryPacks = [
     icon: "fa-hammer",
     items: [
       { name: "C# (.NET Core & Unity CLR)", condition: "Mastered", durability: 98, note: "Memory management, data structures, event buses, gameplay math" },
-      { name: "Unity Engine (6 / 2022.3 LTS)", condition: "Mastered", durability: 96, note: "URP, job systems, asset pipelines, profiling & architecture" },
-      { name: "Gameplay Mechanics & Physics", condition: "Field-tested", durability: 94, note: "Raycast vehicle physics, spell-casting projectiles, collision solvers" },
+      { name: "Unity Engine (6 / 2022.3 LTS)", condition: "Mastered", durability: 96, note: "URP, job systems, asset lifecycles, memory profiling" },
+      { name: "Gameplay Mechanics & Physics", condition: "Field-tested", durability: 94, note: "Raycast vehicle physics, spell projectile combat, collision solvers" },
       { name: "Shader Graph & Visual FX", condition: "Equipped", durability: 88, note: "Surface shaders, vertex animation, screen distortion, mobile FX" },
       { name: "Addressables & Asset Bundles", condition: "Equipped", durability: 86, note: "Dynamic streaming, remote asset hosting, zero-hiccup loading" }
     ]
@@ -18,8 +18,8 @@ const inventoryPacks = [
     category: "COMMS RIG & MULTIPLAYER NETCODE",
     icon: "fa-radio",
     items: [
-      { name: "Unity Netcode for GameObjects (NGO)", condition: "Mission-proven", durability: 94, note: "Client prediction, server reconciliation, NetworkVariables" },
-      { name: "Photon PUN & Photon Fusion", condition: "Active", durability: 90, note: "Cloud rooms, distributed authority, lag compensation" },
+      { name: "Unity Netcode for GameObjects (NGO)", condition: "Mission-proven", durability: 94, note: "Client-side prediction, server reconciliation, NetworkVariables" },
+      { name: "Photon PUN & Photon Fusion", condition: "Active", durability: 90, note: "Cloud matchmaking rooms, distributed authority, lag compensation" },
       { name: "Client-Server State Sync", condition: "Active", durability: 92, note: "Delta compression, custom serialization, anti-cheat architecture" }
     ]
   },
@@ -44,66 +44,59 @@ const inventoryPacks = [
 ];
 ---
 
-<section id="inventory" class="py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+<section id="inventory" class="py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
   
-  <!-- Section Title -->
-  <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3 border-b border-[#2d3033] pb-4">
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3 border-b border-[#282A2D] pb-4">
     <div>
       <div class="flex items-center gap-2">
-        <span class="stamp-moss text-xs">SURVIVAL KIT</span>
-        <span class="font-handwriting text-lg text-[#d6a842]">equipped tools // workbench</span>
+        <span class="stamp-ink-moss">SURVIVAL KIT</span>
+        <span class="font-handwriting text-lg text-[#E0AB48]">equipped tools // workbench</span>
       </div>
-      <h2 class="font-typewriter text-3xl sm:text-4xl font-bold text-[#e6dfd3] mt-1">
+      <h2 class="font-typewriter text-3xl sm:text-4xl font-bold text-[#E3DED1] mt-1">
         GEAR &amp; INVENTORY
       </h2>
     </div>
-    <div class="font-typewriter text-xs text-[#9c9384] max-w-sm">
+    <div class="font-courier text-xs text-[#A5ABB3] max-w-sm">
       *All technical tools are sharpened and maintained through 4+ years of live game development.
     </div>
   </div>
 
-  <!-- Workbench Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     {inventoryPacks.map((pack) => (
-      <div class="bg-[#18191c] border border-[#2b2d30] rounded-xs p-5 sm:p-6 shadow-md relative">
-        
-        <!-- Category Top Strip -->
-        <div class="flex items-center justify-between border-b border-[#2b2d30] pb-3 mb-4">
-          <div class="font-typewriter text-sm font-bold text-[#e6dfd3] flex items-center gap-2">
-            <i class={`fa-solid ${pack.icon} text-[#8ca672]`}></i>
+      <div class="field-card p-5 sm:p-6 bg-[#1a1b1d] border border-[#282A2D]">
+        <div class="flex items-center justify-between border-b border-[#282A2D] pb-3 mb-4">
+          <div class="font-typewriter text-sm font-bold text-[#E3DED1] flex items-center gap-2">
+            <i class={`fa-solid ${pack.icon} text-[#8EA870]`}></i>
             <span>{pack.category}</span>
           </div>
-          <span class="font-handwriting text-sm text-[#d6a842] font-bold">
-            ready
-          </span>
+          <span class="font-handwriting text-sm text-[#E0AB48] font-bold">ready</span>
         </div>
 
-        <!-- Items List -->
         <div class="space-y-4">
           {pack.items.map((item) => (
-            <div class="bg-[#121315] p-3.5 border border-[#242629] rounded-xs group hover:border-[#4a5e38] transition-colors">
+            <div class="bg-[#151618] p-3.5 border border-[#232528] rounded-xs group hover:border-[#5E7A45] transition-colors">
               <div class="flex items-center justify-between gap-2 mb-1">
-                <span class="font-typewriter text-xs sm:text-sm font-bold text-[#e6dfd3] group-hover:text-[#8ca672] transition-colors">
+                <span class="font-courier text-xs sm:text-sm font-bold text-[#E3DED1] group-hover:text-[#8EA870] transition-colors">
                   {item.name}
                 </span>
-                <span class="stamp-moss text-[9px]">
+                <span class="stamp-ink-moss text-[9px]">
                   {item.condition}
                 </span>
               </div>
 
-              <p class="font-serif text-xs text-[#948d80] mb-2 leading-relaxed">
+              <p class="font-body text-xs text-[#A5ABB3] mb-2 leading-relaxed">
                 {item.note}
               </p>
 
               <!-- Durability Meter -->
               <div class="space-y-1">
-                <div class="flex justify-between font-typewriter text-[10px] text-[#706a5f]">
+                <div class="flex justify-between font-courier text-[10px] text-[#7A8087]">
                   <span>EFFICIENCY RATING</span>
-                  <span class="font-handwriting text-xs text-[#d6a842] font-bold">{item.durability}%</span>
+                  <span class="font-handwriting text-xs text-[#E0AB48] font-bold">{item.durability}%</span>
                 </div>
-                <div class="h-2 w-full bg-[#242629] rounded-xs overflow-hidden p-0.5 border border-[#303337]">
+                <div class="h-2 w-full bg-[#1c1e20] rounded-xs overflow-hidden p-0.5 border border-[#282A2D]">
                   <div 
-                    class="h-full bg-gradient-to-r from-[#3f4f30] to-[#8ca672] rounded-xs"
+                    class="h-full bg-gradient-to-r from-[#2E3A23] to-[#8EA870] rounded-xs transition-all duration-500"
                     style={`width: ${item.durability}%`}
                   ></div>
                 </div>

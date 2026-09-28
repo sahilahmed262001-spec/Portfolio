@@ -1,6 +1,6 @@
 ---
 // src/components/ProjectDossier.astro
-// Clean, High-Contrast Survivor Case File (No image thumbnails)
+// The Last of Us Inspired Field Report Case File
 
 interface Props {
   caseId: string;
@@ -33,55 +33,55 @@ const {
 } = Astro.props;
 ---
 
-<div class="survivor-card rounded-xs p-6 sm:p-7 border border-[#2f3236] bg-[#18191c] relative flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
+<div class="field-card p-6 sm:p-7 relative flex flex-col justify-between">
   
-  <!-- Tape Corner Accent -->
-  <div class="masking-tape tape-corner"></div>
+  <!-- Physical Masking Tape Strip Corner -->
+  <div class="tape-strip tape-corner-right"></div>
 
   <div>
-    <!-- Case File Header -->
-    <div class="flex items-start justify-between border-b border-[#2b2e31] pb-3 mb-4 pr-12">
+    <!-- Case Header -->
+    <div class="flex items-start justify-between border-b border-[#282A2D] pb-3 mb-4 pr-12">
       <div>
-        <span class="font-typewriter text-xs text-[#8ca672] font-bold block uppercase tracking-wider">
+        <span class="font-typewriter text-xs text-[#8EA870] font-bold block uppercase tracking-wider">
           CASE FILE: {caseId} &bull; {organization}
         </span>
-        <h3 class="font-typewriter text-2xl font-bold text-[#ffffff] tracking-tight mt-1">
+        <h3 class="font-typewriter text-2xl font-bold text-[#E3DED1] tracking-tight mt-1">
           {title}
         </h3>
       </div>
     </div>
 
-    <!-- Stamp Badge -->
+    <!-- Stamped Ink Badge -->
     <div class="mb-4">
-      <span class={stampType === 'moss' ? 'stamp-moss' : stampType === 'yellow' ? 'stamp-yellow' : 'stamp-red'}>
+      <span class={stampType === 'moss' ? 'stamp-ink-moss' : stampType === 'yellow' ? 'stamp-ink-yellow' : 'stamp-ink-rust'}>
         {stamp}
       </span>
     </div>
 
     <!-- Specs Strip -->
-    <div class="bg-[#111214] p-3 rounded-xs font-typewriter text-xs text-[#f0eae1] mb-4 border border-[#26282b] flex flex-wrap items-center justify-between gap-2">
+    <div class="bg-[#151618] p-3 rounded-xs font-courier text-xs text-[#E3DED1] mb-4 border border-[#232528] flex flex-wrap items-center justify-between gap-2">
       <div>
-        <span class="text-[#8c8577] uppercase font-bold">ROLE:</span> <strong class="text-[#93c572]">{role}</strong>
+        <span class="text-[#7A8087] uppercase font-bold">ROLE:</span> <strong class="text-[#8EA870]">{role}</strong>
       </div>
       <div>
-        <span class="text-[#8c8577] uppercase font-bold">ENGINE:</span> <strong class="text-[#f0c05a]">{engine}</strong> ({perf})
+        <span class="text-[#7A8087] uppercase font-bold">ENGINE:</span> <strong class="text-[#E0AB48]">{engine}</strong> ({perf})
       </div>
     </div>
 
-    <!-- Summary Paragraph -->
-    <p class="font-serif text-sm text-[#ded7cc] leading-relaxed mb-4 bg-[#141517] p-3.5 border-l-2 border-l-[#c2412d] rounded-xs">
+    <!-- Summary Paragraph in Clean Legible Sans-Serif -->
+    <p class="font-body text-sm text-[#CFC8BA] leading-relaxed mb-4 bg-[#161719] p-3.5 border-l-2 border-l-[#8B3A2B] rounded-xs">
       {summary}
     </p>
 
     <!-- Key Engineered Systems -->
     <div class="mb-5 space-y-1.5">
-      <div class="font-typewriter text-xs font-bold text-[#b5ac9d] uppercase">
+      <div class="font-typewriter text-xs font-bold text-[#A5ABB3] uppercase">
         // ENGINEERED SYSTEMS:
       </div>
-      <ul class="space-y-1.5 font-typewriter text-xs text-[#e6dfd3]">
+      <ul class="space-y-1.5 font-body text-xs text-[#E3DED1]">
         {features.map((item) => (
           <li class="flex items-start gap-2">
-            <span class="text-[#f0c05a] font-bold mt-0.5">✔</span>
+            <span class="text-[#E0AB48] font-bold mt-0.5">✔</span>
             <span class="leading-relaxed">{item}</span>
           </li>
         ))}
@@ -90,35 +90,35 @@ const {
   </div>
 
   <div>
-    <!-- Handwritten Tags -->
-    <div class="border-t border-dashed border-[#2b2e31] pt-3 mb-4 flex flex-wrap items-center gap-2">
-      <span class="font-typewriter text-[11px] text-[#8c8577] uppercase font-bold mr-1">TAGS:</span>
+    <!-- Handwritten Sharpie Tech Tags -->
+    <div class="border-t border-dashed border-[#282A2D] pt-3 mb-4 flex flex-wrap items-center gap-2">
+      <span class="font-typewriter text-[11px] text-[#7A8087] uppercase font-bold mr-1">TAGS:</span>
       {handwrittenTags.map((tag) => (
-        <span class="font-handwriting text-base font-bold text-[#93c572] bg-[#222421] px-2 py-0.5 rounded-xs border border-[#353f2c]">
+        <span class="font-handwriting text-base font-bold text-[#8EA870] bg-[#1e231b] px-2.5 py-0.5 rounded-xs border border-[#344129]">
           #{tag}
         </span>
       ))}
     </div>
 
-    <!-- Action Buttons -->
-    <div class="pt-3 border-t border-[#2b2e31] flex items-center justify-between gap-2">
+    <!-- Duct-Tape / Stencil Stamped Action Buttons -->
+    <div class="pt-3 border-t border-[#282A2D] flex items-center justify-between gap-2">
       {playStoreUrl ? (
         <a 
           href={playStoreUrl} 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="font-typewriter text-xs font-bold text-[#f0c05a] hover:underline flex items-center gap-1.5"
+          class="btn-tape-yellow text-xs"
         >
           <i class="fa-brands fa-google-play"></i> GOOGLE PLAY &gt;
         </a>
       ) : (
-        <span class="font-typewriter text-xs text-[#93c572] font-bold flex items-center gap-1">
+        <span class="font-typewriter text-xs text-[#8EA870] font-bold flex items-center gap-1.5">
           <i class="fa-solid fa-shield-halved"></i> VERIFIED DEPLOYMENT
         </span>
       )}
       
       <button 
-        class="preview-trigger-btn font-typewriter text-xs font-bold px-3 py-1.5 bg-[#2e3a23] hover:bg-[#3f4f30] text-[#f0eae1] border border-[#455734] transition-colors"
+        class="preview-trigger-btn btn-tape-moss text-xs"
         data-title={title}
       >
         SIMULATOR &gt;

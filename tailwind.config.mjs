@@ -4,54 +4,48 @@ export default {
   theme: {
     extend: {
       colors: {
-        charcoal: {
-          950: '#0d0e0f',
-          900: '#121314',
+        concrete: {
+          950: '#0c0d0d',
+          900: '#131415',
           800: '#1a1b1d',
-          700: '#242628',
-          600: '#323538'
+          700: '#232528',
+          600: '#2d3034'
         },
         parchment: {
-          50: '#f9f6f0',
-          100: '#f3eee6',
-          200: '#e6dfd3',
-          300: '#d5cbbe',
-          400: '#b8ab9a',
-          dark: '#262422',
-          ink: '#1c1b18'
+          DEFAULT: '#E3DED1',
+          light: '#F2EDE4',
+          dim: '#CFC8BA'
+        },
+        slate: {
+          muted: '#7A8087',
+          light: '#A5ABB3'
         },
         moss: {
           900: '#1e2617',
-          800: '#2e3a23',
-          700: '#3f4f30',
-          600: '#526640',
-          500: '#698252',
-          400: '#8ca672'
+          800: '#2E3A23',
+          700: '#3d4d2f',
+          600: '#5E7A45',
+          400: '#8EA870'
         },
         rust: {
-          900: '#4d1912',
-          800: '#73271c',
-          700: '#9e3a2b',
-          600: '#bd4b3a',
-          500: '#d6604e'
+          900: '#522219',
+          800: '#6e2e22',
+          700: '#8B3A2B',
+          600: '#aa4735',
+          500: '#C7523C'
         },
         tape: {
-          dim: '#9a752b',
-          DEFAULT: '#d6a842',
-          light: '#e8be5d',
-          faded: '#ecd599'
+          DEFAULT: '#C69234',
+          light: '#E0AB48',
+          faded: '#DEC48E'
         }
       },
       fontFamily: {
         typewriter: ['"Special Elite"', '"Courier Prime"', 'Courier', 'monospace'],
-        handwriting: ['"Caveat"', '"Permanent Marker"', 'cursive'],
-        serif: ['"Courier Prime"', 'Georgia', 'serif'],
-        sans: ['"Inter"', 'system-ui', 'sans-serif']
-      },
-      boxShadow: {
-        'paper': '2px 4px 15px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.4)',
-        'polaroid': '0 8px 24px rgba(0, 0, 0, 0.75), 0 2px 6px rgba(0,0,0,0.5)',
-        'tape': '0 1px 3px rgba(0,0,0,0.3)'
+        courier: ['"Courier Prime"', 'monospace'],
+        handwriting: ['"Caveat"', 'cursive'],
+        marker: ['"Permanent Marker"', 'cursive'],
+        sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif']
       }
     }
   },

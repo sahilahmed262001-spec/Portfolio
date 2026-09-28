@@ -1,6 +1,6 @@
 ---
 // src/components/MissionLogs.astro
-// Experience & Timeline formatted as chronological journal entries on torn notebook paper
+// Work Logs formatted as authentic survivor field journal entries
 
 interface WorkEntry {
   company: string;
@@ -17,20 +17,20 @@ const entries: WorkEntry[] = [
     company: "TEC VENTURES",
     location: "Australia (Remote)",
     role: "Senior Unity Developer",
-    dates: "October 2025 – Present",
+    dates: "OCTOBER 2025 – PRESENT",
     status: "ACTIVE ENTRY // IN PROGRESS",
     bullets: [
       "Spearheaded the development, networking, and deployment of Mystic Motors on the Google Play Store.",
       "Architected and optimized multiplayer networking using Unity Netcode for GameObjects (NGO) for low-latency synchronization.",
       "Engineered real-time vehicle physics and a custom spell-casting gameplay mechanic for competitive multiplayer racing."
     ],
-    tools: ["Unity 6", "C#", "NGO Netcode", "Vehicle Physics", "Spell Combat", "Google Play"]
+    tools: ["Unity 6", "C#", "NGO Netcode", "Vehicle Physics", "Google Play"]
   },
   {
     company: "Abhiwan Technology Pvt Ltd.",
     location: "New Delhi, Delhi, India",
     role: "Unity Developer",
-    dates: "August 2022 – October 2025",
+    dates: "AUGUST 2022 – OCTOBER 2025",
     status: "ARCHIVED CAMPAIGN // 3+ YEARS",
     bullets: [
       "Developed and maintained diverse casual mobile games, multiplayer systems, and immersive AR/VR projects using Unity & C#.",
@@ -38,81 +38,74 @@ const entries: WorkEntry[] = [
       "Utilized ProBuilder for level blocking and rapid prototyping; managed 3D asset pipelines and integration using Blender.",
       "Collaborated with design teams via Figma to implement intuitive, responsive UI across various mobile and VR screen ratios."
     ],
-    tools: ["Unity", "C#", "Photon PUN / Fusion", "VR/AR Defense Rigs", "ProBuilder", "Blender", "Figma"]
+    tools: ["Unity", "C#", "Photon Fusion", "VR/AR Defense", "ProBuilder", "Blender", "Figma"]
   }
 ];
 ---
 
-<section id="journal" class="py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+<section id="journal" class="py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
   
-  <!-- Header -->
-  <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3 border-b border-[#2d3033] pb-4">
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3 border-b border-[#282A2D] pb-4">
     <div>
       <div class="flex items-center gap-2">
-        <span class="stamp-red text-xs">CHRONICLE</span>
-        <span class="font-handwriting text-lg text-[#9e3a2b]">field journal // experience</span>
+        <span class="stamp-ink-rust">CHRONICLE</span>
+        <span class="font-handwriting text-lg text-[#C7523C]">field journal // experience</span>
       </div>
-      <h2 class="font-typewriter text-3xl sm:text-4xl font-bold text-[#e6dfd3] mt-1">
+      <h2 class="font-typewriter text-3xl sm:text-4xl font-bold text-[#E3DED1] mt-1">
         WORK LOGS &amp; SERVICE TIMELINE
       </h2>
     </div>
-    <div class="font-typewriter text-xs text-[#9c9384] max-w-sm">
+    <div class="font-courier text-xs text-[#A5ABB3] max-w-sm">
       *Chronological diary logs written during live commercial game cycles.
     </div>
   </div>
 
-  <!-- Notebook Entries -->
-  <div class="space-y-10">
+  <div class="space-y-8">
     {entries.map((entry, index) => (
-      <div class="paper-sheet rounded-xs p-6 sm:p-8 border border-[#d6cdbd] relative">
-        
-        <!-- Masking tape strip on top of journal page -->
-        <div class="masking-tape" style={`top: -10px; left: ${index % 2 === 0 ? '15%' : '70%'}; width: 90px; height: 20px; transform: rotate(${index % 2 === 0 ? '-2deg' : '2deg'});`}></div>
+      <div class="field-card p-6 sm:p-8 bg-[#1a1b1d] border border-[#282A2D] relative">
+        <div class="tape-strip" style={`top: -10px; left: ${index % 2 === 0 ? '15%' : '70%'}; width: 90px; height: 20px; transform: rotate(${index % 2 === 0 ? '-2deg' : '2deg'});`}></div>
 
-        <!-- Journal Header -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-dashed border-[#cfc4b2] pb-4 mb-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#282A2D] pb-4 mb-5">
           <div>
-            <div class="font-handwriting text-lg text-[#9e3a2b] font-bold">
+            <div class="font-handwriting text-lg text-[#C7523C] font-bold">
               Journal Entry #{index + 1} &bull; {entry.location}
             </div>
-            <h3 class="font-typewriter text-2xl sm:text-3xl font-black text-[#1c1b18]">
+            <h3 class="font-typewriter text-2xl sm:text-3xl font-black text-[#E3DED1]">
               {entry.role}
             </h3>
-            <div class="font-typewriter text-sm font-bold text-[#2e3a23]">
+            <div class="font-courier text-sm font-bold text-[#8EA870]">
               @ {entry.company}
             </div>
           </div>
 
           <div class="flex flex-col sm:items-end gap-1">
-            <span class="font-typewriter text-xs font-bold text-[#1c1b18] bg-[#ded5c4] px-2.5 py-1 rounded-xs border border-[#cfc4b2]">
+            <span class="font-courier text-xs font-bold text-[#E3DED1] bg-[#232528] px-2.5 py-1 rounded-xs border border-[#33363A]">
               📅 {entry.dates}
             </span>
-            <span class="stamp-moss text-[9px]">
+            <span class="stamp-ink-moss text-[9px]">
               {entry.status}
             </span>
           </div>
         </div>
 
-        <!-- Bulleted Field Log -->
         <div class="space-y-3 mb-6">
-          <div class="font-typewriter text-xs font-bold text-[#5c5344] uppercase">
+          <div class="font-typewriter text-xs font-bold text-[#A5ABB3] uppercase">
             // FIELD ACCOMPLISHMENTS &amp; CODE MILESTONES:
           </div>
-          <ul class="space-y-2 font-serif text-sm text-[#2b271f]">
+          <ul class="space-y-2 font-body text-sm text-[#CFC8BA]">
             {entry.bullets.map((b) => (
               <li class="flex items-start gap-2">
-                <span class="text-[#9e3a2b] font-bold mt-0.5">✔</span>
+                <span class="text-[#E0AB48] font-bold mt-0.5">✔</span>
                 <span class="leading-relaxed">{b}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        <!-- Tools Used / Stamped Badges -->
-        <div class="pt-3 border-t border-[#cfc4b2] flex flex-wrap items-center gap-2">
-          <span class="font-typewriter text-[10px] text-[#7a7162] uppercase font-bold mr-1">KIT USED:</span>
+        <div class="pt-3 border-t border-[#282A2D] flex flex-wrap items-center gap-2">
+          <span class="font-typewriter text-[10px] text-[#7A8087] uppercase font-bold mr-1">KIT USED:</span>
           {entry.tools.map((t) => (
-            <span class="font-typewriter text-xs px-2 py-0.5 bg-[#e6dfd3] text-[#2e3a23] border border-[#cfc4b2] rounded-xs font-bold">
+            <span class="font-courier text-xs px-2.5 py-0.5 bg-[#151618] text-[#8EA870] border border-[#282A2D] rounded-xs font-bold">
               {t}
             </span>
           ))}
