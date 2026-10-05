@@ -315,8 +315,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (listenModeBtn) {
-    listenModeBtn.addEventListener('click', () => toggleListenMode());
+    listenModeBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleListenMode(); });
   }
+
+  // Click empty space during Listen Mode to emit a sonar ping from the cursor
+  window.addEventListener('click', (e) => {
+    if (!isListenMode) return;
+    if (e.target.closest('button, a, input, textarea, select')) return;
+    triggerSonarPulse(e.clientX, e.clientY);
+  });
 
   // Keyboard Shortcuts [F] for Flashlight, [R] for Listen Mode, [M] for Sound
   window.addEventListener('keydown', (e) => {

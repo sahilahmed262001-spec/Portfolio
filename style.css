@@ -281,50 +281,95 @@ body.listen-mode-active .uv-secret {
   filter: brightness(1.2);
 }
 
-/* 2. Full Listen Mode Filter & Radar Pulse */
-body.listen-mode-active {
-  filter: grayscale(88%) contrast(115%) brightness(0.92);
-  transition: filter 0.25s ease-out;
+/* 2. LISTEN MODE — The Last of Us style.
+   World goes near-black & monochrome; interactive "entities" (cards, pins, buttons)
+   glow as pale outlines and pulse with every sonar ping.
+   NOTE: no filter on <body> (it would break position:fixed popups). */
+#listen-mode-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 38;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  background:
+    radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.7) 65%, rgba(0,0,0,0.95) 100%);
+  backdrop-filter: grayscale(100%) brightness(0.28) contrast(1.35) blur(1px);
+  -webkit-backdrop-filter: grayscale(100%) brightness(0.28) contrast(1.35) blur(1px);
 }
 
+body.listen-mode-active #listen-mode-overlay {
+  opacity: 1;
+}
+
+/* Header stays above overlay (z-40) so dim it too */
+body.listen-mode-active header {
+  filter: grayscale(1) brightness(0.45);
+}
+
+/* Cards: dark silhouettes with pale glowing outline, raised above the dark overlay */
 body.listen-mode-active .field-card,
 body.listen-mode-active .listen-target {
-  border-color: #C69234 !important;
-  box-shadow: 
-    0 0 0 2px rgba(198, 146, 52, 0.8),
-    0 0 35px rgba(198, 146, 52, 0.45),
-    inset 0 0 15px rgba(198, 146, 52, 0.15) !important;
-  transform: scale(1.008);
+  position: relative;
+  z-index: 40;
+  background: #060606 !important;
+  border-color: rgba(235, 228, 205, 0.9) !important;
+  filter: grayscale(1) brightness(0.55) contrast(1.1);
+  box-shadow:
+    0 0 0 1px rgba(235, 228, 205, 0.7),
+    0 0 22px rgba(235, 228, 205, 0.35),
+    inset 0 0 30px rgba(235, 228, 205, 0.08) !important;
+  animation: listenOutlinePulse 3.2s ease-in-out infinite;
+}
+
+/* Look at a card = focus it, like aiming in the game */
+body.listen-mode-active .field-card:hover,
+body.listen-mode-active .listen-target:hover {
+  filter: grayscale(0.6) brightness(1);
+  box-shadow:
+    0 0 0 2px rgba(255, 250, 235, 1),
+    0 0 45px rgba(255, 250, 235, 0.6),
+    inset 0 0 25px rgba(255, 250, 235, 0.12) !important;
+}
+
+@keyframes listenOutlinePulse {
+  0%, 100% { border-color: rgba(235, 228, 205, 0.55); }
+  50%      { border-color: rgba(255, 250, 235, 1); }
+}
+
+/* Collectible pins & buttons stay bright, clickable, and glow white */
+body.listen-mode-active .collectible-pin,
+body.listen-mode-active .preview-trigger-btn {
+  position: relative;
+  z-index: 55;
+  pointer-events: auto !important;
+}
+
+body.listen-mode-active .collectible-pin {
+  border-color: #fff !important;
+  box-shadow: 0 0 22px rgba(255, 250, 235, 0.95), 0 0 6px #fff !important;
 }
 
 body.listen-mode-active .listen-spec-highlight {
-  color: #E0AB48 !important;
-  text-shadow: 0 0 8px rgba(224, 171, 72, 0.9);
+  color: #fff !important;
+  text-shadow: 0 0 8px rgba(255, 250, 235, 0.9);
 }
 
-/* Sonar Wave Ripple on Keydown */
+/* Sonar ping: pale white ring */
 .sonar-ripple {
   position: fixed;
   border-radius: 50%;
-  border: 2px solid rgba(198, 146, 52, 0.7);
+  border: 3px solid rgba(255, 250, 235, 0.85);
+  box-shadow: 0 0 40px rgba(255, 250, 235, 0.5), inset 0 0 40px rgba(255, 250, 235, 0.25);
   pointer-events: none;
   z-index: 48;
-  animation: sonarPulse 1.4s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  transform: translate(-50%, -50%);
+  animation: sonarPulse 1.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
 }
 
 @keyframes sonarPulse {
-  0% {
-    width: 0px;
-    height: 0px;
-    opacity: 0.9;
-    transform: translate(-50%, -50%) scale(0);
-  }
-  100% {
-    width: 1400px;
-    height: 1400px;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(1);
-  }
+  0%   { width: 0px;    height: 0px;    opacity: 0.95; }
+  100% { width: 2200px; height: 2200px; opacity: 0; }
 }
 
 #artifact-modal, #sim-modal {
