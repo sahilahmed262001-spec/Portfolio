@@ -110,42 +110,26 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (e) {}
     },
 
-    // Deep Listen Mode Sonar Sweep & Echolocation Ping
-    sonarPulse(freq = 320) {
+    // Deep Listen Mode Sonar Sweep
+    sonarPulse() {
       if (!soundEnabled) return;
       try {
         const ctx = getAudioContext();
         const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
 
-        // Primary sub/mid acoustic pulse
-        const osc1 = ctx.createOscillator();
-        const gain1 = ctx.createGain();
-        osc1.type = 'sine';
-        osc1.frequency.setValueAtTime(freq, now);
-        osc1.frequency.exponentialRampToValueAtTime(55, now + 1.1);
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(85, now);
+        osc.frequency.exponentialRampToValueAtTime(35, now + 0.9);
 
-        gain1.gain.setValueAtTime(0.35, now);
-        gain1.gain.exponentialRampToValueAtTime(0.0001, now + 1.1);
+        gain.gain.setValueAtTime(0.4, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.9);
 
-        osc1.connect(gain1);
-        gain1.connect(ctx.destination);
-        osc1.start(now);
-        osc1.stop(now + 1.15);
-
-        // Harmonic resonance ping
-        const osc2 = ctx.createOscillator();
-        const gain2 = ctx.createGain();
-        osc2.type = 'triangle';
-        osc2.frequency.setValueAtTime(freq * 1.5, now);
-        osc2.frequency.exponentialRampToValueAtTime(90, now + 0.6);
-
-        gain2.gain.setValueAtTime(0.12, now);
-        gain2.gain.exponentialRampToValueAtTime(0.0001, now + 0.65);
-
-        osc2.connect(gain2);
-        gain2.connect(ctx.destination);
-        osc2.start(now);
-        osc2.stop(now + 0.7);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.9);
       } catch (e) {}
     },
 
@@ -299,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ==========================================================================
-  // 3. LISTEN MODE RADAR & PULSE SYSTEM (The Last of Us Echolocation)
+  // 3. LISTEN MODE RADAR & PULSE SYSTEM
   // ==========================================================================
   let isListenMode = false;
   const listenModeBtn = document.getElementById('listen-mode-btn');
@@ -310,7 +294,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ripple.style.left = `${x || window.innerWidth / 2}px`;
     ripple.style.top = `${y || window.innerHeight / 2}px`;
     document.body.appendChild(ripple);
-    setTimeout(() => ripple.remove(), 1300);
+    SoundFX.sonarPulse();
+    setTimeout(() => ripple.remove(), 1400);
   }
 
   function toggleListenMode(forceState) {
@@ -320,34 +305,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isListenMode) {
       triggerSonarPulse(window.innerWidth / 2, window.innerHeight / 2);
       if (listenModeBtn) {
-        listenModeBtn.classList.add('bg-[#C69234]', 'text-black', 'border-[#E0AB48]');
-        listenModeBtn.classList.remove('bg-[#232528]', 'text-[#E3DED1]', 'border-[#33363A]');
-        listenModeBtn.innerHTML = '<i class="fa-solid fa-ear-listen text-black animate-pulse"></i> <span class="hidden md:inline">LISTEN MODE: ON [R]</span>';
+        listenModeBtn.classList.add('bg-[#C69234]', 'text-black');
       }
     } else {
       if (listenModeBtn) {
-        listenModeBtn.classList.remove('bg-[#C69234]', 'text-black', 'border-[#E0AB48]');
-        listenModeBtn.classList.add('bg-[#232528]', 'text-[#E3DED1]', 'border-[#33363A]');
-        listenModeBtn.innerHTML = '<i class="fa-solid fa-ear-listen text-[#C69234]"></i> <span class="hidden md:inline">LISTEN MODE [R]</span>';
+        listenModeBtn.classList.remove('bg-[#C69234]', 'text-black');
       }
     }
   }
 
   if (listenModeBtn) {
-    listenModeBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleListenMode();
-    });
+    listenModeBtn.addEventListener('click', () => toggleListenMode());
   }
 
-  // Click anywhere on the screen during Listen Mode to emit an acoustic visual ripple from cursor
-  window.addEventListener('click', (e) => {
-    if (!isListenMode) return;
-    if (e.target.closest('button, a, input, textarea, select')) return;
-    triggerSonarPulse(e.clientX, e.clientY);
-  });
-
-  // Keyboard Shortcuts: [F] Flashlight, [R] Listen Mode, [M] Sound Toggle
+  // Keyboard Shortcuts [F] for Flashlight, [R] for Listen Mode, [M] for Sound
   window.addEventListener('keydown', (e) => {
     // Ignore when typing inside input or textarea
     if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
