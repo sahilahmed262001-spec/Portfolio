@@ -421,8 +421,11 @@ body.listen-mode-active .stamp-ink-rust {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s, filter 0.2s;
+  transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
   animation: collectibleGlint 3.5s infinite ease-in-out;
+  position: relative;
+  z-index: 55;
+  pointer-events: auto !important;
 }
 
 .collectible-pin:hover {
