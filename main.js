@@ -950,6 +950,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.preview-trigger-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
+      // Leave Listen Mode when opening a popup modal
+      if (isListenMode) toggleListenMode(false);
+      
       SoundFX.switchClick();
       const title = btn.getAttribute('data-title') || 'Game Simulation';
       const mode = btn.getAttribute('data-mode') || 'netcode';
@@ -973,12 +976,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
-      modal.classList.add('hidden');
-    }
-  });
-
+  // Backdrop click to close simulator modal
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        SoundFX.switchClick();
+        modal.classList.add('hidden');
+      }
+    });
+  }
 
   // ==========================================================================
   // 7. COLLECTIBLE ARTIFACTS & LORE INSPECTOR MODAL
@@ -1010,7 +1016,11 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   document.querySelectorAll('.collectible-pin').forEach(pin => {
-    pin.addEventListener('click', () => {
+    pin.addEventListener('click', (e) => {
+      e.stopPropagation();
+      // Leave Listen Mode when inspecting an artifact popup
+      if (isListenMode) toggleListenMode(false);
+
       const artifactId = pin.getAttribute('data-artifact');
       const data = ArtifactsData[artifactId];
       if (!data) return;
@@ -1037,5 +1047,27 @@ document.addEventListener('DOMContentLoaded', () => {
       if (artifactModal) artifactModal.classList.add('hidden');
     });
   }
+
+  // Backdrop click to close artifact modal
+  if (artifactModal) {
+    artifactModal.addEventListener('click', (e) => {
+      if (e.target === artifactModal) {
+        SoundFX.switchClick();
+        artifactModal.classList.add('hidden');
+      }
+    });
+  }
+
+  // ESC to close any open modal
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (modal && !modal.classList.contains('hidden')) {
+        modal.classList.add('hidden');
+      }
+      if (artifactModal && !artifactModal.classList.contains('hidden')) {
+        artifactModal.classList.add('hidden');
+      }
+    }
+  });
 
 });
