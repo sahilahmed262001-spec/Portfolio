@@ -291,12 +291,12 @@ body.listen-mode-active .uv-secret {
   transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   background: radial-gradient(
     circle at center,
-    rgba(8, 10, 12, 0.72) 0%,
-    rgba(3, 4, 5, 0.92) 55%,
-    rgba(0, 0, 0, 0.98) 100%
+    rgba(6, 7, 9, 0.82) 0%,
+    rgba(2, 3, 4, 0.96) 55%,
+    rgba(0, 0, 0, 1) 100%
   );
-  backdrop-filter: grayscale(85%) contrast(140%) brightness(0.55);
-  -webkit-backdrop-filter: grayscale(85%) contrast(140%) brightness(0.55);
+  backdrop-filter: grayscale(95%) contrast(150%) brightness(0.45);
+  -webkit-backdrop-filter: grayscale(95%) contrast(150%) brightness(0.45);
 }
 
 #artifact-modal, #sim-modal {
@@ -304,7 +304,7 @@ body.listen-mode-active .uv-secret {
 }
 
 body.listen-mode-active {
-  background-color: #030405 !important;
+  background-color: #020304 !important;
 }
 
 body.listen-mode-active #listen-mode-overlay {
@@ -317,18 +317,75 @@ body.listen-mode-active #listen-mode-hud {
   pointer-events: auto;
 }
 
-/* Elevate & Contour Highlight Interactive Elements in Listen Mode */
+body.listen-mode-active header {
+  background: rgba(2, 3, 4, 0.98) !important;
+  border-color: rgba(224, 171, 72, 0.25) !important;
+}
+
+/* Conceal detailed UI text in Listen Mode into pure acoustic silhouettes */
+body.listen-mode-active p,
+body.listen-mode-active ul,
+body.listen-mode-active form,
+body.listen-mode-active input,
+body.listen-mode-active textarea,
+body.listen-mode-active .tape-strip,
+body.listen-mode-active .btn-tape-yellow,
+body.listen-mode-active .btn-tape-moss,
+body.listen-mode-active .btn-tape-rust,
+body.listen-mode-active .crafting-slot,
+body.listen-mode-active .craftable-skill-tag {
+  opacity: 0.04 !important;
+  filter: blur(2.5px) grayscale(100%);
+  transition: opacity 0.35s ease, filter 0.35s ease;
+  user-select: none;
+}
+
+/* Dim general card interiors to solid dark silhouette blocks */
 body.listen-mode-active .field-card,
 body.listen-mode-active .listen-target {
   position: relative;
   z-index: 50;
-  background: #0b0c0e !important;
+  background: #050607 !important;
   border-color: #E0AB48 !important;
   box-shadow: 
     0 0 0 2.5px rgba(224, 171, 72, 0.95),
     0 0 50px rgba(198, 146, 52, 0.65),
     0 20px 40px rgba(0, 0, 0, 0.98) !important;
   animation: acousticPulse 2.2s infinite ease-in-out;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Card titles remain visible as glowing acoustic echo signatures */
+body.listen-mode-active h1,
+body.listen-mode-active h2,
+body.listen-mode-active h3 {
+  opacity: 0.85 !important;
+  color: #E0AB48 !important;
+  text-shadow: 0 0 12px rgba(224, 171, 72, 0.8) !important;
+  filter: none !important;
+}
+
+/* When hovering over any silhouette card ("Focusing Hearing"): reveal its details */
+body.listen-mode-active .field-card:hover p,
+body.listen-mode-active .field-card:hover ul,
+body.listen-mode-active .field-card:hover form,
+body.listen-mode-active .field-card:hover .tape-strip,
+body.listen-mode-active .field-card:hover .btn-tape-yellow,
+body.listen-mode-active .field-card:hover .btn-tape-moss,
+body.listen-mode-active .field-card:hover .btn-tape-rust,
+body.listen-mode-active .field-card:hover .crafting-slot,
+body.listen-mode-active .field-card:hover .craftable-skill-tag {
+  opacity: 0.95 !important;
+  filter: blur(0px) grayscale(0%);
+}
+
+body.listen-mode-active .field-card:hover {
+  background: #111315 !important;
+  box-shadow: 
+    0 0 0 3.5px rgba(255, 230, 160, 1),
+    0 0 70px rgba(224, 171, 72, 0.9),
+    0 20px 40px rgba(0, 0, 0, 0.98) !important;
 }
 
 @keyframes acousticPulse {
@@ -346,11 +403,14 @@ body.listen-mode-active .listen-target {
   }
 }
 
+/* Dog Tag and Collectible Pins shine as high-priority radiant pings */
 body.listen-mode-active .collectible-pin {
   position: relative;
-  z-index: 55;
+  z-index: 60;
+  opacity: 1 !important;
+  filter: none !important;
   border-color: #ffffff !important;
-  background: #2b2314 !important;
+  background: #362914 !important;
   color: #ffffff !important;
   box-shadow: 
     0 0 0 3px rgba(224, 171, 72, 1),
@@ -371,10 +431,12 @@ body.listen-mode-active .collectible-pin {
   }
 }
 
+/* Secret UV Notes glow brightly in the dark */
 body.listen-mode-active .uv-secret {
   opacity: 1 !important;
   color: #8EA870 !important;
-  text-shadow: 0 0 14px rgba(142, 168, 112, 1), 0 0 30px rgba(224, 171, 72, 0.95);
+  text-shadow: 0 0 16px rgba(142, 168, 112, 1), 0 0 32px rgba(224, 171, 72, 0.95);
+  filter: none !important;
 }
 
 body.listen-mode-active .stamp-ink-yellow,
