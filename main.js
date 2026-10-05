@@ -110,27 +110,120 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (e) {}
     },
 
-    // Deep Listen Mode Sonar Sweep
-    sonarPulse() {
+    // Deep Listen Mode Sonar Sweep & Echolocation Ping
+    sonarPulse(freq = 320) {
+      if (!soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+
+        // Primary sub/mid acoustic pulse
+        const osc1 = ctx.createOscillator();
+        const gain1 = ctx.createGain();
+        osc1.type = 'sine';
+        osc1.frequency.setValueAtTime(freq, now);
+        osc1.frequency.exponentialRampToValueAtTime(55, now + 1.1);
+
+        gain1.gain.setValueAtTime(0.35, now);
+        gain1.gain.exponentialRampToValueAtTime(0.0001, now + 1.1);
+
+        osc1.connect(gain1);
+        gain1.connect(ctx.destination);
+        osc1.start(now);
+        osc1.stop(now + 1.15);
+
+        // Harmonic resonance ping
+        const osc2 = ctx.createOscillator();
+        const gain2 = ctx.createGain();
+        osc2.type = 'triangle';
+        osc2.frequency.setValueAtTime(freq * 1.5, now);
+        osc2.frequency.exponentialRampToValueAtTime(90, now + 0.6);
+
+        gain2.gain.setValueAtTime(0.12, now);
+        gain2.gain.exponentialRampToValueAtTime(0.0001, now + 0.65);
+
+        osc2.connect(gain2);
+        gain2.connect(ctx.destination);
+        osc2.start(now);
+        osc2.stop(now + 0.7);
+      } catch (e) {}
+    },
+
+    // Listen mode target ping (when hovering over cards / secrets during listen mode)
+    listenTargetPing() {
       if (!soundEnabled) return;
       try {
         const ctx = getAudioContext();
         const now = ctx.currentTime;
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
-
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(85, now);
-        osc.frequency.exponentialRampToValueAtTime(35, now + 0.9);
+        osc.frequency.setValueAtTime(440, now);
+        osc.frequency.exponentialRampToValueAtTime(220, now + 0.25);
 
-        gain.gain.setValueAtTime(0.4, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.9);
+        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.25);
 
         osc.connect(gain);
         gain.connect(ctx.destination);
         osc.start(now);
-        osc.stop(now + 0.9);
+        osc.stop(now + 0.26);
       } catch (e) {}
+    },
+
+    // Ambient Listen Mode Binaural Drone
+    listenDroneNodes: null,
+    startListenDrone() {
+      if (!soundEnabled || this.listenDroneNodes) return;
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+
+        const osc1 = ctx.createOscillator();
+        const osc2 = ctx.createOscillator();
+        const filter = ctx.createBiquadFilter();
+        const gain = ctx.createGain();
+
+        osc1.type = 'sawtooth';
+        osc1.frequency.setValueAtTime(55, now); // A1
+        osc2.type = 'sine';
+        osc2.frequency.setValueAtTime(58, now); // subtle binaural beat
+
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(140, now);
+
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.linearRampToValueAtTime(0.08, now + 0.8);
+
+        osc1.connect(filter);
+        osc2.connect(filter);
+        filter.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc1.start(now);
+        osc2.start(now);
+
+        this.listenDroneNodes = { osc1, osc2, gain, filter };
+      } catch (e) {}
+    },
+
+    stopListenDrone() {
+      if (!this.listenDroneNodes) return;
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        this.listenDroneNodes.gain.gain.linearRampToValueAtTime(0.0001, now + 0.4);
+        const nodes = this.listenDroneNodes;
+        this.listenDroneNodes = null;
+        setTimeout(() => {
+          try {
+            nodes.osc1.stop();
+            nodes.osc2.stop();
+          } catch (e) {}
+        }, 450);
+      } catch (e) {
+        this.listenDroneNodes = null;
+      }
     },
 
     // Crafting Workbench ratchet / success sound
@@ -238,19 +331,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ==========================================================================
-  // 3. LISTEN MODE RADAR & PULSE SYSTEM
+  // 3. LISTEN MODE RADAR & PULSE SYSTEM (The Last of Us Echolocation)
   // ==========================================================================
   let isListenMode = false;
   const listenModeBtn = document.getElementById('listen-mode-btn');
 
-  function triggerSonarPulse(x, y) {
+  function triggerSonarPulse(x, y, freq = 320) {
     const ripple = document.createElement('div');
     ripple.className = 'sonar-ripple';
     ripple.style.left = `${x || window.innerWidth / 2}px`;
     ripple.style.top = `${y || window.innerHeight / 2}px`;
     document.body.appendChild(ripple);
-    SoundFX.sonarPulse();
-    setTimeout(() => ripple.remove(), 1400);
+    SoundFX.sonarPulse(freq);
+    setTimeout(() => ripple.remove(), 1300);
   }
 
   function toggleListenMode(forceState) {
@@ -258,22 +351,47 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.toggle('listen-mode-active', isListenMode);
     
     if (isListenMode) {
-      triggerSonarPulse(window.innerWidth / 2, window.innerHeight / 2);
+      triggerSonarPulse(window.innerWidth / 2, window.innerHeight / 2, 340);
+      SoundFX.startListenDrone();
       if (listenModeBtn) {
-        listenModeBtn.classList.add('bg-[#C69234]', 'text-black');
+        listenModeBtn.classList.add('bg-[#C69234]', 'text-black', 'border-[#E0AB48]');
+        listenModeBtn.classList.remove('bg-[#232528]', 'text-[#E3DED1]', 'border-[#33363A]');
+        listenModeBtn.innerHTML = '<i class="fa-solid fa-ear-listen text-black animate-pulse"></i> <span class="hidden md:inline">LISTEN MODE: ON [R]</span>';
       }
     } else {
+      SoundFX.stopListenDrone();
       if (listenModeBtn) {
-        listenModeBtn.classList.remove('bg-[#C69234]', 'text-black');
+        listenModeBtn.classList.remove('bg-[#C69234]', 'text-black', 'border-[#E0AB48]');
+        listenModeBtn.classList.add('bg-[#232528]', 'text-[#E3DED1]', 'border-[#33363A]');
+        listenModeBtn.innerHTML = '<i class="fa-solid fa-ear-listen text-[#C69234]"></i> <span class="hidden md:inline">LISTEN MODE [R]</span>';
       }
     }
   }
 
   if (listenModeBtn) {
-    listenModeBtn.addEventListener('click', () => toggleListenMode());
+    listenModeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleListenMode();
+    });
   }
 
-  // Keyboard Shortcuts [F] for Flashlight, [R] or [Space] for Listen Mode, [M] for Sound
+  // Click anywhere on the screen during Listen Mode to emit an acoustic ping from cursor
+  window.addEventListener('click', (e) => {
+    if (!isListenMode) return;
+    if (e.target.closest('button, a, input, textarea, select')) return;
+    triggerSonarPulse(e.clientX, e.clientY, 280);
+  });
+
+  // Acoustic ping on hover over interactive targets in Listen Mode
+  document.querySelectorAll('.field-card, .collectible-pin, .uv-secret').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      if (isListenMode) {
+        SoundFX.listenTargetPing();
+      }
+    });
+  });
+
+  // Keyboard Shortcuts: [F] Flashlight, [R] Listen Mode, [M] Sound Toggle
   window.addEventListener('keydown', (e) => {
     // Ignore when typing inside input or textarea
     if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;

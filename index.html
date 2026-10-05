@@ -79,6 +79,14 @@
   <!-- Dynamic Flashlight Lighting Cone Overlay -->
   <div id="flashlight-overlay"></div>
 
+  <!-- Dedicated Listen Mode Acoustic Vision Overlay & Tactical HUD -->
+  <div id="listen-mode-overlay"></div>
+  <div id="listen-mode-hud"
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 transition-all duration-300 transform translate-y-2 flex items-center gap-2.5 bg-[#151618]/95 border border-[#C69234] px-4 py-2 rounded-xs shadow-2xl font-typewriter text-xs text-[#E0AB48] backdrop-blur-md">
+    <i class="fa-solid fa-ear-listen animate-pulse text-[#C69234]"></i>
+    <span>LISTEN MODE ACTIVE — CLICK TO EMIT ACOUSTIC PING // PRESS <strong class="text-white bg-[#2e2617] px-1.5 py-0.5 rounded-xs border border-[#523e1f]">[R]</strong> TO EXIT</span>
+  </div>
+
   <!-- Ambient Dust Spores Background Canvas -->
   <canvas id="spores-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-25"></canvas>
 

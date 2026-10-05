@@ -281,49 +281,115 @@ body.listen-mode-active .uv-secret {
   filter: brightness(1.2);
 }
 
-/* 2. Full Listen Mode Filter & Radar Pulse */
-body.listen-mode-active {
-  filter: grayscale(88%) contrast(115%) brightness(0.92);
-  transition: filter 0.25s ease-out;
+/* 2. Full Listen Mode Acoustic Vision System (The Last of Us Echolocation) */
+#listen-mode-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 38;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(
+    circle at center,
+    rgba(14, 15, 17, 0.65) 0%,
+    rgba(8, 9, 10, 0.88) 60%,
+    rgba(3, 4, 5, 0.96) 100%
+  );
+  backdrop-filter: grayscale(60%) contrast(115%) brightness(0.78);
+  -webkit-backdrop-filter: grayscale(60%) contrast(115%) brightness(0.78);
 }
 
+body.listen-mode-active #listen-mode-overlay {
+  opacity: 1;
+}
+
+body.listen-mode-active #listen-mode-hud {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+/* Elevate & Contour Highlight Interactive Elements in Listen Mode */
 body.listen-mode-active .field-card,
 body.listen-mode-active .listen-target {
+  position: relative;
+  z-index: 40;
   border-color: #C69234 !important;
   box-shadow: 
-    0 0 0 2px rgba(198, 146, 52, 0.8),
+    0 0 0 2px rgba(224, 171, 72, 0.9),
     0 0 35px rgba(198, 146, 52, 0.45),
-    inset 0 0 15px rgba(198, 146, 52, 0.15) !important;
-  transform: scale(1.008);
+    0 12px 30px rgba(0, 0, 0, 0.8) !important;
+  animation: acousticPulse 2.4s infinite ease-in-out;
+}
+
+@keyframes acousticPulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 2px rgba(224, 171, 72, 0.75),
+      0 0 25px rgba(198, 146, 52, 0.35),
+      0 12px 30px rgba(0, 0, 0, 0.8);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 3.5px rgba(240, 195, 100, 1),
+      0 0 45px rgba(224, 171, 72, 0.65),
+      0 12px 30px rgba(0, 0, 0, 0.8);
+  }
+}
+
+body.listen-mode-active .collectible-pin {
+  position: relative;
+  z-index: 42;
+  border-color: #E0AB48 !important;
+  box-shadow: 0 0 25px rgba(224, 171, 72, 0.9), 0 0 10px #ffffff !important;
+  animation: radarBlip 1.6s infinite ease-in-out;
+}
+
+@keyframes radarBlip {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(224, 171, 72, 0.7);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(224, 171, 72, 1), 0 0 15px #fff;
+  }
 }
 
 body.listen-mode-active .listen-spec-highlight {
   color: #E0AB48 !important;
-  text-shadow: 0 0 8px rgba(224, 171, 72, 0.9);
+  text-shadow: 0 0 10px rgba(224, 171, 72, 0.95);
 }
 
-/* Sonar Wave Ripple on Keydown */
+body.listen-mode-active .stamp-ink-yellow,
+body.listen-mode-active .stamp-ink-moss,
+body.listen-mode-active .stamp-ink-rust {
+  box-shadow: 0 0 14px rgba(224, 171, 72, 0.6);
+  text-shadow: 0 0 6px currentColor;
+}
+
+/* Sonar Wave Ripple on Keydown & Click */
 .sonar-ripple {
   position: fixed;
   border-radius: 50%;
-  border: 2px solid rgba(198, 146, 52, 0.7);
+  border: 2px solid rgba(224, 171, 72, 0.85);
+  box-shadow: 0 0 20px rgba(198, 146, 52, 0.6), inset 0 0 15px rgba(198, 146, 52, 0.3);
   pointer-events: none;
   z-index: 48;
-  animation: sonarPulse 1.4s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  transform: translate(-50%, -50%);
+  animation: sonarPulse 1.25s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
 }
 
 @keyframes sonarPulse {
   0% {
     width: 0px;
     height: 0px;
-    opacity: 0.9;
-    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.95;
   }
   100% {
-    width: 1400px;
-    height: 1400px;
+    width: 1600px;
+    height: 1600px;
     opacity: 0;
-    transform: translate(-50%, -50%) scale(1);
   }
 }
 
