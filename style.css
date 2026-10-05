@@ -322,22 +322,12 @@ body.listen-mode-active header {
   border-color: rgba(224, 171, 72, 0.25) !important;
 }
 
-/* Conceal detailed UI text in Listen Mode into pure acoustic silhouettes */
-body.listen-mode-active p,
-body.listen-mode-active ul,
-body.listen-mode-active form,
-body.listen-mode-active input,
-body.listen-mode-active textarea,
-body.listen-mode-active .tape-strip,
-body.listen-mode-active .btn-tape-yellow,
-body.listen-mode-active .btn-tape-moss,
-body.listen-mode-active .btn-tape-rust,
-body.listen-mode-active .crafting-slot,
-body.listen-mode-active .craftable-skill-tag {
-  opacity: 0.04 !important;
-  filter: blur(2.5px) grayscale(100%);
-  transition: opacity 0.35s ease, filter 0.35s ease;
-  user-select: none;
+/* In Listen Mode: Hide all card inner UI into solid black silhouettes */
+body.listen-mode-active .field-card > *:not(.collectible-pin):not(.tape-strip) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 /* Dim general card interiors to solid dark silhouette blocks */
@@ -345,7 +335,7 @@ body.listen-mode-active .field-card,
 body.listen-mode-active .listen-target {
   position: relative;
   z-index: 50;
-  background: #050607 !important;
+  background: #020304 !important;
   border-color: #E0AB48 !important;
   box-shadow: 
     0 0 0 2.5px rgba(224, 171, 72, 0.95),
@@ -356,28 +346,11 @@ body.listen-mode-active .listen-target {
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Card titles remain visible as glowing acoustic echo signatures */
-body.listen-mode-active h1,
-body.listen-mode-active h2,
-body.listen-mode-active h3 {
-  opacity: 0.85 !important;
-  color: #E0AB48 !important;
-  text-shadow: 0 0 12px rgba(224, 171, 72, 0.8) !important;
-  filter: none !important;
-}
-
 /* When hovering over any silhouette card ("Focusing Hearing"): reveal its details */
-body.listen-mode-active .field-card:hover p,
-body.listen-mode-active .field-card:hover ul,
-body.listen-mode-active .field-card:hover form,
-body.listen-mode-active .field-card:hover .tape-strip,
-body.listen-mode-active .field-card:hover .btn-tape-yellow,
-body.listen-mode-active .field-card:hover .btn-tape-moss,
-body.listen-mode-active .field-card:hover .btn-tape-rust,
-body.listen-mode-active .field-card:hover .crafting-slot,
-body.listen-mode-active .field-card:hover .craftable-skill-tag {
-  opacity: 0.95 !important;
-  filter: blur(0px) grayscale(0%);
+body.listen-mode-active .field-card:hover > *:not(.collectible-pin):not(.tape-strip) {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
 }
 
 body.listen-mode-active .field-card:hover {

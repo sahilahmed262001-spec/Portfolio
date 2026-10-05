@@ -304,13 +304,12 @@ document.addEventListener('DOMContentLoaded', () => {
   let isListenMode = false;
   const listenModeBtn = document.getElementById('listen-mode-btn');
 
-  function triggerSonarPulse(x, y, freq = 320) {
+  function triggerSonarPulse(x, y) {
     const ripple = document.createElement('div');
     ripple.className = 'sonar-ripple';
     ripple.style.left = `${x || window.innerWidth / 2}px`;
     ripple.style.top = `${y || window.innerHeight / 2}px`;
     document.body.appendChild(ripple);
-    SoundFX.sonarPulse(freq);
     setTimeout(() => ripple.remove(), 1300);
   }
 
@@ -319,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.toggle('listen-mode-active', isListenMode);
     
     if (isListenMode) {
-      triggerSonarPulse(window.innerWidth / 2, window.innerHeight / 2, 340);
+      triggerSonarPulse(window.innerWidth / 2, window.innerHeight / 2);
       if (listenModeBtn) {
         listenModeBtn.classList.add('bg-[#C69234]', 'text-black', 'border-[#E0AB48]');
         listenModeBtn.classList.remove('bg-[#232528]', 'text-[#E3DED1]', 'border-[#33363A]');
@@ -341,20 +340,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Click anywhere on the screen during Listen Mode to emit an acoustic ping from cursor
+  // Click anywhere on the screen during Listen Mode to emit an acoustic visual ripple from cursor
   window.addEventListener('click', (e) => {
     if (!isListenMode) return;
     if (e.target.closest('button, a, input, textarea, select')) return;
-    triggerSonarPulse(e.clientX, e.clientY, 280);
-  });
-
-  // Acoustic ping on hover over interactive targets in Listen Mode
-  document.querySelectorAll('.field-card, .collectible-pin, .uv-secret').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      if (isListenMode) {
-        SoundFX.listenTargetPing();
-      }
-    });
+    triggerSonarPulse(e.clientX, e.clientY);
   });
 
   // Keyboard Shortcuts: [F] Flashlight, [R] Listen Mode, [M] Sound Toggle
