@@ -171,6 +171,29 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (e) {}
     },
 
+    // Tactical Radio Transmission Tone Burst
+    radioTransmit() {
+      if (!soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        [587.33, 880, 1174.66, 1760].forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.07);
+
+          gain.gain.setValueAtTime(0.18, now + idx * 0.07);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.07 + 0.065);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now + idx * 0.07);
+          osc.stop(now + idx * 0.07 + 0.07);
+        });
+      } catch (e) {}
+    },
+
     // Ambient Listen Mode Binaural Drone
     listenDroneNodes: null,
     startListenDrone() {
@@ -1069,5 +1092,138 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
+
+  // ==========================================================================
+  // 8. EMERGENCY RADIO DISPATCH FORM & TRANSMISSION HANDLER
+  // ==========================================================================
+  const dispatchForm = document.getElementById('dispatch-form');
+  const dispatchSender = document.getElementById('dispatch-sender');
+  const dispatchEmail = document.getElementById('dispatch-email');
+  const dispatchMessage = document.getElementById('dispatch-message');
+  const dispatchSubmitBtn = document.getElementById('dispatch-submit-btn');
+  const dispatchStatus = document.getElementById('dispatch-status');
+  const copyEmailBtn = document.getElementById('copy-email-btn');
+
+  // One-click Copy Email Button
+  if (copyEmailBtn) {
+    copyEmailBtn.addEventListener('click', async () => {
+      const email = 'sahilahmed262001@gmail.com';
+      try {
+        await navigator.clipboard.writeText(email);
+        SoundFX.craftSuccess();
+        copyEmailBtn.textContent = 'COPIED!';
+        copyEmailBtn.classList.add('bg-[#E0AB48]', 'text-black');
+        setTimeout(() => {
+          copyEmailBtn.textContent = 'COPY';
+          copyEmailBtn.classList.remove('bg-[#E0AB48]', 'text-black');
+        }, 2200);
+      } catch (err) {
+        window.location.href = `mailto:${email}`;
+      }
+    });
+  }
+
+  // Radio Dispatch Form Submission Handler
+  if (dispatchForm) {
+    dispatchForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const senderName = dispatchSender ? dispatchSender.value.trim() : 'Studio Recruiter / Director';
+      const senderEmail = dispatchEmail ? dispatchEmail.value.trim() : '';
+      const messageText = dispatchMessage ? dispatchMessage.value.trim() : '';
+
+      if (!senderEmail || !messageText) return;
+
+      // Audio & UI Transmission feedback
+      SoundFX.radioTransmit();
+
+      if (dispatchSubmitBtn) {
+        dispatchSubmitBtn.disabled = true;
+        dispatchSubmitBtn.innerHTML = `
+          <i class="fa-solid fa-satellite-dish animate-spin text-[#E0AB48]"></i>
+          <span>TRANSMITTING DISPATCH ACROSS FREQUENCY...</span>
+        `;
+        dispatchSubmitBtn.classList.add('opacity-80');
+      }
+
+      if (dispatchStatus) {
+        dispatchStatus.className = 'mb-4 p-3 rounded-xs font-courier text-xs bg-[#1f241a] text-[#8EA870] border border-[#5E7A45] flex items-center gap-2';
+        dispatchStatus.innerHTML = '<i class="fa-solid fa-tower-broadcast animate-pulse text-[#E0AB48]"></i> <span>Encrypting &amp; beaming transmission to Sahil\'s frequency...</span>';
+      }
+
+      const formattedBody = `SENDER: ${senderName}\nRETURN EMAIL: ${senderEmail}\n\nMESSAGE:\n${messageText}\n\n---\nTransmitted from Survivor Journal // Portfolio Frequency`;
+      const mailtoUrl = `mailto:sahilahmed262001@gmail.com?subject=${encodeURIComponent('Field Dispatch: ' + senderName)}&body=${encodeURIComponent(formattedBody)}`;
+
+      // Attempt Free FormSubmit / Formspree AJAX API
+      let sentViaAjax = false;
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/sahilahmed262001@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: senderName,
+            email: senderEmail,
+            message: messageText,
+            _subject: `Portfolio Dispatch from ${senderName} (${senderEmail})`
+          })
+        });
+
+        if (response.ok) {
+          sentViaAjax = true;
+        }
+      } catch (err) {
+        sentViaAjax = false;
+      }
+
+      // Success Sound
+      SoundFX.craftSuccess();
+
+      // Show Confirmation & Trigger Mailto as guaranteed backup
+      if (dispatchStatus) {
+        dispatchStatus.className = 'mb-4 p-3.5 rounded-xs font-courier text-xs bg-[#1f241a] text-[#E3DED1] border border-[#5E7A45] space-y-2';
+        dispatchStatus.innerHTML = `
+          <div class="flex items-center gap-2 text-[#8EA870] font-bold">
+            <i class="fa-solid fa-circle-check text-sm"></i>
+            <span>✓ TRANSMISSION DISPATCHED TO SAHIL!</span>
+          </div>
+          <p class="text-[#CFC8BA] leading-relaxed">
+            Your message has been encrypted and sent to <strong class="text-[#E0AB48]">sahilahmed262001@gmail.com</strong>. Sahil will reply to <strong class="text-[#E3DED1]">${senderEmail}</strong> shortly.
+          </p>
+          <div class="pt-1 flex flex-wrap gap-2 text-[10px]">
+            <a href="${mailtoUrl}" class="px-2 py-1 bg-[#232528] text-[#E0AB48] border border-[#42371e] hover:bg-[#E0AB48] hover:text-black rounded-xs inline-flex items-center gap-1 font-typewriter">
+              <i class="fa-solid fa-envelope-open-text"></i> OPEN IN EMAIL CLIENT &gt;
+            </a>
+            <a href="https://wa.me/918171638120?text=${encodeURIComponent('Hi Sahil, I just sent a transmission:\n\n' + messageText)}" target="_blank" rel="noopener noreferrer" class="px-2 py-1 bg-[#232528] text-[#8EA870] border border-[#344129] hover:bg-[#8EA870] hover:text-black rounded-xs inline-flex items-center gap-1 font-typewriter">
+              <i class="fa-brands fa-whatsapp"></i> PING ON WHATSAPP &gt;
+            </a>
+          </div>
+        `;
+      }
+
+      // Reset form fields
+      if (dispatchForm) dispatchForm.reset();
+
+      if (dispatchSubmitBtn) {
+        dispatchSubmitBtn.disabled = false;
+        dispatchSubmitBtn.innerHTML = `
+          <i class="fa-solid fa-check text-black"></i>
+          <span>TRANSMISSION COMPLETE &bull; SEND ANOTHER</span>
+        `;
+        dispatchSubmitBtn.classList.remove('opacity-80');
+      }
+
+      // If AJAX wasn't reachable (e.g. strict browser adblock), trigger mailto directly
+      if (!sentViaAjax) {
+        try {
+          await navigator.clipboard.writeText(formattedBody);
+        } catch (e) {}
+        window.location.href = mailtoUrl;
+      }
+    });
+  }
 
 });

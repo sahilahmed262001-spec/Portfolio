@@ -1328,34 +1328,59 @@
           <div
             class="font-typewriter text-xs font-bold text-[#E3DED1] border-b border-[#282A2D] pb-3 mb-4 flex items-center justify-between">
             <span>📻 TRANSMISSION CHANNELS</span>
-            <span class="stamp-ink-moss text-[9px]">OPEN</span>
+            <span class="stamp-ink-moss text-[9px]">OPEN &bull; 24/7</span>
           </div>
 
-          <div class="space-y-4 font-courier text-xs text-[#CFC8BA]">
-            <div class="bg-[#151618] p-3.5 rounded-xs border border-[#232528]">
-              <span class="text-[10px] text-[#7A8087] block font-bold uppercase">DIRECT PHONE / WHATSAPP:</span>
-              <a href="tel:+918171638120"
-                class="text-sm font-bold text-[#E3DED1] hover:text-[#E0AB48] flex items-center justify-between mt-1">
-                <span>+91 8171638120</span>
-                <i class="fa-solid fa-phone text-[#8EA870]"></i>
+          <div class="space-y-3.5 font-courier text-xs text-[#CFC8BA]">
+            <!-- Direct Phone & WhatsApp -->
+            <div class="bg-[#151618] p-3.5 rounded-xs border border-[#232528] flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-[#7A8087] block font-bold uppercase">DIRECT PHONE / WHATSAPP:</span>
+                <a href="https://wa.me/918171638120?text=Hi%20Sahil,%20I%20reviewed%20your%20Unity%20Game%20Developer%20Portfolio."
+                  target="_blank" rel="noopener noreferrer"
+                  class="text-sm font-bold text-[#E3DED1] hover:text-[#E0AB48] flex items-center gap-2 mt-1">
+                  <span>+91 8171638120</span>
+                  <i class="fa-brands fa-whatsapp text-[#8EA870]"></i>
+                </a>
+              </div>
+              <a href="https://wa.me/918171638120?text=Hi%20Sahil,%20I%20reviewed%20your%20Unity%20Game%20Developer%20Portfolio."
+                target="_blank" rel="noopener noreferrer"
+                class="px-2.5 py-1 bg-[#232528] hover:bg-[#5E7A45] hover:text-black border border-[#33363A] rounded-xs font-typewriter text-[10px] text-[#8EA870] transition-colors"
+                title="Message on WhatsApp">
+                CHAT &gt;
               </a>
             </div>
 
-            <div class="bg-[#151618] p-3.5 rounded-xs border border-[#232528]">
-              <span class="text-[10px] text-[#7A8087] block font-bold uppercase">WRITTEN DISPATCH (EMAIL):</span>
-              <a href="mailto:sahilahmed262001@gmail.com"
-                class="text-xs font-bold text-[#E0AB48] hover:underline flex items-center justify-between mt-1 break-all">
-                <span>sahilahmed262001@gmail.com</span>
-                <i class="fa-solid fa-envelope text-[#C7523C]"></i>
-              </a>
+            <!-- Written Dispatch Email -->
+            <div class="bg-[#151618] p-3.5 rounded-xs border border-[#232528] flex items-center justify-between">
+              <div class="min-w-0 pr-2">
+                <span class="text-[10px] text-[#7A8087] block font-bold uppercase">WRITTEN DISPATCH (EMAIL):</span>
+                <a href="mailto:sahilahmed262001@gmail.com"
+                  class="text-xs font-bold text-[#E0AB48] hover:underline flex items-center gap-1.5 mt-1 truncate">
+                  <span class="truncate">sahilahmed262001@gmail.com</span>
+                  <i class="fa-solid fa-envelope text-[#C7523C] shrink-0"></i>
+                </a>
+              </div>
+              <button id="copy-email-btn"
+                class="px-2.5 py-1 bg-[#232528] hover:bg-[#E0AB48] hover:text-black border border-[#33363A] rounded-xs font-typewriter text-[10px] text-[#E0AB48] transition-colors shrink-0"
+                title="Copy Email to Clipboard">
+                COPY
+              </button>
             </div>
 
-            <div class="bg-[#151618] p-3.5 rounded-xs border border-[#232528]">
-              <span class="text-[10px] text-[#7A8087] block font-bold uppercase">PROFESSIONAL FREQUENCY:</span>
+            <!-- LinkedIn Frequency -->
+            <div class="bg-[#151618] p-3.5 rounded-xs border border-[#232528] flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-[#7A8087] block font-bold uppercase">PROFESSIONAL FREQUENCY:</span>
+                <a href="https://linkedin.com/in/sahil-ahmed-81018a228" target="_blank" rel="noopener noreferrer"
+                  class="text-xs font-bold text-[#8EA870] hover:underline flex items-center gap-1.5 mt-1">
+                  <span>linkedin.com/in/sahil-ahmed</span>
+                  <i class="fa-brands fa-linkedin text-[#8EA870]"></i>
+                </a>
+              </div>
               <a href="https://linkedin.com/in/sahil-ahmed-81018a228" target="_blank" rel="noopener noreferrer"
-                class="text-xs font-bold text-[#8EA870] hover:underline flex items-center justify-between mt-1">
-                <span>linkedin.com/in/sahil-ahmed</span>
-                <i class="fa-brands fa-linkedin text-[#8EA870]"></i>
+                class="px-2.5 py-1 bg-[#232528] hover:bg-[#2E3A23] border border-[#33363A] rounded-xs font-typewriter text-[10px] text-[#CFC8BA] transition-colors">
+                VISIT &gt;
               </a>
             </div>
           </div>
@@ -1376,25 +1401,28 @@
           <div
             class="font-typewriter text-xs font-bold text-[#E3DED1] border-b border-[#282A2D] pb-3 mb-5 flex items-center justify-between">
             <span>✍️ SEND WRITTEN DISPATCH</span>
-            <span class="stamp-ink-rust text-[9px]">ENCRYPTED</span>
+            <span class="stamp-ink-rust text-[9px]">ENCRYPTED TRANSMISSION</span>
           </div>
 
-          <form action="mailto:sahilahmed262001@gmail.com" method="GET" class="space-y-4 font-body text-xs">
+          <!-- Dynamic Status Notification Box -->
+          <div id="dispatch-status" class="hidden mb-4 p-3 rounded-xs font-courier text-xs transition-all"></div>
+
+          <form id="dispatch-form" class="space-y-4 font-body text-xs">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label class="block text-[10px] font-courier text-[#A5ABB3] uppercase font-bold mb-1">
                   SENDER NAME / STUDIO CALLSIGN *
                 </label>
-                <input type="text" name="subject" required placeholder="e.g. Lead Producer / Studio Director"
-                  class="w-full bg-[#151618] border border-[#282A2D] p-2.5 text-[#E3DED1] placeholder-[#5c6168] rounded-xs text-xs outline-hidden focus:border-[#E0AB48]" />
+                <input type="text" id="dispatch-sender" name="name" required placeholder="e.g. Lead Producer / Studio Director"
+                  class="w-full bg-[#151618] border border-[#282A2D] p-2.5 text-[#E3DED1] placeholder-[#5c6168] rounded-xs text-xs outline-hidden focus:border-[#E0AB48] transition-colors" />
               </div>
 
               <div>
                 <label class="block text-[10px] font-courier text-[#A5ABB3] uppercase font-bold mb-1">
                   RETURN EMAIL ADDRESS *
                 </label>
-                <input type="email" required placeholder="contact@studio.com"
-                  class="w-full bg-[#151618] border border-[#282A2D] p-2.5 text-[#E3DED1] placeholder-[#5c6168] rounded-xs text-xs outline-hidden focus:border-[#E0AB48]" />
+                <input type="email" id="dispatch-email" name="email" required placeholder="contact@studio.com"
+                  class="w-full bg-[#151618] border border-[#282A2D] p-2.5 text-[#E3DED1] placeholder-[#5c6168] rounded-xs text-xs outline-hidden focus:border-[#E0AB48] transition-colors" />
               </div>
             </div>
 
@@ -1402,13 +1430,14 @@
               <label class="block text-[10px] font-courier text-[#A5ABB3] uppercase font-bold mb-1">
                 DISPATCH MESSAGE *
               </label>
-              <textarea name="body" rows="4" required
-                placeholder="Write project details, role expectations, or contract inquiries..."
-                class="w-full bg-[#151618] border border-[#282A2D] p-2.5 text-[#E3DED1] placeholder-[#5c6168] rounded-xs text-xs outline-hidden resize-none focus:border-[#E0AB48]"></textarea>
+              <textarea id="dispatch-message" name="message" rows="4" required
+                placeholder="Write project details, game engineering expectations, or studio contract inquiries..."
+                class="w-full bg-[#151618] border border-[#282A2D] p-2.5 text-[#E3DED1] placeholder-[#5c6168] rounded-xs text-xs outline-hidden resize-none focus:border-[#E0AB48] transition-colors"></textarea>
             </div>
 
-            <button type="submit" class="w-full py-3 btn-tape-yellow text-xs">
-              <span>✉️ TRANSMIT MESSAGE DIRECTLY TO SAHIL</span>
+            <button type="submit" id="dispatch-submit-btn" class="w-full py-3.5 btn-tape-yellow text-xs flex items-center justify-center gap-2 cursor-pointer font-bold tracking-wide">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>TRANSMIT MESSAGE DIRECTLY TO SAHIL</span>
             </button>
           </form>
         </div>
