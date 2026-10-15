@@ -24,11 +24,12 @@ const archives = [
   {
     type: "STORE ARCHIVES // GOOGLE PLAY",
     title: "Commercial Android Publishing",
-    institution: "Google Play Console / Production Releases",
+    institution: "Google Play Console / NxT IN",
     dates: "2022 – 2026",
     tag: "PRODUCTION VERIFIED",
-    note: "Engineered and shipped Mystic Motors, Merge Balls, and Tile Pop. Full compliance with Target SDKs, 64-bit builds, and dynamic memory delivery.",
-    stamp: "100% STORE PASS"
+    note: "Engineered and published Restroom Tycoon, Water Color Race, Tile Pop, Merge Balls, and Mystic Motors on Google Play Console (Developer: NxT IN). Full compliance with Target SDKs and 64-bit builds.",
+    stamp: "100% STORE PASS",
+    link: "https://play.google.com/store/apps/developer?id=NxT+IN"
   }
 ];
 ---
@@ -73,9 +74,15 @@ const archives = [
         </div>
 
         <div class="pt-3 border-t border-[#282A2D] flex items-center justify-between">
-          <span class="font-handwriting text-sm text-[#E0AB48] font-bold">
-            {item.tag}
-          </span>
+          {item.link ? (
+            <a href={item.link} target="_blank" rel="noopener noreferrer" class="btn-tape-yellow text-[11px] py-1 px-2.5">
+              <i class="fa-brands fa-google-play"></i> NxT IN PROFILE &gt;
+            </a>
+          ) : (
+            <span class="font-handwriting text-sm text-[#E0AB48] font-bold">
+              {item.tag}
+            </span>
+          )}
           <span class="stamp-ink-moss text-[9px]">
             {item.stamp}
           </span>
